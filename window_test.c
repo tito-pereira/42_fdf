@@ -13,7 +13,22 @@ int	main() {
 	//mlx_pixel_put(process, window, 400, 300, 0x0000FF00);
 	for (int y = 200; y <= 400; y++) {
 		for (int x = 200; x <= 600; x++)
-			mlx_pixel_put(process, window, x, y, 0x0000FFFF);
+			mlx_pixel_put(process, window, x, y, 0x0000FF00);
+	}
+	/*for (int j = 10; j <= 600; j += 20) {
+		for (int i = 10; i <= 800; i += 20) {
+			mlx_pixel_put(process, window, i, j, 0x0000FFFF);
+		}
+	}*/
+	for (int j = 10; j <= 600; j += 20) {
+		for (int i = 0; i <= 800; i++) {
+			mlx_pixel_put(process, window, i, j, 0x0000FFFF);
+		}
+	}
+	for (int i = 10; i <= 800; i += 20) {
+		for (int j = 0; j <= 600; j++) {
+			mlx_pixel_put(process, window, i, j, 0x0000FFFF);
+		}
 	}
 	mlx_loop(process);
 }
