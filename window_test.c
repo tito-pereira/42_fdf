@@ -36,6 +36,7 @@ int	main() {
 }
 
 /*
+ * instalar x11 aqui no pc de casa para testar
 o teste funcionou, o loop de put_pixel funcionou
 
 antes de lidar com os eventos e hooks, ainda nem sei como criar uma imagem com a grid e isso
