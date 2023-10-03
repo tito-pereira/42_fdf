@@ -1,27 +1,4 @@
-#include "./minilibx-linux/mlx.h"
-
-typedef	struct	s_image {
-	void	*pointer;
-	char	*data;
-	int	bitspp;
-	int	sizeline;
-	int	endian;
-}	t_image;
-
-void	*write_image(void *image) {
-	char	*info;
-	int	bpp, sline, endian;
-	info = mlx_get_data_addr(image, &bpp, &sline, &endian);
-	//agora quero escrever os meus pixeis aqui
-	/*a funcao pede nos int* para um simples numero, o que
-	signfica que é suposto passarmos a morada e eles preenchem automatico
-	aquelas informações*/
-	/*crio uma struct porque sao conjuntos de informações que vao estar
-	sempre associados a uma só imagem*/
-	char	*mlx_get_data_addr(void *img_ptr, int *bits_per_pixel,
-			   int *size_line, int *endian);
-	return ()
-}
+#include "fdf.h"
 
 int	main() {
 	void	*process;
@@ -33,8 +10,8 @@ int	main() {
 	linhas = 600;
 	process = mlx_init();
 	window = mlx_new_window(process, colunas, linhas, "fdf");
-	image->pointer = mlx_new_image(process, colunas, linhas);
-	image->pointer = write_image(image->pointer);
+	image->ptr = mlx_new_image(process, colunas, linhas);
+	image->ptr = write_image(image->ptr, 400, 300, GREEN);
 	for (int y = 200; y <= 400; y++) {
 		for (int x = 200; x <= 600; x++)
 			mlx_pixel_put(process, window, x, y, 0x0000FF00);
