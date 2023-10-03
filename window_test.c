@@ -13,6 +13,16 @@ int	main() {
 	window = mlx_new_window(process, colunas, linhas, "fdf");
 	image->ptr = mlx_new_image(process, colunas, linhas);
 	write_image(&image, 400, 300, GREEN);
+	for (int j = 10; j <= 600; j += 20) {
+		for (int i = 0; i <= 800; i++) {
+			write_image(&image, i, j, WHITE);
+		}
+	}
+	for (int i = 10; i <= 800; i += 20) {
+		for (int j = 0; j <= 600; j++) {
+			write_image(&image, i, j, WHITE);
+		}
+	}
 	mlx_put_image_to_window(process, window, image->ptr, 0, 0);
 	mlx_loop(process);
 }
@@ -42,16 +52,16 @@ e tava a comecar do fim
 
 /*for (int y = 200; y <= 400; y++) {
 	for (int x = 200; x <= 600; x++)
-		mlx_pixel_put(process, window, x, y, 0x0000FF00);
+		write_image(process, window, x, y, 0x0000FF00);
 }
 for (int j = 10; j <= 600; j += 20) {
 	for (int i = 0; i <= 800; i++) {
-		mlx_pixel_put(process, window, i, j, 0x0000FFFF);
+		write_image(process, window, i, j, 0x0000FFFF);
 	}
 }
 for (int i = 10; i <= 800; i += 20) {
 	for (int j = 0; j <= 600; j++) {
-		mlx_pixel_put(process, window, i, j, 0x0000FFFF);
+		write_image(process, window, i, j, 0x0000FFFF);
 	}
 }*/
 
