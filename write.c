@@ -5,21 +5,17 @@ void	pixelize(t_image *img, int x, int y, int color)
 	int i;
 	int	*paint;
 
-	printf("small in\n");
 	i = (y * (img->sline / 4)) + x;
 	printf("sline:%d, i:%d, x:%d, color:%x\n", img->sline, i, x, color);
 	//*((int *)(img->data + i)) = color;
 	paint = (int *)(img->data);
 	paint[i - 1] = color;
-	printf("small out\n");
 }
 
 void	write_image(t_image **img, int x, int y, int color)
 {
-	printf("in\n");
 	(*img)->data = mlx_get_data_addr((*img)->ptr, &(*img)->bpp, &(*img)->sline, &(*img)->endian);
 	pixelize(*img, x, y, color);
-	printf("out\n");
 }
 
 /*

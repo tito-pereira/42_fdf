@@ -11,13 +11,9 @@ int	main() {
 	image = malloc(sizeof(t_image));
 	process = mlx_init();
 	window = mlx_new_window(process, colunas, linhas, "fdf");
-	printf("test 1\n");
 	image->ptr = mlx_new_image(process, colunas, linhas);
-	printf("test 2\n");
 	write_image(&image, 400, 300, GREEN);
-	printf("test 3\n");
 	mlx_put_image_to_window(process, window, image->ptr, 0, 0);
-	printf("test 4\n");
 	mlx_loop(process);
 }
 
