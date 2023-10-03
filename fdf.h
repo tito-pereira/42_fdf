@@ -17,6 +17,6 @@ typedef	struct	s_image {
 	int	endian;
 }	t_image;
 
-t_image	*write_image(t_image *img, int x, int y, int color);
+void	write_image(t_image **img, int x, int y, int color);
 
 #endif
