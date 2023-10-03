@@ -10,7 +10,7 @@ void	pixelize(t_image *img, int x, int y, int color)
 	printf("sline:%d, i:%d, x:%d, color:%x\n", img->sline, i, x, color);
 	//*((int *)(img->data + i)) = color;
 	paint = (int *)(img->data);
-	paint[i] = color;
+	paint[i - 1] = color;
 	printf("small out\n");
 }
 

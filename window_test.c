@@ -16,7 +16,7 @@ int	main() {
 	printf("test 2\n");
 	write_image(&image, 400, 300, GREEN);
 	printf("test 3\n");
-	mlx_put_image_to_window(process, window, image->ptr, colunas, linhas);
+	mlx_put_image_to_window(process, window, image->ptr, 0, 0);
 	printf("test 4\n");
 	mlx_loop(process);
 }
@@ -38,6 +38,10 @@ int	mlx_put_image_to_window(void *mlx_ptr, void *win_ptr, void *img_ptr,
 				int x, int y);
 int	mlx_get_color_value(void *mlx_ptr, int color);
 
+put image to window, o x e y ali sao as coordenadas do inicio da imagem
+neste caso vai ser sempre 0, 0
+eu achava que era o quanto eu queria colocar e meti 800, 600
+e tava a comecar do fim
 */
 
 /*for (int y = 200; y <= 400; y++) {
