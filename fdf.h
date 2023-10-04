@@ -8,6 +8,7 @@
 # define	GREEN	0x0000FF00 //altitude acima de 0
 # define	BLUE	0x000000FF //altitude abaixo de 0
 # define	WHITE	0x00FFFFFF //grelha
+# define	BLACK	0x00000000 //apagar pixel
 
 typedef	struct	s_image {
 	void	*ptr;
@@ -18,5 +19,6 @@ typedef	struct	s_image {
 }	t_image;
 
 void	write_image(t_image **img, int x, int y, int color);
+void	image_central(t_image **img, char *n);
 
 #endif

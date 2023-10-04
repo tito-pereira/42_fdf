@@ -1,30 +1,32 @@
 #include "fdf.h"
 
-int	main() {
-	void	*process;
-	void	*window;
-	char	*name;
-	t_image	*image;
-	int	colunas, linhas;
-	colunas = 800;
-	linhas = 600;
-	image = malloc(sizeof(t_image));
-	process = mlx_init();
-	window = mlx_new_window(process, colunas, linhas, "fdf");
-	image->ptr = mlx_new_image(process, colunas, linhas);
-	write_image(&image, 400, 300, GREEN);
-	for (int j = 10; j <= 600; j += 20) {
-		for (int i = 0; i <= 800; i++) {
-			write_image(&image, i, j, WHITE);
+int	main(int ac, char **av) {
+	if (ac == 2) {
+		void	*process;
+		void	*window;
+		t_image	*image;
+		int	colunas, linhas;
+		colunas = 800;
+		linhas = 600;
+		image = malloc(sizeof(t_image));
+		process = mlx_init();
+		window = mlx_new_window(process, colunas, linhas, "fdf");
+		image->ptr = mlx_new_image(process, colunas, linhas);
+		image_central(&image, av[1]);
+		/*write_image(&image, 400, 300, GREEN);
+		for (int j = 10; j <= 600; j += 20) {
+			for (int i = 0; i <= 800; i++) {
+				write_image(&image, i, j, WHITE);
+			}
 		}
+		for (int i = 10; i <= 800; i += 20) {
+			for (int j = 0; j <= 600; j++) {
+				write_image(&image, i, j, WHITE);
+			}
+		}*/
+		mlx_put_image_to_window(process, window, image->ptr, 0, 0);
+		mlx_loop(process);
 	}
-	for (int i = 10; i <= 800; i += 20) {
-		for (int j = 0; j <= 600; j++) {
-			write_image(&image, i, j, WHITE);
-		}
-	}
-	mlx_put_image_to_window(process, window, image->ptr, 0, 0);
-	mlx_loop(process);
 }
 
 /*
