@@ -16,6 +16,41 @@ int	escape_close(int keycode, void *param) {
 	return 0;
 }
 
+int	change_pic(int keycode, void *param) {
+	t_image	*new;
+	t_mlx	*mlx;
+	new = malloc(sizeof(t_image));
+	mlx = (t_mlx *)param;
+	if (keycode >= 49 && keycode <= 52) {
+		new->ptr = mlx_new_image(mlx->mlx, 800, 600);
+		if (keycode == 49)
+			img_key_central(new, 1);
+		else if (keycode == 50)
+			img_key_central(new, 2);
+		else if (keycode == 51)
+			img_key_central(new, 3);
+		else if (keycode == 52)
+			img_key_central(new, 4);
+		printf("change img\n");
+		mlx_put_image_to_window(mlx->mlx, mlx->win, new->ptr, 0, 0);
+		//mlx_destroy_image(mlx->mlx, mlx->img);
+		mlx->img = new->ptr;
+		return 0;
+	}
+	free(new);
+	new = NULL;
+	return 0;
+}
+
+int	key_handler(int keycode, void *param) {
+	printf("key_handler\n");
+	if (keycode >= 49 && keycode <= 52)
+		change_pic(keycode, param);
+	else if (keycode == 65307)
+		escape_close(keycode, param);
+	return 0;
+}
+
 int	main(int ac, char **av) {
 	if (ac == 2) {
 		t_mlx	*mlx;
@@ -36,16 +71,12 @@ int	main(int ac, char **av) {
 	}
 	if (ac == 1) {
 		t_mlx	*mlx;
-		//t_image	*img;
-		//img = malloc(sizeof(t_image));
 		mlx = malloc(sizeof(t_mlx));
 		mlx->mlx = mlx_init();
 		mlx->win = mlx_new_window(mlx->mlx, 800, 600, "fdf");
-		//img->ptr = mlx_new_image(mlx->mlx, 800, 600);
-		//mlx->img = img->ptr;
-		//mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
-		//mlx_key_hook(mlx->win, change_pic, mlx);
-		mlx_key_hook(mlx->win, escape_close, (void *)mlx);
+		mlx_key_hook(mlx->win, key_handler, (void *)mlx);
+		//mlx_key_hook(mlx->win, change_pic, (void *)mlx);
+		//mlx_key_hook(mlx->win, escape_close, (void *)mlx);
 		mlx_loop(mlx->mlx);
 	}
 }

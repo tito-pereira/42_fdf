@@ -2,8 +2,10 @@
 
 void	image_1(t_image *img) {
 	for (int x = 300; x <= 500; x++) {
-		for (int y = 200; y <= 400; y++)
+		for (int y = 200; y <= 400; y++) {
+			//printf("gonna write 1, x:%d, y:%d\n", x, y);
 			write_image(img, x, y, GREEN);
+		}
 	}
 }
 
@@ -40,6 +42,7 @@ void	img_av_central(t_image *img, char *n) {
 }
 
 void	img_key_central(t_image *img, int n) {
+	//printf("key central, key %d\n", n);
 	if (n == 1)
 		image_1(img);
 	else if (n == 2)
