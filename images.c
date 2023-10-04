@@ -28,7 +28,7 @@ void	image_4(t_image **img) {
 	}
 }
 
-void	image_central(t_image **img, char *n) {
+void	img_av_central(t_image **img, char *n) {
 	if (n[0] == '1')
 		image_1(img);
 	else if (n[0] == '2')
@@ -36,5 +36,16 @@ void	image_central(t_image **img, char *n) {
 	else if (n[0] == '3')
 		image_3(img);
 	else if (n[0] == '4')
+		image_4(img);
+}
+
+void	img_key_central(t_image **img, int n) {
+	if (n == 1)
+		image_1(img);
+	else if (n == 2)
+		image_2(img);
+	else if (n == 3)
+		image_3(img);
+	else if (n == 4)
 		image_4(img);
 }

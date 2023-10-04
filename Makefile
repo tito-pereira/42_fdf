@@ -11,6 +11,11 @@ OBJ= window_test.o write.o images.o
 $(NAME):
 	$(CC) $(CFLAGS) $(SRC) $(LIB) -o $(NAME)
 
+all: $(NAME)
+
+gdb:
+	$(CC) -g $(CFLAGS) $(SRC) $(LIB) -o $(NAME)
+
 clean:
 	$(RM) $(OBJ)
 

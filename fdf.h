@@ -18,7 +18,15 @@ typedef	struct	s_image {
 	int	endian;
 }	t_image;
 
+typedef	struct fdf {
+	void	*mlx;
+	void	*win;
+	void	*img;
+}	t_mlx;
+
+
 void	write_image(t_image **img, int x, int y, int color);
-void	image_central(t_image **img, char *n);
+void	img_av_central(t_image **img, char *n);
+void	img_key_central(t_image **img, int n);
 
 #endif
