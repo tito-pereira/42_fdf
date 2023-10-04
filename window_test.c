@@ -1,18 +1,19 @@
 #include "fdf.h"
 
-int	change_pic(t_mlx **mlx) {
-	t_image	*img;
-	img = malloc(sizeof(t_image));
-	printf("malloc\n");
-	img->ptr = mlx_new_image((*mlx)->mlx, 800, 600);
-	printf("new image\n");
-	/*for (int x = 300; x <= 500; x++) {
-		for (int y = 200; y <= 400; y++)
-			write_image(&img, x, y, GREEN);
-	}*/
-	(*mlx)->img = img->ptr;
-	mlx_put_image_to_window((*mlx)->mlx, (*mlx)->win, img->ptr, 0, 0);
-	return (0);
+int	escape_close(int keycode, void *param) {
+	t_mlx *mlx;
+	mlx = (t_mlx *)param;
+	printf("escaping with keycode:%d\n", keycode);
+	if (keycode == 65307) {
+		printf("ESC pressed. Beginning exit sequence.\n");
+		mlx_destroy_image(mlx->mlx, mlx->img);
+		printf("image destroyed\n");
+		mlx_destroy_window(mlx->mlx, mlx->win);
+		printf("window destroyed\n");
+		mlx_destroy_display(mlx->mlx);
+		printf("display destroyed\n");
+	}
+	return 0;
 }
 
 int	main(int ac, char **av) {
@@ -28,24 +29,24 @@ int	main(int ac, char **av) {
 		mlx->win = mlx_new_window(mlx->mlx, colunas, linhas, "fdf");
 		image->ptr = mlx_new_image(mlx->mlx, colunas, linhas);
 		mlx->img = image->ptr;
-		img_av_central(&image, av[1]);
+		img_av_central(image, av[1]);
 		mlx_put_image_to_window(mlx->mlx, mlx->win, image->ptr, 0, 0);
+		mlx_key_hook(mlx->win, escape_close, (void *)mlx);
 		mlx_loop(mlx->mlx);
 	}
 	if (ac == 1) {
 		t_mlx	*mlx;
-		t_image	*image;
+		//t_image	*img;
+		//img = malloc(sizeof(t_image));
 		mlx = malloc(sizeof(t_mlx));
-		image = malloc(sizeof(t_image));
 		mlx->mlx = mlx_init();
 		mlx->win = mlx_new_window(mlx->mlx, 800, 600, "fdf");
-		mlx_key_hook(mlx->win, change_pic, &mlx);
+		//img->ptr = mlx_new_image(mlx->mlx, 800, 600);
+		//mlx->img = img->ptr;
+		//mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+		//mlx_key_hook(mlx->win, change_pic, mlx);
+		mlx_key_hook(mlx->win, escape_close, (void *)mlx);
 		mlx_loop(mlx->mlx);
-		/*
-		image->ptr = mlx_new_image(mlx->mlx, 800, 600);
-		mlx_put_image_to_window(mlx->mlx, mlx->win, image->ptr, 0, 0);
-		mlx_key_hook(mlx->win, change_pic, image);
-		*/
 	}
 }
 
@@ -57,6 +58,9 @@ int	main(int ac, char **av) {
 0x0000FF00 (green)
 0x000000FF (blue)
 
+void	escape_seq(t_mlx *mlx) {
+	mlx_key_hook(mlx->win, escape_close, (void *)mlx);
+}
 
 void	*mlx_new_image(void *mlx_ptr,int width,int height);
 
@@ -84,31 +88,8 @@ int	mlx_destroy_image(void *mlx_ptr, void *img_ptr);
 int	mlx_destroy_display(void *mlx_ptr);
 */
 
-/*for (int y = 200; y <= 400; y++) {
-	for (int x = 200; x <= 600; x++)
-		write_image(process, window, x, y, 0x0000FF00);
-}
-for (int j = 10; j <= 600; j += 20) {
-	for (int i = 0; i <= 800; i++) {
-		write_image(process, window, i, j, 0x0000FFFF);
-	}
-}
-for (int i = 10; i <= 800; i += 20) {
-	for (int j = 0; j <= 600; j++) {
-		write_image(process, window, i, j, 0x0000FFFF);
-	}
-}*/
-
-/*write_image(&image, 400, 300, GREEN);
-for (int j = 10; j <= 600; j += 20) {
-	for (int i = 0; i <= 800; i++) {
-		write_image(&image, i, j, WHITE);
-	}
-}
-for (int i = 10; i <= 800; i += 20) {
-	for (int j = 0; j <= 600; j++) {
-		write_image(&image, i, j, WHITE);
-	}
-}*/
+/*
+correr gdb no destroy display
+*/
 
 //cc window_test.c write.c -L../minilibx-linux/ -lmlx -lXext -lX11 -lm

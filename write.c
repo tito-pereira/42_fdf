@@ -1,12 +1,12 @@
 #include "fdf.h"
 
-void	write_image(t_image **img, int x, int y, int color)
+void	write_image(t_image *img, int x, int y, int color)
 {
-	(*img)->data = mlx_get_data_addr((*img)->ptr, &(*img)->bpp, &(*img)->sline, &(*img)->endian);
+	img->data = mlx_get_data_addr(img->ptr, &img->bpp, &img->sline, &img->endian);
 	int i;
 	int	*paint;
-	i = (y * ((*img)->sline / 4)) + x;
-	paint = (int *)((*img)->data);
+	i = (y * (img->sline / 4)) + x;
+	paint = (int *)(img->data);
 	paint[i - 1] = color;
 }
 
@@ -48,12 +48,13 @@ sempre associados a uma só imagem
 cor vem em valor de integer no formato hexadecimal
 */
 
-/*void	pixelize(t_image *img, int x, int y, int color)
+/*
+void	write_image(t_image **img, int x, int y, int color)
 {
+	(*img)->data = mlx_get_data_addr((*img)->ptr, &(*img)->bpp, &(*img)->sline, &(*img)->endian);
 	int i;
 	int	*paint;
-
-	i = (y * (img->sline / 4)) + x;
-	paint = (int *)(img->data);
+	i = (y * ((*img)->sline / 4)) + x;
+	paint = (int *)((*img)->data);
 	paint[i - 1] = color;
 }*/
