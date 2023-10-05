@@ -42,7 +42,6 @@ void	img_av_central(t_image *img, char *n) {
 }
 
 void	img_key_central(t_image *img, int n) {
-	//printf("key central, key %d\n", n);
 	if (n == 1)
 		image_1(img);
 	else if (n == 2)
@@ -52,3 +51,22 @@ void	img_key_central(t_image *img, int n) {
 	else if (n == 4)
 		image_4(img);
 }
+
+/*
+typedef	struct	s_cord {
+	int	x;
+	int	y;
+	int	z;
+	t_cord	*next;
+}	t_cord;
+
+t_cord	*points;
+
+while (points->next != NULL) {
+	if(angulo correto, declive correto, jogar com declives)
+		write_image(img, points->x, points->y, color);
+	points = points->next;
+	}
+nao sei se funciona com ints(so se for com floats), valores decimais
+nunca vao dar certo e nunca printa. traduzir em matrizes talvez
+*/
