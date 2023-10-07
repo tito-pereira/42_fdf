@@ -4,9 +4,9 @@ NAME= fdf
 CC= cc
 CFLAGS= -Wall -Wextra -Werror
 RM= rm -rf
-SRC= window_test.c write.c images.c
+SRC= window_test.c write.c images.c grid.c
 LIB= -L../minilibx-linux/ -lmlx -lXext -lX11 -lm
-OBJ= window_test.o write.o images.o
+OBJ= window_test.o write.o images.o grid.o
 
 $(NAME):
 	$(CC) $(CFLAGS) $(SRC) $(LIB) -o $(NAME)

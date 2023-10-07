@@ -52,31 +52,23 @@ int	key_handler(int keycode, void *param) {
 }
 
 int	main(int ac, char **av) {
+	t_mlx	*mlx;
+	t_image	*image;
+	t_grid	*grid;
+	t_point	*points;
+	t_all	*all;
+
 	if (ac == 2) {
-		t_mlx	*mlx;
-		t_image	*image;
-		int	colunas, linhas;
-		colunas = 800;
-		linhas = 600;
-		mlx = malloc(sizeof(t_mlx));
-		image = malloc(sizeof(t_image));
-		mlx->mlx = mlx_init();
-		mlx->win = mlx_new_window(mlx->mlx, colunas, linhas, "fdf");
-		image->ptr = mlx_new_image(mlx->mlx, colunas, linhas);
-		mlx->img = image->ptr;
-		img_av_central(image, av[1]);
-		mlx_put_image_to_window(mlx->mlx, mlx->win, image->ptr, 0, 0);
-		mlx_key_hook(mlx->win, escape_close, (void *)mlx);
-		mlx_loop(mlx->mlx);
-	}
-	if (ac == 1) {
-		t_mlx	*mlx;
+		grid = create_grid(av[1]);
+		points = create_points(grid); //acabar
 		mlx = malloc(sizeof(t_mlx));
 		mlx->mlx = mlx_init();
 		mlx->win = mlx_new_window(mlx->mlx, 800, 600, "fdf");
-		mlx_key_hook(mlx->win, key_handler, (void *)mlx);
-		//mlx_key_hook(mlx->win, change_pic, (void *)mlx);
-		//mlx_key_hook(mlx->win, escape_close, (void *)mlx);
+		display_iso(mlx, points, grid); //fazer
+		all->mlx = mlx;
+		all->grid = grid;
+		all->points = points;
+		mlx_key_hook(mlx->win, key_handler, (void *)all); //fazer vetores
 		mlx_loop(mlx->mlx);
 	}
 }
@@ -89,9 +81,7 @@ int	main(int ac, char **av) {
 0x0000FF00 (green)
 0x000000FF (blue)
 
-void	escape_seq(t_mlx *mlx) {
-	mlx_key_hook(mlx->win, escape_close, (void *)mlx);
-}
+all->mlx->mlx
 
 void	*mlx_new_image(void *mlx_ptr,int width,int height);
 

@@ -2,14 +2,12 @@
 
 void	write_image(t_image *img, int x, int y, int color)
 {
-	//printf("start write\n");
 	img->data = mlx_get_data_addr(img->ptr, &img->bpp, &img->sline, &img->endian);
 	int i;
 	int	*paint;
 	i = (y * (img->sline / 4)) + x;
 	paint = (int *)(img->data);
 	paint[i - 1] = color;
-	//printf("everything written\n");
 }
 
 /*
@@ -51,12 +49,5 @@ cor vem em valor de integer no formato hexadecimal
 */
 
 /*
-void	write_image(t_image **img, int x, int y, int color)
-{
-	(*img)->data = mlx_get_data_addr((*img)->ptr, &(*img)->bpp, &(*img)->sline, &(*img)->endian);
-	int i;
-	int	*paint;
-	i = (y * ((*img)->sline / 4)) + x;
-	paint = (int *)((*img)->data);
-	paint[i - 1] = color;
-}*/
+criar funcao de draw between points
+*/
