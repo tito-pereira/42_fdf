@@ -11,6 +11,8 @@ void	write_image(t_image *img, int x, int y, int color)
 }
 
 /*
+yb - ya / xb - xa
+
 sline = 3200 (800 * 4)
 300(linhas) * 800(bytes por linha) = 240000
 i = 240400
