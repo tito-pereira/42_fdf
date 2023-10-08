@@ -4,9 +4,9 @@ NAME= fdf
 CC= cc
 CFLAGS= -Wall -Wextra -Werror
 RM= rm -rf
-SRC= main.c write.c draw_line.c grid.c points.c
+SRC= main.c write.c draw_line.c grid.c points.c isometric.c
 LIB= -L../minilibx-linux/ -lmlx -lXext -lX11 -lm
-OBJ= main.o write.o draw_line.o grid.o points.o
+OBJ= main.o write.o draw_line.o grid.o points.o isometric.o
 
 $(NAME):
 	$(CC) $(CFLAGS) $(SRC) $(LIB) -o $(NAME)
