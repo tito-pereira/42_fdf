@@ -4,7 +4,7 @@ void	get_matrix(t_grid *grid, int *x, int *y)
 {
 	float d;
 
-	d = sqrt(pow(rows, 2) + pow(lines, 2));
+	d = sqrt(pow(grid->rows, 2) + pow(grid->lines, 2));
 	if (d > 120)
 	{
 		*x = 2;
@@ -61,9 +61,10 @@ void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid)
 	pts = origin;
 	while (pts->next != NULL)
 	{
-		draw_line(pts, pts->next);
+		draw_line(pts, pts->next, mlx->img);
 		pts = pts->next;
 	}
+	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
 
 /*

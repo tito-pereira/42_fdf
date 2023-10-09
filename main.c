@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-int	escape_close(int keycode, void *param) {
+/*int	escape_close(int keycode, void *param) {
 	t_mlx *mlx;
 	mlx = (t_mlx *)param;
 	printf("escaping with keycode:%d\n", keycode);
@@ -51,24 +51,31 @@ int	key_handler(int keycode, void *param) {
 	return 0;
 }
 
+void	print_grid() {
+	ez;
+}
+
+*/
+
 int	main(int ac, char **av) {
 	t_mlx	*mlx;
-	t_image	*image;
 	t_grid	*grid;
 	t_point	*points;
 	t_all	*all;
 
 	if (ac == 2) {
+		all = malloc(sizeof(t_all));
 		grid = create_grid(av[1]);
 		points = create_points(grid); //acabar
 		mlx = malloc(sizeof(t_mlx));
 		mlx->mlx = mlx_init();
 		mlx->win = mlx_new_window(mlx->mlx, 800, 600, "fdf");
+		mlx->img = mlx_new_image(mlx->mlx, 800, 600);
 		display_iso(mlx, points, grid); //fazer
 		all->mlx = mlx;
 		all->grid = grid;
 		all->points = points;
-		mlx_key_hook(mlx->win, key_handler, (void *)all); //fazer vetores
+		//mlx_key_hook(mlx->win, key_handler, (void *)all); //fazer vetores
 		mlx_loop(mlx->mlx);
 	}
 }

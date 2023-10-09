@@ -2,9 +2,14 @@
 # define FDF_H
 
 # include "../minilibx-linux/mlx.h"
+# include "./libft/libft.h"
+# include "./getnext/get_next_line.h"
 # include <stdio.h> //printf caseira (acho q n preciso, talvez so p msgs erro?)
 # include <stdlib.h>
 # include <math.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 # define	RED		0x00FF0000
 # define	GREEN	0x0000FF00 //altitude acima de 0
 # define	BLUE	0x000000FF //altitude abaixo de 0
@@ -38,7 +43,7 @@ typedef	struct s_point {
 	int	z;
 	int	pixx;
 	int	pixy;
-	t_point	*next;
+	struct s_point	*next;
 }	t_point;
 
 typedef	struct s_matrix {

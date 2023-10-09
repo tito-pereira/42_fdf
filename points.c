@@ -4,7 +4,7 @@ t_point	*new_point(t_grid *grid, int x, int y)
 {
 	t_point	*new;
 
-	t_point = malloc(sizeof(t_point));
+	new = malloc(sizeof(t_point));
 	new->x = x;
 	new->y = y;
 	new->z = grid->heights[x * y];
@@ -23,10 +23,10 @@ void	aux(t_point **pts, t_grid *grid, int l)
 	while (r < grid->rows)
 	{
 		if (pts == NULL)
-			pts = new_point(grid, r, l);
+			*pts = new_point(grid, r, l);
 		else
-			pts->next = new_point(grid, r, l);
-		pts = pts->next;
+			(*pts)->next = new_point(grid, r, l);
+		*pts = (*pts)->next;
 		r++;
 	}
 }

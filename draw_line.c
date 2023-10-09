@@ -14,7 +14,7 @@ void	draw_a_b(t_point *a, t_point *b, float begin, t_image *img)
 	{
 		a = a->next;
 		if (slope(a, b) == begin)
-			write_image(img, a->pixx, a->pixy);
+			write_image(img, a->pixx, a->pixy, WHITE);
 	}
 }
 
@@ -24,7 +24,7 @@ void	draw_b_a(t_point *a, t_point *b, float begin, t_image *img)
 	{
 		b = b->next;
 		if (slope(a, b) == begin)
-			write_image(img, b->pixx, b->pixy);
+			write_image(img, b->pixx, b->pixy, WHITE);
 	}
 }
 
