@@ -168,6 +168,17 @@ int	*proc_heights(t_heights *points, t_grid *grid)
 	return (heights);
 }
 
+void	print_heights(t_grid *grid) {
+	int	i = 0;
+	for (int l = 0; l < grid->lines; l++) {
+		for (int r = 0; r < grid->rows; r++) {
+			printf("%d, ", grid->heights[i]);
+			i++;
+		}
+		printf("\n");
+	}
+}
+
 t_grid	*create_grid(char *arg)
 {
 	t_grid		*grid;
@@ -190,5 +201,6 @@ t_grid	*create_grid(char *arg)
 	grid->total = grid->lines * grid->rows;
 	//printf("points procced:%d\n", grid->rows);
 	grid->heights = proc_heights(points, grid);
+	//print_heights(grid);
 	return (grid);
 }

@@ -40,6 +40,7 @@ t_point	*create_points(t_grid *grid)
 	i = 0;
 	l = 0;
 	pts = NULL;
+	printf("here\n");
 	while (i < grid->total)
 	{
 		while (l < grid->lines)
