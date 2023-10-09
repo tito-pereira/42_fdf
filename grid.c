@@ -1,5 +1,18 @@
 #include "fdf.h"
 
+/*void	free_pts(char **pts)
+{
+	int	i;
+
+	i = 0;
+	while (pts[i] != NULL)
+	{
+		free (pts[i]);
+		pts[i] = NULL;
+		i++;
+	}
+}
+
 char	**more_mem(char ***pts, int i)
 {
 	char	**new;
@@ -7,42 +20,55 @@ char	**more_mem(char ***pts, int i)
 
 	j = 0;
 	new = malloc((i + 1) * sizeof(char *));
-	while (j <= i)
+	printf("malloc %d\n", (i + 1));
+	while (j < i)
 	{
-		new[i] = ft_strcpy(*pts[i]);
+		printf("new loop, j=%d\n", j);
+		printf("*pts[%d]:%s\n", j, *pts[j]);
+		new[j] = ft_strcpy(*pts[j]);
+		printf("new[%d]:%s\n", j, new[j]);
 		j++;
 	}
-	printf("new[i]:%s\n", new[i]);
-	free(*pts);
+	free_pts(*pts);
 	*pts = NULL;
+	return (new);
+}*/
+
+t_lines	*new_lines_node(char *str)
+{
+	t_lines	*new;
+
+	new = malloc(sizeof(t_lines));
+	new->line = str;
+	new->next = NULL;
 	return (new);
 }
 
-char	**proc_lines(int fd, t_grid *grid)
+t_lines	*proc_lines(int fd, t_grid *grid)
 {
 	int		i;
-
 	char	**pts;
+	t_lines	*new;
+	t_lines	*iter;
 
 	i = 0;
-	pts = malloc(sizeof(char *));
+	new = new_lines_node(get_next_line(fd));
+	iter = new;
 	while (1)
 	{
-		printf("loop %d\n", i);
-		pts[i] = get_next_line(fd);
-		printf("line%d: %s\n", i, pts[i]);
-		if (pts[i] == NULL)
+		iter->next = new_lines_node(get_next_line(fd));
+		iter = iter->next;
+		if (iter->line == NULL)
 			break ;
 		i++;
 		grid->lines++;
-		pts = more_mem(&pts, i);
 	}
-	return (pts);
+	return (new);
 }
 //funcao malloc retorna pointer, so podes algo=malloc
 //se algo for um pointer. nao pode ser int ou char
 
-char	***proc_points(char **lines)
+char	***proc_points(t_lines	*lines)
 {
 	char	***points;
 	int	i;

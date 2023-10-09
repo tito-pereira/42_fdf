@@ -46,6 +46,11 @@ typedef	struct s_point {
 	struct s_point	*next;
 }	t_point;
 
+typedef	struct s_lines {
+	char	*line;
+	struct s_lines	*next;
+}	t_lines;
+
 typedef	struct s_matrix {
 	int	x;
 	int	y;
