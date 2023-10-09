@@ -1,4 +1,3 @@
-#cc window_test.c write.c -L../minilibx-linux/ -lmlx -lXext -lX11 -lm
 
 NAME= fdf
 CC= cc

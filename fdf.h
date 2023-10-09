@@ -51,6 +51,11 @@ typedef	struct s_lines {
 	struct s_lines	*next;
 }	t_lines;
 
+typedef	struct s_heights {
+	char	**line;
+	struct s_heights	*next;
+}	t_heights;
+
 typedef	struct s_matrix {
 	int	x;
 	int	y;

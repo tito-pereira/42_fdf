@@ -47,7 +47,6 @@ t_lines	*new_lines_node(char *str)
 t_lines	*proc_lines(int fd, t_grid *grid)
 {
 	int		i;
-	char	**pts;
 	t_lines	*new;
 	t_lines	*iter;
 
@@ -68,17 +67,29 @@ t_lines	*proc_lines(int fd, t_grid *grid)
 //funcao malloc retorna pointer, so podes algo=malloc
 //se algo for um pointer. nao pode ser int ou char
 
-char	***proc_points(t_lines	*lines)
+t_heights	*new_heights_node(char **str)
 {
-	char	***points;
-	int	i;
+	t_heights	*new;
 
-	i = 0;
-	points = malloc(sizeof(char ***));
-	while (lines[i] != NULL)
+	new = malloc(sizeof(t_heights));
+	new->line = str;
+	new->next = NULL;
+	return (new);
+}
+
+t_heights	*proc_points(t_lines *lines)
+{
+	t_heights	*points;
+	t_heights	*iter;
+
+	points = new_heights_node(ft_split(lines->line, ' '));
+	lines = lines->next;
+	iter = points;
+	while (lines->line != NULL)
 	{
-		points[i] = ft_split(lines[i], ' ');
-		i++;
+		iter->next = new_heights_node(ft_split(lines->line, ' '));
+		iter = iter->next;
+		lines = lines->next;
 	}
 	return (points);
 }
@@ -93,7 +104,20 @@ int	count_rows(char **points)
 	return (i);
 }
 
-int	*proc_heights(char ***points, t_grid *grid)
+int	count_lines(t_lines *lines)
+{
+	int	i;
+
+	i = 0;
+	while (lines != NULL)
+	{
+		lines = lines->next;
+		i++;
+	}
+	return (i);
+}
+
+/*int	*proc_heights(char ***points, t_grid *grid)
 {
 	int	size;
 	int	line;
@@ -119,21 +143,37 @@ int	*proc_heights(char ***points, t_grid *grid)
 		line++;
 	}
 	return (heights);
-}
+}*/
 
-void	print_lines(char **lines) {
-	printf("hey\n");
-	printf("%s\n", lines[0]);
-	//for (int i = 0; lines[i] != NULL; i++)
-		//printf("line[i]:%s\n", lines[i]);
+int	*proc_heights(t_heights *points, t_grid *grid)
+{
+	int	*heights;
+	int	word;
+	int	total;
+
+	word = 0;
+	total = 0;
+	heights = malloc(grid->total * sizeof(int));
+	while (points != NULL)
+	{
+		word = 0;
+		while (points->line[word] != NULL)
+		{
+			heights[total] = ft_atoi(points->line[word]);
+			word++;
+			total++;
+		}
+		points = points->next;
+	}
+	return (heights);
 }
 
 t_grid	*create_grid(char *arg)
 {
-	t_grid	*grid;
-	int		fd;
-	char	***points;
-	char	**lines;
+	t_grid		*grid;
+	int			fd;
+	t_heights	*points;
+	t_lines		*lines;
 
 	grid = malloc(sizeof(t_grid));
 	grid->heights = NULL;
@@ -141,14 +181,14 @@ t_grid	*create_grid(char *arg)
 	grid->lines = 0;
 	grid->total = 0;
 	fd = open(arg, O_RDONLY);
-	printf("file opened, fd:%d\n", fd);
+	//printf("file opened, fd:%d\n", fd);
 	lines = proc_lines(fd, grid);
-	printf("lines procced\n");
-	print_lines(lines);
+	grid->lines = count_lines(lines);
+	//printf("lines procced:%d\n", grid->lines);
 	points = proc_points(lines);
-	printf("points procced\n");
-	grid->rows = count_rows(points[0]);
-	printf("rows:%d, lines:%d\n", grid->rows, grid->lines);
+	grid->rows = count_rows(points->line);
+	grid->total = grid->lines * grid->rows;
+	//printf("points procced:%d\n", grid->rows);
 	grid->heights = proc_heights(points, grid);
 	return (grid);
 }
