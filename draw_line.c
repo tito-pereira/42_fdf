@@ -27,13 +27,15 @@ void	draw_a_b(t_point *a, t_point *b, float begin, t_image *img)//t_grid *g)
 	{
 		while ((now_y != b->pixy) && (now_x <= 800))
 		{
-			if (slope(now_x, now_y, b->pixx, b->pixy) == begin)
+			if ((slope(now_x, now_y, b->pixx, b->pixy) >= (begin - 0.05))
+				&& (slope(now_x, now_y, b->pixx, b->pixy) <= (begin + 0.05)))
 				write_image(img, now_x, now_y, WHITE);
 			now_x++;
 		}
 		while ((now_y == b->pixy) && (now_x <= b->pixx))
 		{
-			if ((slope(now_x, now_y, b->pixx, b->pixy) == begin)
+			if ((slope(now_x, now_y, b->pixx, b->pixy) >= (begin - 0.05)
+				&& slope(now_x, now_y, b->pixx, b->pixy) <= (begin + 0.05))
 				|| (now_x == b->pixx))
 				write_image(img, now_x, now_y, WHITE);
 			now_x++;
