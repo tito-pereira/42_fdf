@@ -59,19 +59,19 @@ void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 	{
 		fst = pts;
 		scd = pts;
-		printf("------row %d of %d------\n", row, grid->rows);
+		//printf("------row %d of %d------\n", row, grid->rows);
 		while (line < (grid->lines - 1))
 		{
 			c = 0;
-			printf("fx:%d fy:%d sx:%d sy:%d\n", fst->pixx, fst->pixy, scd->pixx, scd->pixy);
+			//printf("fx:%d fy:%d sx:%d sy:%d\n", fst->pixx, fst->pixy, scd->pixx, scd->pixy);
 			while (c < grid->rows)
 			{
-				printf(".");
+				//printf(".");
 				scd = scd->next;
 				c++;
 			}
-			printf("\nc:%d\n", c);
-			printf("ax:%d ay:%d bx:%d by:%d\n", fst->pixx, fst->pixy, scd->pixx, scd->pixy);
+			//printf("\nc:%d\n", c);
+			//printf("ax:%d ay:%d bx:%d by:%d\n", fst->pixx, fst->pixy, scd->pixx, scd->pixy);
 			draw_line(fst, scd, first);
 			fst = scd;
 			line++;
@@ -119,7 +119,7 @@ void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first)
 	pts = origin;
 	display_lines(pts, first);
 	display_rows(pts, first, grid);
-	printf("out\n");
+	//printf("out\n");
 	mlx->img = first->ptr;
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
@@ -127,6 +127,15 @@ void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first)
 /*
 so tou a desenhar uma coluna
 ainda tou a conectar o fim e inicio de linhas
+
+ora bem:
+2 - ajustar cores (colocar variavel cor dentro do ponto)
+eu so pinto mesmo no draw line. fazer uma media de alturas e colocar a cor consoante)
+- ajustar o slope (facil, ja ta feito so experimentar)
+1 - ajustar a matriz (talvez uma conta dinamica)
+
+
+-----
 
 void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 {

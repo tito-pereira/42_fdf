@@ -27,15 +27,15 @@ void	draw_a_b(t_point *a, t_point *b, float begin, t_image *img)//t_grid *g)
 	{
 		while ((now_y != b->pixy) && (now_x <= 800))
 		{
-			if ((slope(now_x, now_y, b->pixx, b->pixy) >= (begin - 0.05))
-				&& (slope(now_x, now_y, b->pixx, b->pixy) <= (begin + 0.05)))
+			if ((slope(now_x, now_y, b->pixx, b->pixy) >= (begin - 0.01))
+				&& (slope(now_x, now_y, b->pixx, b->pixy) <= (begin + 0.01)))
 				write_image(img, now_x, now_y, WHITE);
 			now_x++;
 		}
 		while ((now_y == b->pixy) && (now_x <= b->pixx))
 		{
-			if ((slope(now_x, now_y, b->pixx, b->pixy) >= (begin - 0.05)
-				&& slope(now_x, now_y, b->pixx, b->pixy) <= (begin + 0.05))
+			if ((slope(now_x, now_y, b->pixx, b->pixy) >= (begin - 0.01)
+				&& slope(now_x, now_y, b->pixx, b->pixy) <= (begin + 0.01))
 				|| (now_x == b->pixx))
 				write_image(img, now_x, now_y, WHITE);
 			now_x++;
@@ -100,17 +100,9 @@ void	draw_line(t_point *a, t_point *b, t_image *img)// t_grid *g)
 }
 
 /*
-mudar o slope de t_points para coordenadas
-
-eu tou a ir de ponto a ponto, em vez de pixel a pixel
-
 ------------
-eu tou a conetar as linhas so
-e a conetar o fim de uma linha ao fim da proxima
-tenho que:
+
 - conetar linhas, mas cortar as conexoes do fim
-- conetar colunas
-acho que depois tambem posso ajustar isto
 ------------
 float	slope(t_point *a, t_point *b)
 {
@@ -174,7 +166,4 @@ void	draw_a_b(t_point *a, t_point *b, float begin, t_image *img)
 		now_x = 0;
 	}
 }
-
-	now_x = x inicial (a->pixx); (x final, b->pixx)
-	now_y = y inicial (a->pixy); (y final, b->pixy)
 */
