@@ -8,23 +8,23 @@ void	get_matrix(t_grid *grid, int *x, int *y)
 	//printf("diagonal points: %f\n", d);
 	if (d > 120)
 	{
-		*x = 2;
-		*y = 1;
+		*x = (*x) * 2 * SCALE; //*x = 2;
+		*y = (*y) * 1 * SCALE; //*y = 1;
 	}
 	else if (d > 60 && d <= 120)
 	{
-		*x = 4;
-		*y = 2;
+		*x = (*x) * 4 * SCALE;
+		*y = (*y) * 2 * SCALE;
 	}
 	else if (d > 30 && d <= 60)
 	{
-		*x = 8;
-		*y = 4;
+		*x = (*x) * 8 * SCALE;
+		*y = (*y) * 4 * SCALE;
 	}
 	else if (d <= 30)
 	{
-		*x = 16;
-		*y = 8;
+		*x = (*x) * 16 * SCALE;
+		*y = (*y) * 8 * SCALE;
 	}
 }
 
@@ -91,8 +91,8 @@ void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first)
 	int	line;
 	t_point	*origin;
 
-	mx = 0;
-	my = 0;
+	mx = 1;
+	my = 1;
 	row = 0;
 	line = 0;
 	get_matrix(grid, &mx, &my);
@@ -106,8 +106,8 @@ void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first)
 		row = 0;
 		while (row < grid->rows)
 		{
-			pts->pixx = 400 + (line * mxx) + (row * mx);
-			pts->pixy = 50 + (line * my) + (row * my) + (2 * pts->z);
+			pts->pixx = (WIDTH / 2) + (line * mxx) + (row * mx);
+			pts->pixy = 50 + (line * my) + (row * my) + (-2 * pts->z);
 			//printf("x:%d y:%d z:%d px:%d py:%d\n", pts->x, pts->y, pts->z, pts->pixx, pts->pixy);
 			pts = pts->next;
 			row++;
@@ -131,8 +131,6 @@ ainda tou a conectar o fim e inicio de linhas
 ora bem:
 2 - ajustar cores (colocar variavel cor dentro do ponto)
 eu so pinto mesmo no draw line. fazer uma media de alturas e colocar a cor consoante)
-- ajustar o slope (facil, ja ta feito so experimentar)
-1 - ajustar a matriz (talvez uma conta dinamica)
 
 
 -----

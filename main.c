@@ -1,21 +1,21 @@
 #include "fdf.h"
 
-/*int	escape_close(int keycode, void *param) {
+int	escape_close(int keycode, void *param) {
 	t_mlx *mlx;
 	mlx = (t_mlx *)param;
-	printf("escaping with keycode:%d\n", keycode);
+	//printf("escaping with keycode:%d\n", keycode);
 	if (keycode == 65307) {
-		printf("ESC pressed. Beginning exit sequence.\n");
+		//printf("ESC pressed. Beginning exit sequence.\n");
 		mlx_destroy_image(mlx->mlx, mlx->img);
-		printf("image destroyed\n");
+		//printf("image destroyed\n");
 		mlx_destroy_window(mlx->mlx, mlx->win);
-		printf("window destroyed\n");
+		//printf("window destroyed\n");
 		mlx_destroy_display(mlx->mlx);
-		printf("display destroyed\n");
+		//printf("display destroyed\n");
 	}
 	return 0;
 }
-
+/*
 int	change_pic(int keycode, void *param) {
 	t_image	*new;
 	t_mlx	*mlx;
@@ -73,13 +73,13 @@ int	main(int ac, char **av) {
 		first = malloc(sizeof(t_image));
 		mlx = malloc(sizeof(t_mlx));
 		mlx->mlx = mlx_init();
-		mlx->win = mlx_new_window(mlx->mlx, 800, 600, "fdf");
-		first->ptr = mlx_new_image(mlx->mlx, 800, 600);
+		mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "fdf");
+		first->ptr = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
 		display_iso(mlx, points, grid, first);
 		all->mlx = mlx;
 		all->grid = grid;
 		all->points = points;
-		//mlx_key_hook(mlx->win, key_handler, (void *)all); //fazer vetores
+		mlx_key_hook(mlx->win, escape_close, (void *)mlx); //fazer vetores
 		mlx_loop(mlx->mlx);
 	}
 }

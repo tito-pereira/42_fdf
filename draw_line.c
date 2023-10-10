@@ -25,19 +25,19 @@ void	draw_a_b(t_point *a, t_point *b, float begin, t_image *img)//t_grid *g)
 	//printf("begin:%f, x:%d, y:%d\n", begin, now_x, now_y);
 	while (now_y <= b->pixy)
 	{
-		while ((now_y != b->pixy) && (now_x <= 800))
+		while ((now_y != b->pixy) && (now_x <= WIDTH))
 		{
-			if ((slope(now_x, now_y, b->pixx, b->pixy) >= (begin - 0.01))
-				&& (slope(now_x, now_y, b->pixx, b->pixy) <= (begin + 0.01)))
-				write_image(img, now_x, now_y, WHITE);
+			if ((slope(now_x, now_y, b->pixx, b->pixy) >= (begin - SLOPE))
+				&& (slope(now_x, now_y, b->pixx, b->pixy) <= (begin + SLOPE)))
+				write_image(img, now_x, now_y, GREEN);
 			now_x++;
 		}
 		while ((now_y == b->pixy) && (now_x <= b->pixx))
 		{
-			if ((slope(now_x, now_y, b->pixx, b->pixy) >= (begin - 0.01)
-				&& slope(now_x, now_y, b->pixx, b->pixy) <= (begin + 0.01))
+			if ((slope(now_x, now_y, b->pixx, b->pixy) >= (begin - SLOPE)
+				&& slope(now_x, now_y, b->pixx, b->pixy) <= (begin + SLOPE))
 				|| (now_x == b->pixx))
-				write_image(img, now_x, now_y, WHITE);
+				write_image(img, now_x, now_y, GREEN);
 			now_x++;
 		}
 		now_y++;
@@ -54,15 +54,17 @@ void	draw_b_a(t_point *a, t_point *b, float begin, t_image *img)// t_grid *g)
 	now_y = b->pixy;
 	while (now_y <= a->pixy)
 	{
-		while ((now_y != a->pixy) && (now_x <= 800))
+		while ((now_y != a->pixy) && (now_x <= WIDTH))
 		{
-			if (slope(now_x, now_y, a->pixx, a->pixy) == begin)
+			if ((slope(now_x, now_y, a->pixx, a->pixy) >= (begin - SLOPE))
+				&& (slope(now_x, now_y, a->pixx, a->pixy) <= (begin + SLOPE)))
 				write_image(img, now_x, now_y, WHITE);
 			now_x++;
 		}
 		while ((now_y == a->pixy) && (now_x <= a->pixx))
 		{
-			if ((slope(now_x, now_y, a->pixx, a->pixy) == begin)
+			if ((slope(now_x, now_y, a->pixx, a->pixy) >= (begin - SLOPE)
+				&& (slope(now_x, now_y, a->pixx, a->pixy) <= (begin + SLOPE)))	
 				|| (now_x == a->pixx))
 				write_image(img, now_x, now_y, WHITE);
 			now_x++;

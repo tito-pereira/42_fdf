@@ -15,12 +15,15 @@
 # define	BLUE	0x000000FF //altitude abaixo de 0
 # define	WHITE	0x00FFFFFF //grelha
 # define	BLACK	0x00000000 //apagar pixel
+# define	SLOPE	0.01
+# define	SCALE	3
+# define	WIDTH	1200
+# define	HEIGHT	800
 
-/*
-# define	WIDTH	800
-# define	HEIGHT	600
-e depois variar as matrizes consoante isto
-*/
+//eventos do rato e vetores (zoom, lateral, rotate)
+//cores
+//retirar a ultima linha
+//nova draw_line
 
 typedef	struct	s_image {
 	void	*ptr;
