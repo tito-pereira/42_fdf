@@ -55,27 +55,29 @@ void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 	c = 0;
 	row = 0;
 	line = 0;
-	while (row < (grid->rows - 1))
+	while (row < (grid->rows))
 	{
-		printf("row %d of %d\n", row, grid->rows);
+		fst = pts;
+		scd = pts;
+		printf("------row %d of %d------\n", row, grid->rows);
 		while (line < (grid->lines - 1))
 		{
 			c = 0;
-			//printf("-----\nrow:%d total:%d\n", line, grid->lines);
-			fst = pts;
-			scd = pts;
+			printf("fx:%d fy:%d sx:%d sy:%d\n", fst->pixx, fst->pixy, scd->pixx, scd->pixy);
 			while (c < grid->rows)
 			{
+				printf(".");
 				scd = scd->next;
 				c++;
 			}
-			//printf("c:%d\n", c);
+			printf("\nc:%d\n", c);
 			printf("ax:%d ay:%d bx:%d by:%d\n", fst->pixx, fst->pixy, scd->pixx, scd->pixy);
 			draw_line(fst, scd, first);
-			pts = scd;
+			fst = scd;
 			line++;
 		}
 		row++;
+		line = 0;
 		pts = pts->next;
 	}
 }
