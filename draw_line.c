@@ -77,7 +77,7 @@ void	draw_line(t_point *a, t_point *b, t_image *img)// t_grid *g)
 {
 	float	begin;
 
-	printf("draw ax:%d ay:%d bx:%d by:%d\n", a->pixx, a->pixy, b->pixx, b->pixy);
+	//printf("draw ax:%d ay:%d bx:%d by:%d\n", a->pixx, a->pixy, b->pixx, b->pixy);
 	begin = slope(a->pixx, a->pixy, b->pixx, b->pixy);
 	if (a->pixy < b->pixy) {
 		//printf("if\n");
