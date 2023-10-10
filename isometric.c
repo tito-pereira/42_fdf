@@ -5,6 +5,7 @@ void	get_matrix(t_grid *grid, int *x, int *y)
 	float d;
 
 	d = sqrt(pow(grid->rows, 2) + pow(grid->lines, 2));
+	//printf("diagonal points: %f\n", d);
 	if (d > 120)
 	{
 		*x = 2;
@@ -27,40 +28,52 @@ void	get_matrix(t_grid *grid, int *x, int *y)
 	}
 }
 
+void	print_points(t_point *pts) {
+	while (pts != NULL) {
+		printf("x:%d y:%d z:%d px:%d py:%d\n", pts->x, pts->y, pts->z, pts->pixx, pts->pixy);
+		pts = pts->next;
+	}
+}
+
 void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid)
 {
 	int	mx;
 	int	my;
 	int	mxx;
-	int	i;
-	int	j;
+	int	row;
+	int	line;
 	t_point	*origin;
 
 	mx = 0;
 	my = 0;
-	i = 0;
-	j = 0;
+	row = 0;
+	line = 0;
 	get_matrix(grid, &mx, &my);
 	mxx = -1 * mx;
+	//printf("matrixes, x:%d, -x:%d, y:%d\n", mx, mxx, my);
 	//draw points
 	origin = pts;
-	j = 0;
-	while (j < grid->lines)
+	line = 0;
+	while (line < grid->lines)
 	{
-		i = 0;
-		while (i < grid->rows)
+		row = 0;
+		while (row < grid->rows)
 		{
-			pts->pixx = 400 + (j * mxx) + (i * mx);
-			pts->pixy = 50 + (j * my) + (i * my) + (2 * pts->z);
+			pts->pixx = 400 + (line * mxx) + (row * mx);
+			pts->pixy = 50 + (line * my) + (row * my) + (2 * pts->z);
+			//printf("x:%d y:%d z:%d px:%d py:%d\n", pts->x, pts->y, pts->z, pts->pixx, pts->pixy);
 			pts = pts->next;
-			i++;
+			row++;
 		}
-		j++;
+		line++;
 	}
 	//draw line
+	//print_points(origin);
+	printf("draw line\n");
 	pts = origin;
 	while (pts->next != NULL)
 	{
+		//printf("draw\n");
 		draw_line(pts, pts->next, mlx->img);
 		pts = pts->next;
 	}

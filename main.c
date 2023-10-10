@@ -73,7 +73,6 @@ int	main(int ac, char **av) {
 		mlx->mlx = mlx_init();
 		mlx->win = mlx_new_window(mlx->mlx, 800, 600, "fdf");
 		mlx->img = mlx_new_image(mlx->mlx, 800, 600);
-		printf("here\n");
 		display_iso(mlx, points, grid);
 		all->mlx = mlx;
 		all->grid = grid;

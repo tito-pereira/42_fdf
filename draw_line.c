@@ -3,8 +3,16 @@
 float	slope(t_point *a, t_point *b)
 {
 	float	slope;
+	float	up;
+	float	down;
 
-	slope = (b->pixy - a->pixy) / (b->pixx - a->pixx);
+	up = (b->pixy - a->pixy);
+	printf("up: %f\n", up);
+	down = (b->pixx - a->pixx);
+	printf("down: %f\n", down);
+	slope = up / down;
+	printf("slope: %f\n", slope);
+	//printf("(%d - %d)/(%d - %d)\n", b->pixy, a->pixy, b->pixx, a->pixx);
 	return (slope);
 }
 
@@ -32,6 +40,7 @@ void	draw_line(t_point *a, t_point *b, t_image *img)
 {
 	float	begin;
 
+	printf("draw\n");
 	begin = slope(a, b);
 	if (a->pixy < b->pixy)
 		draw_a_b(a, b, begin, img);
@@ -45,3 +54,7 @@ void	draw_line(t_point *a, t_point *b, t_image *img)
 			draw_a_b(a, b, begin, img);
 	}
 }
+
+/*
+ainda tenho que testar tudo aqui
+*/
