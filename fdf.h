@@ -71,6 +71,6 @@ void	write_image(t_image *img, int x, int y, int color);
 t_grid	*create_grid(char *arg);
 t_point	*create_points(t_grid *grid);
 void	draw_line(t_point *a, t_point *b, t_image *img);// t_grid *g);
-void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid);
+void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first);
 
 #endif

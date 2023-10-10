@@ -30,12 +30,12 @@ void	get_matrix(t_grid *grid, int *x, int *y)
 
 void	print_points(t_point *pts) {
 	while (pts != NULL) {
-		printf("x:%d y:%d z:%d px:%d py:%d\n", pts->x, pts->y, pts->z, pts->pixx, pts->pixy);
+		//printf("x:%d y:%d z:%d px:%d py:%d\n", pts->x, pts->y, pts->z, pts->pixx, pts->pixy);
 		pts = pts->next;
 	}
 }
 
-void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid)
+void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first)
 {
 	int	mx;
 	int	my;
@@ -69,14 +69,15 @@ void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid)
 	}
 	//draw line
 	//print_points(origin);
-	printf("draw line\n");
+	//printf("draw line\n");
 	pts = origin;
 	while (pts->next != NULL)
 	{
 		//printf("draw\n");
-		draw_line(pts, pts->next, mlx->img);
+		draw_line(pts, pts->next, first);
 		pts = pts->next;
 	}
+	mlx->img = first->ptr;
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
 

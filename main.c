@@ -61,6 +61,7 @@ int	main(int ac, char **av) {
 	t_mlx	*mlx;
 	t_grid	*grid;
 	t_point	*points;
+	t_image	*first;
 	t_all	*all;
 
 	if (ac == 2) {
@@ -69,11 +70,12 @@ int	main(int ac, char **av) {
 		//printf("grid created\n");
 		points = create_points(grid);
 		//printf("points created\n");
+		first = malloc(sizeof(t_image));
 		mlx = malloc(sizeof(t_mlx));
 		mlx->mlx = mlx_init();
 		mlx->win = mlx_new_window(mlx->mlx, 800, 600, "fdf");
-		mlx->img = mlx_new_image(mlx->mlx, 800, 600);
-		display_iso(mlx, points, grid);
+		first->ptr = mlx_new_image(mlx->mlx, 800, 600);
+		display_iso(mlx, points, grid, first);
 		all->mlx = mlx;
 		all->grid = grid;
 		all->points = points;

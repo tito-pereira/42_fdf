@@ -7,11 +7,11 @@ float	slope(t_point *a, t_point *b)
 	float	down;
 
 	up = (b->pixy - a->pixy);
-	printf("(%d - %d) up:%f\n", b->pixy, a->pixy, up);
+	//printf("(%d - %d) up:%f\n", b->pixy, a->pixy, up);
 	down = (b->pixx - a->pixx);
-	printf("(%d - %d) down:%f\n", b->pixx, a->pixx, down);
+	//printf("(%d - %d) down:%f\n", b->pixx, a->pixx, down);
 	slope = up / down;
-	printf("slope: %f\n", slope);
+	//printf("slope: %f\n", slope);
 	return (slope);
 }
 
@@ -22,22 +22,22 @@ void	draw_a_b(t_point *a, t_point *b, float begin, t_image *img)//t_grid *g)
 
 	now_x = a->pixx;
 	now_y = a->pixy;
-	printf("begin:%f, x:%d, y:%d\n", begin, now_x, now_y);
+	//printf("begin:%f, x:%d, y:%d\n", begin, now_x, now_y);
 	while (now_y <= b->pixy)
 	{
 		while ((now_y != b->pixy) && (now_x <= 600))
 		{
-			printf("while 1\n");
+			//printf("while 1\n");
 			if (slope(a, b) == begin) {
-				printf("will write\n");
+				//printf("will write\n");
 				write_image(img, now_x, now_y, WHITE);
-				printf("written\n");
+				//printf("written\n");
 			}
 			now_x++;
 		}
 		while ((now_y == b->pixy) && (now_x <= b->pixx))
 		{
-			printf("while 2\n");
+			//printf("while 2\n");
 			if (slope(a, b) == begin)
 				write_image(img, now_x, now_y, WHITE);
 			now_x++;
@@ -77,31 +77,31 @@ void	draw_line(t_point *a, t_point *b, t_image *img)// t_grid *g)
 {
 	float	begin;
 
-	printf("draw\n");
+	//printf("draw\n");
 	begin = slope(a, b);
 	if (a->pixy < b->pixy) {
-		printf("if\n");
+		//printf("if\n");
 		draw_a_b(a, b, begin, img);
 	}
 	else if (a->pixy > b->pixy) {
-		printf("else\n");
+		//printf("else\n");
 		draw_b_a(a, b, begin, img);
 	}
 	else if (a->pixy == b->pixy)
 	{
 		if (a->pixx > b->pixx) {
-			printf("if 2\n");
+			//printf("if 2\n");
 			draw_b_a(a, b, begin, img);
 		}
 		else if (a->pixx < b->pixx) {
-			printf("else 2\n");
+			//printf("else 2\n");
 			draw_a_b(a, b, begin, img);
 		}
 	}
 }
 
 /*
-ainda tenho que testar tudo aqui
+mudar o slope de t_points para coordenadas
 
 eu tou a ir de ponto a ponto, em vez de pixel a pixel
 
