@@ -15,10 +15,12 @@ void	write_image(t_image *img, int x, int y, int color)
 			printf("image is not NULL\n");
 	}
 	printf("%s\n", img->data);*/
-	img->data = mlx_get_data_addr(img->ptr, &img->bpp, &img->sline, &img->endian);
-	i = (y * (img->sline / 4)) + x;
-	paint = (int *)(img->data);
-	paint[i - 1] = color;
+	if ((x > 0 && x < 800) && (y > 0 && y < 600)) {
+		img->data = mlx_get_data_addr(img->ptr, &img->bpp, &img->sline, &img->endian);
+		i = (y * (img->sline / 4)) + x;
+		paint = (int *)(img->data);
+		paint[i - 1] = color;
+	}
 }
 
 /*

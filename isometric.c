@@ -35,6 +35,40 @@ void	print_points(t_point *pts) {
 	}
 }
 
+void	display_lines(t_point *pts, t_image *first)
+{
+	while (pts->next != NULL)
+	{
+		draw_line(pts, pts->next, first);
+		pts = pts->next;
+	}
+}
+
+void	display_rows(t_point *pts, t_image *first, t_grid *grid)
+{
+	int	c;
+	int	row;
+	t_point	*fst;
+	t_point	*scd;
+
+	c = 0;
+	row = 0;
+	while (row < grid->rows)
+	{
+		c = 0;
+		fst = pts;
+		scd = pts;
+		while (c <= grid->rows)
+		{
+			scd = scd->next;
+			c++;
+		}
+		draw_line(fst, scd, first);
+		pts = scd;
+		row++;
+	}
+}
+
 void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first)
 {
 	int	mx;
@@ -69,20 +103,58 @@ void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first)
 	}
 	//draw line
 	//print_points(origin);
-	//printf("draw line\n");
 	pts = origin;
-	while (pts->next != NULL)
-	{
-		//printf("draw\n");
-		draw_line(pts, pts->next, first);
-		pts = pts->next;
-	}
+	display_lines(pts, first);
+	display_rows(pts, first, grid);
 	mlx->img = first->ptr;
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
 
 /*
-acabar o draw points, nao sei mudar de linha
+desenhar linhas e colunas
+
+while (row < grid->rows)
+{
+	fst = pts;
+	scd = pts;
+	while (r <= grid->rows)
+	{
+		scd = scd->next;
+		r++;
+	}
+	draw_line(fst, scd, first);
+	pts = scd;
+	row++;
+}
+
+void	display_lines(t_point *pts, t_image *first, t_grid *grid)
+{
+	int	line;
+	int	row;
+
+	line = 0;
+	row = 0;
+	while (line < grid->lines)
+	{
+		row = 0;
+		while (row < grid->rows)
+		{
+			printf("line %d row %d\n", line, row);
+			draw_line(pts, pts->next, first);
+			pts = pts->next;
+			row++;
+		}
+		pts = pts->next;
+		line++;
+	}
+}
+//linha 11 coluna 7 aleatoriamente da erro? my guess is limite de pagina inferior
+-----
+while (pts->next != NULL)
+{
+	draw_line(pts, pts->next, first);
+	pts = pts->next;
+}
 
 nao sei se escrevo as coordenadas aqui ou no put points
 se quero reutilizar esta funçao nos eventos, tenho que colocar aqui

@@ -1,15 +1,15 @@
 #include "fdf.h"
 
-float	slope(t_point *a, t_point *b)
+float	slope(int ax, int ay, int bx, int by)
 {
 	float	slope;
 	float	up;
 	float	down;
 
-	up = (b->pixy - a->pixy);
-	//printf("(%d - %d) up:%f\n", b->pixy, a->pixy, up);
-	down = (b->pixx - a->pixx);
-	//printf("(%d - %d) down:%f\n", b->pixx, a->pixx, down);
+	up = (by - ay);
+	//printf("(%d - %d) up:%f\n", by, ay, up);
+	down = (bx - ax);
+	//printf("(%d - %d) down:%f\n", bx, ax, down);
 	slope = up / down;
 	//printf("slope: %f\n", slope);
 	return (slope);
@@ -28,7 +28,7 @@ void	draw_a_b(t_point *a, t_point *b, float begin, t_image *img)//t_grid *g)
 		while ((now_y != b->pixy) && (now_x <= 600))
 		{
 			//printf("while 1\n");
-			if (slope(a, b) == begin) {
+			if (slope(now_x, now_y, b->pixx, b->pixy) == begin) {
 				//printf("will write\n");
 				write_image(img, now_x, now_y, WHITE);
 				//printf("written\n");
@@ -38,7 +38,7 @@ void	draw_a_b(t_point *a, t_point *b, float begin, t_image *img)//t_grid *g)
 		while ((now_y == b->pixy) && (now_x <= b->pixx))
 		{
 			//printf("while 2\n");
-			if (slope(a, b) == begin)
+			if (slope(now_x, now_y, b->pixx, b->pixy) == begin)
 				write_image(img, now_x, now_y, WHITE);
 			now_x++;
 		}
@@ -58,13 +58,13 @@ void	draw_b_a(t_point *a, t_point *b, float begin, t_image *img)// t_grid *g)
 	{
 		while ((now_y != a->pixy) && (now_x <= 600))
 		{
-			if (slope(a, b) == begin)
+			if (slope(now_x, now_y, a->pixx, a->pixy) == begin)
 				write_image(img, now_x, now_y, WHITE);
 			now_x++;
 		}
 		while ((now_y == a->pixy) && (now_x <= a->pixx))
 		{
-			if (slope(a, b) == begin)
+			if (slope(now_x, now_y, a->pixx, a->pixy) == begin)
 				write_image(img, now_x, now_y, WHITE);
 			now_x++;
 		}
@@ -77,8 +77,8 @@ void	draw_line(t_point *a, t_point *b, t_image *img)// t_grid *g)
 {
 	float	begin;
 
-	//printf("draw\n");
-	begin = slope(a, b);
+	//printf("draw ax:%d ay:%d bx:%d by:%d\n", a->pixx, a->pixy, b->pixx, b->pixy);
+	begin = slope(a->pixx, a->pixy, b->pixx, b->pixy);
 	if (a->pixy < b->pixy) {
 		//printf("if\n");
 		draw_a_b(a, b, begin, img);
@@ -113,6 +113,21 @@ tenho que:
 - conetar colunas
 acho que depois tambem posso ajustar isto
 ------------
+float	slope(t_point *a, t_point *b)
+{
+	float	slope;
+	float	up;
+	float	down;
+
+	up = (b->pixy - a->pixy);
+	//printf("(%d - %d) up:%f\n", b->pixy, a->pixy, up);
+	down = (b->pixx - a->pixx);
+	//printf("(%d - %d) down:%f\n", b->pixx, a->pixx, down);
+	slope = up / down;
+	//printf("slope: %f\n", slope);
+	return (slope);
+}
+
 void	draw_a_b(t_point *a, t_point *b, float begin, t_image *img)
 {
 	while (a != b)
