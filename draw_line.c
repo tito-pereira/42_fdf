@@ -25,7 +25,7 @@ void	draw_a_b(t_point *a, t_point *b, float begin, t_image *img)//t_grid *g)
 	//printf("begin:%f, x:%d, y:%d\n", begin, now_x, now_y);
 	while (now_y <= b->pixy)
 	{
-		while ((now_y != b->pixy) && (now_x <= 600))
+		while ((now_y != b->pixy) && (now_x <= 800))
 		{
 			//printf("while 1\n");
 			if (slope(now_x, now_y, b->pixx, b->pixy) == begin) {
@@ -56,7 +56,7 @@ void	draw_b_a(t_point *a, t_point *b, float begin, t_image *img)// t_grid *g)
 	now_y = b->pixy;
 	while (now_y <= a->pixy)
 	{
-		while ((now_y != a->pixy) && (now_x <= 600))
+		while ((now_y != a->pixy) && (now_x <= 800))
 		{
 			if (slope(now_x, now_y, a->pixx, a->pixy) == begin)
 				write_image(img, now_x, now_y, WHITE);
@@ -77,7 +77,7 @@ void	draw_line(t_point *a, t_point *b, t_image *img)// t_grid *g)
 {
 	float	begin;
 
-	//printf("draw ax:%d ay:%d bx:%d by:%d\n", a->pixx, a->pixy, b->pixx, b->pixy);
+	printf("draw ax:%d ay:%d bx:%d by:%d\n", a->pixx, a->pixy, b->pixx, b->pixy);
 	begin = slope(a->pixx, a->pixy, b->pixx, b->pixy);
 	if (a->pixy < b->pixy) {
 		//printf("if\n");

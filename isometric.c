@@ -47,25 +47,28 @@ void	display_lines(t_point *pts, t_image *first)
 void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 {
 	int	c;
-	int	row;
+	int	line;
 	t_point	*fst;
 	t_point	*scd;
 
 	c = 0;
-	row = 0;
-	while (row < grid->rows)
+	line = 0;
+	while (line < (grid->lines - 1))
 	{
 		c = 0;
+		//printf("-----\nrow:%d total:%d\n", line, grid->lines);
 		fst = pts;
 		scd = pts;
-		while (c <= grid->rows)
+		while (c < grid->rows)
 		{
 			scd = scd->next;
 			c++;
 		}
+		//printf("c:%d\n", c);
+		//printf("ax:%d ay:%d bx:%d by:%d\n", fst->pixx, fst->pixy, scd->pixx, scd->pixy);
 		draw_line(fst, scd, first);
 		pts = scd;
-		row++;
+		line++;
 	}
 }
 
@@ -106,25 +109,41 @@ void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first)
 	pts = origin;
 	display_lines(pts, first);
 	display_rows(pts, first, grid);
+	printf("out\n");
 	mlx->img = first->ptr;
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
 
 /*
-desenhar linhas e colunas
+so tou a desenhar uma coluna
+ainda tou a conectar o fim e inicio de linhas
 
-while (row < grid->rows)
+void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 {
-	fst = pts;
-	scd = pts;
-	while (r <= grid->rows)
+	int	c;
+	int	line;
+	t_point	*fst;
+	t_point	*scd;
+
+	c = 0;
+	line = 0;
+	while (line < (grid->lines - 1))
 	{
-		scd = scd->next;
-		r++;
+		c = 0;
+		//printf("-----\nrow:%d total:%d\n", line, grid->lines);
+		fst = pts;
+		scd = pts;
+		while (c < grid->rows)
+		{
+			scd = scd->next;
+			c++;
+		}
+		//printf("c:%d\n", c);
+		//printf("ax:%d ay:%d bx:%d by:%d\n", fst->pixx, fst->pixy, scd->pixx, scd->pixy);
+		draw_line(fst, scd, first);
+		pts = scd;
+		line++;
 	}
-	draw_line(fst, scd, first);
-	pts = scd;
-	row++;
 }
 
 void	display_lines(t_point *pts, t_image *first, t_grid *grid)

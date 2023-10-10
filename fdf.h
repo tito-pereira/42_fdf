@@ -16,6 +16,12 @@
 # define	WHITE	0x00FFFFFF //grelha
 # define	BLACK	0x00000000 //apagar pixel
 
+/*
+# define	WIDTH	800
+# define	HEIGHT	600
+e depois variar as matrizes consoante isto
+*/
+
 typedef	struct	s_image {
 	void	*ptr;
 	char	*data;
