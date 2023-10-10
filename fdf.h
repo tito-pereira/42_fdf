@@ -72,7 +72,5 @@ t_grid	*create_grid(char *arg);
 t_point	*create_points(t_grid *grid);
 void	draw_line(t_point *a, t_point *b, t_image *img);
 void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid);
-void	img_av_central(t_image *img, char *n);
-void	img_key_central(t_image *img, int n);
 
 #endif

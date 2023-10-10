@@ -66,12 +66,14 @@ int	main(int ac, char **av) {
 	if (ac == 2) {
 		all = malloc(sizeof(t_all));
 		grid = create_grid(av[1]);
+		//printf("grid created\n");
 		points = create_points(grid);
-		printf("points created\n");
+		//printf("points created\n");
 		mlx = malloc(sizeof(t_mlx));
 		mlx->mlx = mlx_init();
 		mlx->win = mlx_new_window(mlx->mlx, 800, 600, "fdf");
 		mlx->img = mlx_new_image(mlx->mlx, 800, 600);
+		printf("here\n");
 		display_iso(mlx, points, grid);
 		all->mlx = mlx;
 		all->grid = grid;

@@ -1,39 +1,5 @@
 #include "fdf.h"
 
-/*void	free_pts(char **pts)
-{
-	int	i;
-
-	i = 0;
-	while (pts[i] != NULL)
-	{
-		free (pts[i]);
-		pts[i] = NULL;
-		i++;
-	}
-}
-
-char	**more_mem(char ***pts, int i)
-{
-	char	**new;
-	int		j;
-
-	j = 0;
-	new = malloc((i + 1) * sizeof(char *));
-	printf("malloc %d\n", (i + 1));
-	while (j < i)
-	{
-		printf("new loop, j=%d\n", j);
-		printf("*pts[%d]:%s\n", j, *pts[j]);
-		new[j] = ft_strcpy(*pts[j]);
-		printf("new[%d]:%s\n", j, new[j]);
-		j++;
-	}
-	free_pts(*pts);
-	*pts = NULL;
-	return (new);
-}*/
-
 t_lines	*new_lines_node(char *str)
 {
 	t_lines	*new;
@@ -117,34 +83,6 @@ int	count_lines(t_lines *lines)
 	return (i);
 }
 
-/*int	*proc_heights(char ***points, t_grid *grid)
-{
-	int	size;
-	int	line;
-	int	word;
-	int	i;
-	int	*heights;
-
-	line = 0;
-	word = 0;
-	i = 0;
-	size = grid->rows * grid->lines;
-	heights = malloc(size * sizeof(int));
-	grid->total = size;
-	while (points[line] != NULL)
-	{
-		word = 0;
-		while (points[line][word] != NULL)
-		{
-			heights[i] = ft_atoi(points[line][word]);
-			i++;
-			word++;
-		}
-		line++;
-	}
-	return (heights);
-}*/
-
 int	*proc_heights(t_heights *points, t_grid *grid)
 {
 	int	*heights;
@@ -204,3 +142,65 @@ t_grid	*create_grid(char *arg)
 	//print_heights(grid);
 	return (grid);
 }
+
+/*void	free_pts(char **pts)
+{
+	int	i;
+
+	i = 0;
+	while (pts[i] != NULL)
+	{
+		free (pts[i]);
+		pts[i] = NULL;
+		i++;
+	}
+}
+
+char	**more_mem(char ***pts, int i)
+{
+	char	**new;
+	int		j;
+
+	j = 0;
+	new = malloc((i + 1) * sizeof(char *));
+	printf("malloc %d\n", (i + 1));
+	while (j < i)
+	{
+		printf("new loop, j=%d\n", j);
+		printf("*pts[%d]:%s\n", j, *pts[j]);
+		new[j] = ft_strcpy(*pts[j]);
+		printf("new[%d]:%s\n", j, new[j]);
+		j++;
+	}
+	free_pts(*pts);
+	*pts = NULL;
+	return (new);
+}*/
+
+/*int	*proc_heights(char ***points, t_grid *grid)
+{
+	int	size;
+	int	line;
+	int	word;
+	int	i;
+	int	*heights;
+
+	line = 0;
+	word = 0;
+	i = 0;
+	size = grid->rows * grid->lines;
+	heights = malloc(size * sizeof(int));
+	grid->total = size;
+	while (points[line] != NULL)
+	{
+		word = 0;
+		while (points[line][word] != NULL)
+		{
+			heights[i] = ft_atoi(points[line][word]);
+			i++;
+			word++;
+		}
+		line++;
+	}
+	return (heights);
+}*/

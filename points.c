@@ -1,13 +1,13 @@
 #include "fdf.h"
 
-t_point	*new_point(t_grid *grid, int x, int y)
+t_point	*new_point(t_grid *grid, int row, int line, int total)
 {
 	t_point	*new;
 
 	new = malloc(sizeof(t_point));
-	new->x = x;
-	new->y = y;
-	new->z = grid->heights[x * y];
+	new->x = row;
+	new->y = line;
+	new->z = grid->heights[total];
 	new->pixx = 0;
 	new->pixy = 0;
 	new->next = NULL;
@@ -15,48 +15,69 @@ t_point	*new_point(t_grid *grid, int x, int y)
 }
 //falta as coordenadas 2D, ainda vou ver como faço
 
-void	aux(t_point **pts, t_grid *grid, int l)
+void	aux(t_point **pts, t_grid *grid, int line, int *total)
 {
-	int	r;
+	int	row;
 
-	r = 0;
-	while (r < grid->rows)
+	row = 0;
+	while (row < grid->rows)
 	{
-		if (pts == NULL)
-			*pts = new_point(grid, r, l);
+		if (*pts == NULL)
+			*pts = new_point(grid, row, line, *total);
 		else
-			(*pts)->next = new_point(grid, r, l);
+			(*pts)->next = new_point(grid, row, line, *total);
+		//printf("row:%d, height:%d\n", row, (*pts)->z);
 		*pts = (*pts)->next;
-		r++;
+		row++;
+		(*total)++;
 	}
 }
 
 t_point	*create_points(t_grid *grid)
 {
     t_point    *pts;
-	int	i;
-	int	l;
+	int	total;
+	int	line;
 
-	i = 0;
-	l = 0;
+	total = 0;
+	line = 0;
 	pts = NULL;
-	printf("here\n");
-	while (i < grid->total)
+	//printf("total:%d\n", grid->total);
+	while (total < grid->total)
 	{
-		while (l < grid->lines)
+		while (line < grid->lines)
 		{
-			aux(&pts, grid, l);
-			l++;
+			//printf("current:%d\nline:%d\n---------\n", total, line);
+			aux(&pts, grid, line, &total);
+			line++;
 		}
-		i++;
 	}
 	return (pts);
 }
 
 /*
+colocar heights do int *heights mais o seu respetivo (x, y)
+numa linked list t_points
+
+interessam me as linhas e colunas porque tambem quero colocar (x, y)
+dentro das linked lists
+
 total = numero de elementos do pointss
 while i <= total, create point
 
 coordenadas iniciais
 tenho que ajustar consoante o numero de rows e lines
+
+(para dar um hiperfoco)
+materia teorica total = 20 (em quantidade)
+um só projeto/engenharia = 40 (em quantidade)
+
+é normal desenvolver um hiperfoco gigante num só projeto de engenharia,
+com o mesmo esforco q temos para a teoria inteira
+devido à cache mental a partir do qual o nosso hiperfoco cresce
+por isso que é fundamental uniformizar práticas, técnicas e
+nomenclatura no código e na engenharia de software
+para ser mais facil transitar de projeto em projeto e rapidamente
+perceber o esquema geral de cada código e mais rapidamente entrar
+nesse hiperfoco
 */
