@@ -56,15 +56,15 @@ void	draw_b_a(t_point *a, t_point *b, float begin, t_image *img)// t_grid *g)
 	{
 		while ((now_y != a->pixy) && (now_x <= WIDTH))
 		{
-			if ((slope(now_x, now_y, a->pixx, a->pixy) >= (begin - SLOPE))
-				&& (slope(now_x, now_y, a->pixx, a->pixy) <= (begin + SLOPE)))
+			if ((slope(now_x, now_y, a->pixx, a->pixy) >= (begin - 0))
+				&& (slope(now_x, now_y, a->pixx, a->pixy) <= (begin + 0)))
 				write_image(img, now_x, now_y, WHITE);
 			now_x++;
 		}
 		while ((now_y == a->pixy) && (now_x <= a->pixx))
 		{
-			if ((slope(now_x, now_y, a->pixx, a->pixy) >= (begin - SLOPE)
-				&& (slope(now_x, now_y, a->pixx, a->pixy) <= (begin + SLOPE)))	
+			if ((slope(now_x, now_y, a->pixx, a->pixy) >= (begin - 0)
+				&& (slope(now_x, now_y, a->pixx, a->pixy) <= (begin + 0)))	
 				|| (now_x == a->pixx))
 				write_image(img, now_x, now_y, WHITE);
 			now_x++;

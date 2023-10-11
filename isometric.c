@@ -28,21 +28,30 @@ void	get_matrix(t_grid *grid, int *x, int *y)
 	}
 }
 
-void	print_points(t_point *pts) {
-	while (pts != NULL) {
-		//printf("x:%d y:%d z:%d px:%d py:%d\n", pts->x, pts->y, pts->z, pts->pixx, pts->pixy);
-		pts = pts->next;
-	}
-}
-
-void	display_lines(t_point *pts, t_image *first)
+void	display_lines(t_point *pts, t_image *first, t_grid *grid)
 {
-	while (pts->next != NULL)
+	int	line;
+	int	row;
+
+	line = 0;
+	row = 1;
+	while (pts != NULL)// (line < grid->lines)
 	{
-		draw_line(pts, pts->next, first);
+		//printf("line %d\n", line);
+		row = 1;
+		while (row < grid->rows)
+		{
+			//printf("row %d\n", row);
+			//printf("from %d %d to %d %d\n", pts->pixx, pts->pixy, pts->next->pixx, pts->next->pixy);
+			draw_line(pts, pts->next, first);
+			pts = pts->next;
+			row++;
+		}
 		pts = pts->next;
+		line++;
 	}
 }
+//acho que ta a dar
 
 void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 {
@@ -117,21 +126,22 @@ void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first)
 	//draw line
 	//print_points(origin);
 	pts = origin;
-	display_lines(pts, first);
+	display_lines(pts, first, grid);
 	display_rows(pts, first, grid);
 	//printf("out\n");
 	mlx->img = first->ptr;
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
 }
 
+void	print_points(t_point *pts) {
+	while (pts != NULL) {
+		//printf("x:%d y:%d z:%d px:%d py:%d\n", pts->x, pts->y, pts->z, pts->pixx, pts->pixy);
+		pts = pts->next;
+	}
+}
 /*
 so tou a desenhar uma coluna
 ainda tou a conectar o fim e inicio de linhas
-
-ora bem:
-2 - ajustar cores (colocar variavel cor dentro do ponto)
-eu so pinto mesmo no draw line. fazer uma media de alturas e colocar a cor consoante)
-
 
 -----
 
@@ -139,27 +149,33 @@ void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 {
 	int	c;
 	int	line;
+	int	row;
 	t_point	*fst;
 	t_point	*scd;
 
 	c = 0;
+	row = 0;
 	line = 0;
-	while (line < (grid->lines - 1))
+	while (row < (grid->rows))
 	{
-		c = 0;
-		//printf("-----\nrow:%d total:%d\n", line, grid->lines);
 		fst = pts;
 		scd = pts;
-		while (c < grid->rows)
+		while (line < (grid->lines - 1))
 		{
-			scd = scd->next;
-			c++;
+			c = 0;
+			while (c < grid->rows)
+			{
+				//printf(".");
+				scd = scd->next;
+				c++;
+			}
+			draw_line(fst, scd, first);
+			fst = scd;
+			line++;
 		}
-		//printf("c:%d\n", c);
-		//printf("ax:%d ay:%d bx:%d by:%d\n", fst->pixx, fst->pixy, scd->pixx, scd->pixy);
-		draw_line(fst, scd, first);
-		pts = scd;
-		line++;
+		row++;
+		line = 0;
+		pts = pts->next;
 	}
 }
 
@@ -167,29 +183,34 @@ void	display_lines(t_point *pts, t_image *first, t_grid *grid)
 {
 	int	line;
 	int	row;
+	//t_point	*fst;
 
 	line = 0;
 	row = 0;
 	while (line < grid->lines)
 	{
 		row = 0;
+		fst = pts;
 		while (row < grid->rows)
 		{
-			printf("line %d row %d\n", line, row);
-			draw_line(pts, pts->next, first);
 			pts = pts->next;
+			draw_line(pts, pts->next, first);
 			row++;
 		}
 		pts = pts->next;
 		line++;
 	}
 }
+
 //linha 11 coluna 7 aleatoriamente da erro? my guess is limite de pagina inferior
 -----
-while (pts->next != NULL)
+void	display_lines(t_point *pts, t_image *first)
 {
-	draw_line(pts, pts->next, first);
-	pts = pts->next;
+	while (pts->next != NULL)
+	{
+		draw_line(pts, pts->next, first);
+		pts = pts->next;
+	}
 }
 
 nao sei se escrevo as coordenadas aqui ou no put points

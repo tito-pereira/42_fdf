@@ -15,8 +15,8 @@
 # define	BLUE	0x000000FF //altitude abaixo de 0
 # define	WHITE	0x00FFFFFF //grelha
 # define	BLACK	0x00000000 //apagar pixel
-# define	SLOPE	0.01
-# define	SCALE	3
+# define	SLOPE	0.05
+# define	SCALE	4
 # define	WIDTH	1200
 # define	HEIGHT	800
 
