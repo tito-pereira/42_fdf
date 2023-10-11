@@ -29,7 +29,7 @@ void	draw_a_b(t_point *a, t_point *b, float begin, t_image *img)//t_grid *g)
 		{
 			if ((slope(now_x, now_y, b->pixx, b->pixy) >= (begin - SLOPE))
 				&& (slope(now_x, now_y, b->pixx, b->pixy) <= (begin + SLOPE)))
-				write_image(img, now_x, now_y, GREEN);
+				write_image(img, now_x, now_y, WHITE);
 			now_x++;
 		}
 		while ((now_y == b->pixy) && (now_x <= b->pixx))
@@ -37,7 +37,7 @@ void	draw_a_b(t_point *a, t_point *b, float begin, t_image *img)//t_grid *g)
 			if ((slope(now_x, now_y, b->pixx, b->pixy) >= (begin - SLOPE)
 				&& slope(now_x, now_y, b->pixx, b->pixy) <= (begin + SLOPE))
 				|| (now_x == b->pixx))
-				write_image(img, now_x, now_y, GREEN);
+				write_image(img, now_x, now_y, WHITE);
 			now_x++;
 		}
 		now_y++;

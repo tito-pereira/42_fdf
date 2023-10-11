@@ -116,7 +116,7 @@ void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first)
 		while (row < grid->rows)
 		{
 			pts->pixx = (WIDTH / 2) + (line * mxx) + (row * mx);
-			pts->pixy = 50 + (line * my) + (row * my) + (-2 * pts->z);
+			pts->pixy = 50 + (line * my) + (row * my) + (-2 * SCALE * pts->z);
 			//printf("x:%d y:%d z:%d px:%d py:%d\n", pts->x, pts->y, pts->z, pts->pixx, pts->pixy);
 			pts = pts->next;
 			row++;

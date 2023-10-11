@@ -15,8 +15,8 @@
 # define	BLUE	0x000000FF //altitude abaixo de 0
 # define	WHITE	0x00FFFFFF //grelha
 # define	BLACK	0x00000000 //apagar pixel
-# define	SLOPE	0.05
-# define	SCALE	4
+# define	SLOPE	0.02
+# define	SCALE	2
 # define	WIDTH	1200
 # define	HEIGHT	800
 
@@ -79,7 +79,14 @@ typedef	struct s_all {
 void	write_image(t_image *img, int x, int y, int color);
 t_grid	*create_grid(char *arg);
 t_point	*create_points(t_grid *grid);
-void	draw_line(t_point *a, t_point *b, t_image *img);// t_grid *g);
+void	draw_line(t_point *a, t_point *b, t_image *img);
 void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first);
+// matrix
+void	draw_l(t_point *a, t_point *b, t_image *img);
+void	offset_matrix(int *mx, int *my, int *now_x, int *now_y);
+void	straight_matrix(int *mx, int *my, int *now_x, int *now_y);
+int		check_total(int mx, int my);
+int		check_offset(int mx, int my);
+int		check_count(int offset, int straight);
 
 #endif
