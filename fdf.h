@@ -16,7 +16,7 @@
 # define	WHITE	0x00FFFFFF //grelha
 # define	BLACK	0x00000000 //apagar pixel
 # define	SLOPE	0.02
-# define	SCALE	2
+# define	SCALE	4
 # define	WIDTH	1200
 # define	HEIGHT	800
 

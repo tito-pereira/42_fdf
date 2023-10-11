@@ -128,7 +128,6 @@ void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first)
 	pts = origin;
 	display_lines(pts, first, grid);
 	display_rows(pts, first, grid);
-	printf("end\n");
 	//printf("out\n");
 	mlx->img = first->ptr;
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);

@@ -87,10 +87,14 @@ void	draw_l(t_point *a, t_point *b, t_image *img)// t_grid *g)
 	total = check_total(matrix->x, matrix->y); // module(matrix->x) + module(matrix->y)
 	offset = check_offset(matrix->x, matrix->y);
 	straight = total - offset;
-	count = check_count(offset, straight);
+	count = check_count(offset, straight) / 2; // +1, *2
+	printf("t:%d = o:%d + s:%d, c:%d\n", total, offset, straight, count);
 	write_image(img, a->pixx, a->pixy, WHITE); //pontos inicial + coincidentes
 	if (count == 0)
+	{
+		printf("quadrante\n");
 		draw_str(a, matrix, img);
+	}
 	else
 	{
 		//printf("ttl:%d off:%d str:%d cnt:%d\n", total, offset, straight, count);
