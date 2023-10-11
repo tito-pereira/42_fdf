@@ -20,10 +20,9 @@
 # define	WIDTH	1200
 # define	HEIGHT	800
 
-//eventos do rato e vetores (zoom, lateral, rotate)
+//eventos do rato e vetores (esc, rato, zoom, lateral, rotate)
 //cores
-//retirar a ultima linha
-//nova draw_line
+//nova draw_line (on it)
 
 typedef	struct	s_image {
 	void	*ptr;
@@ -83,10 +82,12 @@ void	draw_line(t_point *a, t_point *b, t_image *img);
 void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first);
 // matrix
 void	draw_l(t_point *a, t_point *b, t_image *img);
-void	offset_matrix(int *mx, int *my, int *now_x, int *now_y);
-void	straight_matrix(int *mx, int *my, int *now_x, int *now_y);
+void	offset_matrix(t_matrix *m, int *now_x, int *now_y);
+void	straight_matrix(t_matrix *m, int *now_x, int *now_y);
 int		check_total(int mx, int my);
 int		check_offset(int mx, int my);
 int		check_count(int offset, int straight);
+int		module(int x);
+int		signal(int x);
 
 #endif
