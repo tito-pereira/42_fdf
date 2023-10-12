@@ -23,6 +23,25 @@ void	write_image(t_image *img, int x, int y, int color)
 	}
 }
 
+int	module(int x)
+{
+	if (x < 0)
+		x *= -1;
+	return (x);
+}
+
+int	signal(int x)
+{
+	int	signal;
+
+	signal = 1;
+	if (x < 0)
+		signal *= -1;
+	if (x == 0)
+		signal = 0;
+	return (signal);
+}
+
 /*
 yb - ya / xb - xa
 

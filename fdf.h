@@ -16,7 +16,7 @@
 # define	WHITE	0x00FFFFFF //grelha
 # define	BLACK	0x00000000 //apagar pixel
 # define	SLOPE	0.02
-# define	SCALE	4
+# define	SCALE	3
 # define	WIDTH	1200
 # define	HEIGHT	800
 
@@ -86,7 +86,7 @@ void	offset_matrix(t_matrix *m, int *now_x, int *now_y);
 void	straight_matrix(t_matrix *m, int *now_x, int *now_y);
 int		check_total(int mx, int my);
 int		check_offset(int mx, int my);
-int		check_count(int offset, int straight);
+t_matrix	*check_count(int offset, int straight);
 int		module(int x);
 int		signal(int x);
 
