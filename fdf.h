@@ -69,6 +69,12 @@ typedef	struct s_matrix {
 	int	y;
 }	t_matrix;
 
+typedef	struct s_count {
+	int	cnt;
+	int	reset;
+	struct s_count	*nxt;
+}	t_count;
+
 typedef	struct s_all {
 	t_mlx	*mlx;
 	t_grid	*grid;
@@ -86,8 +92,13 @@ void	offset_matrix(t_matrix *m, int *now_x, int *now_y);
 void	straight_matrix(t_matrix *m, int *now_x, int *now_y);
 int		check_total(int mx, int my);
 int		check_offset(int mx, int my);
-t_matrix	*check_count(int offset, int straight);
+t_count	*check_count(int offset, int straight);
 int		module(int x);
 int		signal(int x);
+//count
+t_count *new_count(int value);
+void	chk_pos_cntrs(t_count *count);
+int 	chk_zero_cntrs(t_count *count);
+void	f_swap(int *a, int *b);
 
 #endif

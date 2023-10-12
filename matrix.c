@@ -82,34 +82,32 @@ int	check_offset(int mx, int my)
 //faz a diferenca dos modulos de |mx| e |my|
 //diferenca entre os vetores (1, 0) e (1, 1) q se anda
 
-t_matrix	*check_count(int offset, int straight)
+t_count	*check_count(int offset, int straight)
 {
-	t_matrix	*count;
+	t_count	*count;
+	t_count	*first;
 	int	rest;
 
-	count = malloc(sizeof(t_matrix));
-	count->x = 0;
-	count->y = -1;
+	count = new_count(0);
+	first = count;
 	rest = 0;
+	if (straight > offset)
+		f_swap(&offset, &straight);
 	if (offset == 0 || straight == 0)
 		return (count);
 	if (offset >= straight)
 	{
-		count->x = offset / straight;
+		count->cnt = offset / straight;
+		count->reset = count->cnt;
 		rest = offset % straight;
-		if (rest != 0)
-			count->y = offset / rest;
-		printf("c1:%d(%d/%d) c2:%d(%d/%d)", count->x, offset, straight, count->y, offset, rest);
+		while (rest != 0)
+		{
+			count->nxt = new_count(offset / rest);
+			count = count->nxt;
+			rest = offset / rest;
+		}
 	}
-	else if (straight > offset)
-	{
-		count->x = straight / offset;
-		rest = straight / offset;
-		if (rest != 0)
-			count->y = straight / rest;
-		printf("c1:%d(%d/%d) c2:%d(%d/%d)", count->x, straight, offset, count->y, straight, rest);
-	}
-	return (count);
+	return (first);
 }
 //ve qual dos tipos de vetor, (1, 0) ou (1, 1) tem maior quantidade
 //divide um pelo outro para introduzir o vetor minoritario
@@ -198,6 +196,36 @@ int	check_count(int offset, int straight)
 	{
 		count = straight / offset;
 		printf("c:%d (%d / %d) ", count, straight, offset);
+	}
+	return (count);
+}
+
+t_matrix	*check_count(int offset, int straight)
+{
+	t_matrix	*count;
+	int	rest;
+
+	count = malloc(sizeof(t_matrix));
+	count->x = 0;
+	count->y = -1;
+	rest = 0;
+	if (offset == 0 || straight == 0)
+		return (count);
+	if (offset >= straight)
+	{
+		count->x = offset / straight;
+		rest = offset % straight;
+		if (rest != 0)
+			count->y = offset / rest;
+		printf("c1:%d(%d/%d) c2:%d(%d/%d)", count->x, offset, straight, count->y, offset, rest);
+	}
+	else if (straight > offset)
+	{
+		count->x = straight / offset;
+		rest = straight / offset;
+		if (rest != 0)
+			count->y = straight / rest;
+		printf("c1:%d(%d/%d) c2:%d(%d/%d)", count->x, straight, offset, count->y, straight, rest);
 	}
 	return (count);
 }
