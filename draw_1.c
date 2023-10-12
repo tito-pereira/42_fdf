@@ -23,13 +23,13 @@ void	draw_unvn_off(t_point *a, t_matrix *m, t_image *img, t_count *count)
 
 	now_x = a->pixx;
 	now_y = a->pixy;
-	printf("off\n");
+	//printf("off\n");
 	while (m->x != 0 || m->y != 0)
 	{
-		printf("c1:%d off\n", count->cnt);
+		//printf("c1:%d off\n", count->cnt);
 		if (count->cnt == 0)
 		{
-			printf("str mx:%d my:%d\n", m->x, m->y);
+			//printf("str mx:%d my:%d\n", m->x, m->y);
 			straight_matrix(m, &now_x, &now_y);
 			write_image(img, now_x, now_y, WHITE);
 			if (count->cnt == 0)
@@ -38,13 +38,13 @@ void	draw_unvn_off(t_point *a, t_matrix *m, t_image *img, t_count *count)
 		}
 		if (chk_zero_cntrs(count) == 1) //check others cnts, if == 0, reset, return 1, do function
 		{
-			printf("off mx:%d my:%d\n", m->x, m->y);
+			//printf("off mx:%d my:%d\n", m->x, m->y);
 			offset_matrix(m, &now_x, &now_y);
 			write_image(img, now_x, now_y, WHITE);
 		}
 		else // count->cnt != 0 && others != 0)
 		{
-			printf("off mx:%d my:%d\n", m->x, m->y);
+			//printf("off mx:%d my:%d\n", m->x, m->y);
 			offset_matrix(m, &now_x, &now_y);
 			write_image(img, now_x, now_y, WHITE);
 			if (count->cnt > 0)
@@ -52,7 +52,7 @@ void	draw_unvn_off(t_point *a, t_matrix *m, t_image *img, t_count *count)
 			chk_pos_cntrs(count); //a mesma que a funcao de cima, if > 0, --
 		}
 	}
-	printf("OUT\n");
+	//printf("OUT\n");
 }
 
 void	draw_unvn_str(t_point *a, t_matrix *m, t_image *img, t_count *count)
@@ -62,13 +62,13 @@ void	draw_unvn_str(t_point *a, t_matrix *m, t_image *img, t_count *count)
 
 	now_x = a->pixx;
 	now_y = a->pixy;
-	printf("off\n");
+	//printf("off\n");
 	while (m->x != 0 || m->y != 0)
 	{
-		printf("c1:%d off\n", count->cnt);
+		//printf("c1:%d off\n", count->cnt);
 		if (count->cnt == 0)
 		{
-			printf("off mx:%d my:%d\n", m->x, m->y);
+			//printf("off mx:%d my:%d\n", m->x, m->y);
 			offset_matrix(m, &now_x, &now_y);
 			write_image(img, now_x, now_y, WHITE);
 			if (count->cnt == 0)
@@ -77,13 +77,13 @@ void	draw_unvn_str(t_point *a, t_matrix *m, t_image *img, t_count *count)
 		}
 		if (chk_zero_cntrs(count) == 1) //check others cnts, if == 0, reset, return 1, do function
 		{
-			printf("str mx:%d my:%d\n", m->x, m->y);
+			//printf("str mx:%d my:%d\n", m->x, m->y);
 			straight_matrix(m, &now_x, &now_y);
 			write_image(img, now_x, now_y, WHITE);
 		}
 		else // count->cnt != 0 && others != 0)
 		{
-			printf("str mx:%d my:%d\n", m->x, m->y);
+			//printf("str mx:%d my:%d\n", m->x, m->y);
 			straight_matrix(m, &now_x, &now_y);
 			write_image(img, now_x, now_y, WHITE);
 			if (count->cnt > 0)
@@ -102,29 +102,29 @@ void	draw_l(t_point *a, t_point *b, t_image *img)// t_grid *g)
 	t_count		*count;
 
     matrix = malloc(sizeof(t_matrix));
-	printf("will draw\n");
+	//printf("will draw\n");
 	matrix->y = b->pixy - a->pixy;
     matrix->x = b->pixx - a->pixx;
 	total = check_total(matrix->x, matrix->y); // module(matrix->x) + module(matrix->y)
 	offset = check_offset(matrix->x, matrix->y);
 	straight = total - offset;
 	count = check_count(offset, straight); // (module(matrix->x), module(matrix->y)), +1, *2
-	printf("t:%d = o:%d + s:%d\n", total, offset, straight);
+	//printf("t:%d = o:%d + s:%d\n", total, offset, straight);
 	write_image(img, a->pixx, a->pixy, WHITE); //pontos inicial + coincidentes
 	if (count->cnt == 0)
 	{
-		printf("quadrante\n");
+		//printf("quadrante\n");
 		draw_str(a, matrix, img);
 	}
 	else
 	{
-		printf("unvn ");
+		//printf("unvn ");
 		if (straight >= offset)
 			draw_unvn_str(a, matrix, img, count); //str dominant
 		else if (offset >= straight)
 			draw_unvn_off(a, matrix, img, count); //off dominant
 	}
-	printf("LINE DRAWED\n");
+	//printf("LINE DRAWED\n");
 }
 
 /*
