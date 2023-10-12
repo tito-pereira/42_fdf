@@ -88,25 +88,34 @@ t_count	*check_count(int offset, int straight)
 	t_count	*first;
 	int	rest;
 
+	printf("hey\n");
 	count = new_count(0);
+	printf("cnt created:%d\n", count->cnt);
 	first = count;
 	rest = 0;
 	if (straight > offset)
 		f_swap(&offset, &straight);
+	printf("str:%d off:%d\n", straight, offset);
 	if (offset == 0 || straight == 0)
 		return (count);
 	if (offset >= straight)
 	{
+		printf("here, c:%d r:%d (%d / %d) = %d\n", count->cnt, count->reset, offset, straight, (offset / straight));
 		count->cnt = offset / straight;
+
+		printf("c:%d\n", count->cnt);
 		count->reset = count->cnt;
 		rest = offset % straight;
+		printf("r:%d\n", rest);
 		while (rest != 0)
 		{
-			count->nxt = new_count(offset / rest);
+			printf("loop (o:%d / r:%d) = %d\n", offset, rest, (offset / rest));
+			count->nxt = new_count(rest);
 			count = count->nxt;
 			rest = offset / rest;
 		}
 	}
+	printf("ho\n");
 	return (first);
 }
 //ve qual dos tipos de vetor, (1, 0) ou (1, 1) tem maior quantidade

@@ -26,6 +26,7 @@ t_count *new_count(int value)
 {
     t_count	*new;
 
+	printf("in, value:%d\n", value);
 	new = malloc(sizeof(t_count));
 	new->cnt = value;
 	new->reset = value;

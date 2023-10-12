@@ -52,6 +52,7 @@ void	draw_unvn_off(t_point *a, t_matrix *m, t_image *img, t_count *count)
 			chk_pos_cntrs(count); //a mesma que a funcao de cima, if > 0, --
 		}
 	}
+	printf("OUT\n");
 }
 
 void	draw_unvn_str(t_point *a, t_matrix *m, t_image *img, t_count *count)
@@ -101,6 +102,7 @@ void	draw_l(t_point *a, t_point *b, t_image *img)// t_grid *g)
 	t_count		*count;
 
     matrix = malloc(sizeof(t_matrix));
+	printf("will draw\n");
 	matrix->y = b->pixy - a->pixy;
     matrix->x = b->pixx - a->pixx;
 	total = check_total(matrix->x, matrix->y); // module(matrix->x) + module(matrix->y)
@@ -122,6 +124,7 @@ void	draw_l(t_point *a, t_point *b, t_image *img)// t_grid *g)
 		else if (offset >= straight)
 			draw_unvn_off(a, matrix, img, count); //off dominant
 	}
+	printf("LINE DRAWED\n");
 }
 
 /*
