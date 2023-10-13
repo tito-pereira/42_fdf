@@ -27,10 +27,10 @@ int	key_handler(int keycode, void *param)
 		move_cam((t_all *)param, 's');
 	else if (keycode == 100)
 		move_cam((t_all *)param, 'd');
-	/*else if (keycode == 65362)
+	else if (keycode == 65362)
 		zoom((t_all *)param, 'i');
 	else if (keycode == 65364)
-		zoom((t_all *)param, 'o');*/
+		zoom((t_all *)param, 'o');
 	else if (keycode == 65307)
 		escape_close(keycode, param);
 	return 0;

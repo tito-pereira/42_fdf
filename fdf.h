@@ -115,8 +115,8 @@ void	zoom(t_all *all, char order);
 #endif
 
 /*
-bonus (zoom, direcoes, reset iso, )
-
-acho que vou separar a parte do display ou pelo menos usar as
-put lines e put rows depois de mudar os vetores
+. um zoom menos agressivo?
+. limites maximos e minimos de zoom
+. cores
+. rotação
 */

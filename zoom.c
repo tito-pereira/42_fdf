@@ -10,10 +10,10 @@ t_matrix	*row_matrix(t_point *pts)
 
 	new = malloc(sizeof(t_matrix));
 	ax = pts->pixx;
-	ay = pts->pixy;
+	ay = pts->pixy - pts->pixz;
 	pts = pts->next;
 	bx = pts->pixx;
-	by = pts->pixy;
+	by = pts->pixy - pts->pixz;
 	new->x = (bx - ax) * 2;
 	new->y = (by - ay) * 2;
 	return (new);
@@ -31,14 +31,14 @@ t_matrix	*line_matrix(t_point *pts, t_grid *grid)
 	new = malloc(sizeof(t_matrix));
 	r = 0;
 	ax = pts->pixx;
-	ay = pts->pixy;
+	ay = pts->pixy - pts->pixz;
 	while (r < grid->rows)
 	{
 		pts = pts->next;
 		r++;
 	}
 	bx = pts->pixx;
-	by = pts->pixy;
+	by = pts->pixy - pts->pixz;
 	new->x = (bx - ax) * 2;
 	new->y = (by - ay) * 2;
 	return (new);
@@ -55,16 +55,16 @@ void	cam_zoom(t_all *all, int order)
 	row = row_matrix(all->pts); //nao esquecer de fazer *2
 	line = line_matrix(all->pts, all->grid); //e malloc
 	start->x = all->pts->pixx;
-	start->y = all->pts->pixy + row->y;
+	start->y = all->pts->pixy - all->pts->pixz - row->y;
 	if (order == 1)
 		prep_pts(all, row, line, start, 1);
 	else if (order == 2)
 	{
+		start->y = all->pts->pixy + (2 * row->y);
 		row->x = row->x / 4;
 		row->y = row->y / 4;
 		line->x = line->x / 4;
 		line->y = line->y / 4;
-		start->y = all->pts->pixy - row->y;
 		prep_pts(all, row, line, start, 2);
 	}
 	free(row);
