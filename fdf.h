@@ -82,18 +82,18 @@ typedef	struct s_count {
 typedef	struct s_all {
 	t_mlx	*mlx;
 	t_grid	*grid;
-	t_point	*points;
+	t_point	*pts;
 }	t_all;
 
 void	write_image(t_image *img, int x, int y, int color);
 t_grid	*create_grid(char *arg);
 t_point	*create_points(t_grid *grid);
 void	old_draw(t_point *a, t_point *b, t_image *img);
-void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first);
+void    display_iso(t_all *all, t_image *first);
 // framing
 void	display_lines(t_point *pts, t_image *first, t_grid *grid);
 void	display_rows(t_point *pts, t_image *first, t_grid *grid);
-void	prep_pts(t_point *p, t_grid *g, t_matrix *r, t_matrix *l, t_matrix *s);
+void	prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int order);
 // matrix
 void	draw_line(t_point *a, t_point *b, t_image *img);
 void	offset_matrix(t_matrix *m, int *now_x, int *now_y);

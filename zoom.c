@@ -1,8 +1,4 @@
-#include <fdf.h>
-
-//void	prep_pts(t_point *p, t_grid *g, t_matrix *r, t_matrix *l, t_matrix *s)
-//fazer row matrix e line matrix
-//meter t_all no display e prep.points, alterar na iso e na main
+#include "fdf.h"
 
 t_matrix	*row_matrix(t_point *pts)
 {
@@ -39,7 +35,7 @@ t_matrix	*line_matrix(t_point *pts, t_grid *grid)
 	while (r < grid->rows)
 	{
 		pts = pts->next;
-		r++:
+		r++;
 	}
 	bx = pts->pixx;
 	by = pts->pixy;
@@ -47,28 +43,29 @@ t_matrix	*line_matrix(t_point *pts, t_grid *grid)
 	new->y = (by - ay) * 2;
 	return (new);
 }
+//verificar iteraçao
 
-void	cam_zoom(t_point *pts, t_grid *grid, int order)
+void	cam_zoom(t_all *all, int order)
 {
 	t_matrix	*row;
 	t_matrix	*line;
 	t_matrix	*start;
 
 	start = malloc(sizeof(t_matrix));
-	row = row_matrix(pts); //nao esquecer de fazer *2
-	line = line_matrix(pts, grid); //e malloc
-	start->x = pts->pixx;
-	start->y = pts->pixy + row->y;
+	row = row_matrix(all->pts); //nao esquecer de fazer *2
+	line = line_matrix(all->pts, all->grid); //e malloc
+	start->x = all->pts->pixx;
+	start->y = all->pts->pixy + row->y;
 	if (order == 1)
-		prep_pts(pts, grid, row, line, start);
+		prep_pts(all, row, line, start, 1);
 	else if (order == 2)
 	{
 		row->x = row->x / 4;
 		row->y = row->y / 4;
 		line->x = line->x / 4;
 		line->y = line->y / 4;
-		start->y = pts->pixy - row->y;
-		prep_pts(pts, grid, row, line, start);
+		start->y = all->pts->pixy - row->y;
+		prep_pts(all, row, line, start, 2);
 	}
 	free(row);
 	free(line);
@@ -82,11 +79,11 @@ void	zoom(t_all *all, char order)
 	new = malloc(sizeof(t_image));
 	new->ptr = mlx_new_image(all->mlx->mlx, WIDTH, HEIGHT);
 	if (order == 'i')
-		cam_zoom(all->points, all->grid, 1);
+		cam_zoom(all, 1);
 	else if (order == 'o')
-		cam_zoom(all->points, all->grid, 2);
-	display_lines(all->points, new, all->grid);
-	display_rows(all->points, new, all->grid);
+		cam_zoom(all, 2);
+	display_lines(all->pts, new, all->grid);
+	display_rows(all->pts, new, all->grid);
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);
 	mlx_destroy_image(all->mlx->mlx, all->mlx->img);
 	all->mlx->img = new->ptr;

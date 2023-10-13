@@ -55,27 +55,35 @@ void	display_lines(t_point *pts, t_image *first, t_grid *grid)
 	}
 }
 
-void	prep_pts(t_point *p, t_grid *g, t_matrix *r, t_matrix *l, t_matrix *s)
+void	prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int order)
 {
 	int	line;
 	int	row;
+	t_point	*iter;
 
 	line = 0;
 	row = 0;
-	while (line < g->lines)
+	iter = a->pts;
+	while (line < a->grid->lines)
 	{
 		row = 0;
-		while (row < g->rows)
+		while (row < a->grid->rows)
 		{
-			p->pixz = p->pixz;//p->pixz * 2; (-2 * SCALE * p->z)
-			p->pixx = s->x + (line * l->x) + (row * r->x); //2 * matrixes
-			p->pixy = s->y + (line * l->y) + (row * r->y) + p->pixz;
-			p = p->next;
+			if (order == 1)
+				iter->pixz = iter->pixz * 2;
+			else if (order == 2)
+				iter->pixz = iter->pixz / 2;
+			iter->pixx = s->x + (line * l->x) + (row * r->x);
+			iter->pixy = s->y + (line * l->y) + (row * r->y) + iter->pixz;
+			iter = iter->next;
 			row++;
 		}
 		line++;
 	}
 }
+
+//p->pixz * 2; (-2 * SCALE * p->z)
+//if 1, *2, if 2, /2, if 3, ==
 
 /*while (line < grid->lines)
 {

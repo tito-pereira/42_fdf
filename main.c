@@ -52,10 +52,10 @@ int	main(int ac, char **av) {
 		mlx->mlx = mlx_init();
 		mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "fdf");
 		first->ptr = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
-		display_iso(mlx, points, grid, first);
 		all->mlx = mlx;
 		all->grid = grid;
-		all->points = points;
+		all->pts = points;
+		display_iso(all, first);
 		mlx_key_hook(mlx->win, key_handler, (void *)all);
 		mlx_loop(mlx->mlx);
 	}

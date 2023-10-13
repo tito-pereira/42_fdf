@@ -92,7 +92,8 @@ void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 	}
 }*/
 
-void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first)
+//t_mlx *mlx, t_point *pts, t_grid *grid
+void    display_iso(t_all *all, t_image *first)
 {
 	t_matrix	*mx;
 	t_matrix	*my;
@@ -103,16 +104,17 @@ void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first)
 	start = malloc(sizeof(t_matrix));
 	mx->x = 1;
 	mx->y = 1;
-	get_matrix(grid, &(mx->x), &(mx->y));
+	get_matrix(all->grid, &(mx->x), &(mx->y));
 	my->x = -1 * mx->x;
 	my->y = mx->y;
 	start->x = (WIDTH / 2);
 	start->y = (HEIGHT / 4);
-	prep_pts(pts, grid, mx, my, start);
-	display_lines(pts, first, grid);
-	display_rows(pts, first, grid);
-	mlx->img = first->ptr;
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+	prep_pts(all, mx, my, start, 3);
+	display_lines(all->pts, first, all->grid);
+	display_rows(all->pts, first, all->grid);
+	printf("rows displayed\n");
+	all->mlx->img = first->ptr;
+	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, all->mlx->img, 0, 0);
 	free(mx);
 	free(my);
 	free(start);
