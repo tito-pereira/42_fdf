@@ -21,8 +21,10 @@
 # define	HEIGHT	800
 
 //eventos do rato e vetores (esc, rato, zoom, lateral, rotate)
+//fechar sem dar segfault
 //cores
-//nova draw_line (on it)
+//bonus (zoom, direcoes, reset iso, )
+//ver se bonus tem q compilar diferente
 
 typedef	struct	s_image {
 	void	*ptr;
@@ -84,10 +86,14 @@ typedef	struct s_all {
 void	write_image(t_image *img, int x, int y, int color);
 t_grid	*create_grid(char *arg);
 t_point	*create_points(t_grid *grid);
-void	draw_line(t_point *a, t_point *b, t_image *img);
+void	old_draw(t_point *a, t_point *b, t_image *img);
 void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first);
+// frame change
+void	move_cam(t_all *all, char order);
+void	display_lines(t_point *pts, t_image *first, t_grid *grid);
+void	display_rows(t_point *pts, t_image *first, t_grid *grid);
 // matrix
-void	draw_l(t_point *a, t_point *b, t_image *img);
+void	draw_line(t_point *a, t_point *b, t_image *img);
 void	offset_matrix(t_matrix *m, int *now_x, int *now_y);
 void	straight_matrix(t_matrix *m, int *now_x, int *now_y);
 int		check_total(int mx, int my);
@@ -102,3 +108,10 @@ int 	chk_zero_cntrs(t_count *count);
 void	f_swap(int *a, int *b);
 
 #endif
+
+/*
+bonus (zoom, direcoes, reset iso, )
+
+acho que vou separar a parte do display ou pelo menos usar as
+put lines e put rows depois de mudar os vetores
+*/

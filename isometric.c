@@ -43,7 +43,7 @@ void	display_lines(t_point *pts, t_image *first, t_grid *grid)
 		{
 			//printf("row %d\n", row);
 			//printf("from %d %d to %d %d\n", pts->pixx, pts->pixy, pts->next->pixx, pts->next->pixy);
-			draw_l(pts, pts->next, first);
+			draw_line(pts, pts->next, first);
 			pts = pts->next;
 			row++;
 		}
@@ -81,7 +81,7 @@ void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 			}
 			//printf("\nc:%d\n", c);
 			//printf("ax:%d ay:%d bx:%d by:%d\n", fst->pixx, fst->pixy, scd->pixx, scd->pixy);
-			draw_l(fst, scd, first);
+			draw_line(fst, scd, first);
 			fst = scd;
 			line++;
 		}

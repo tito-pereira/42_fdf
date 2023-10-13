@@ -1,61 +1,35 @@
 #include "fdf.h"
 
 int	escape_close(int keycode, void *param) {
-	t_mlx *mlx;
-	mlx = (t_mlx *)param;
+	t_all *all;
+	all = (t_all *)param;
 	//printf("escaping with keycode:%d\n", keycode);
 	if (keycode == 65307) {
 		//printf("ESC pressed. Beginning exit sequence.\n");
-		mlx_destroy_image(mlx->mlx, mlx->img);
+		mlx_destroy_image(all->mlx->mlx, all->mlx->img);
 		//printf("image destroyed\n");
-		mlx_destroy_window(mlx->mlx, mlx->win);
+		mlx_destroy_window(all->mlx->mlx, all->mlx->win);
 		//printf("window destroyed\n");
-		mlx_destroy_display(mlx->mlx);
+		mlx_destroy_display(all->mlx->mlx);
 		//printf("display destroyed\n");
 	}
 	return 0;
 }
-/*
-int	change_pic(int keycode, void *param) {
-	t_image	*new;
-	t_mlx	*mlx;
-	new = malloc(sizeof(t_image));
-	mlx = (t_mlx *)param;
-	if (keycode >= 49 && keycode <= 52) {
-		new->ptr = mlx_new_image(mlx->mlx, 800, 600);
-		if (keycode == 49)
-			img_key_central(new, 1);
-		else if (keycode == 50)
-			img_key_central(new, 2);
-		else if (keycode == 51)
-			img_key_central(new, 3);
-		else if (keycode == 52)
-			img_key_central(new, 4);
-		printf("change img\n");
-		mlx_put_image_to_window(mlx->mlx, mlx->win, new->ptr, 0, 0);
-		//mlx_destroy_image(mlx->mlx, mlx->img);
-		mlx->img = new->ptr;
-		return 0;
-	}
-	free(new);
-	new = NULL;
-	return 0;
-}
 
-int	key_handler(int keycode, void *param) {
-	printf("key_handler\n");
-	if (keycode >= 49 && keycode <= 52)
-		change_pic(keycode, param);
+int	key_handler(int keycode, void *param)
+{
+	if (keycode == 49)
+		move_cam((t_all *)param, 'w');
+	else if (keycode == 50)
+		move_cam((t_all *)param, 'a');
+	else if (keycode == 51)
+		move_cam((t_all *)param, 's');
+	else if (keycode == 52)
+		move_cam((t_all *)param, 'd');
 	else if (keycode == 65307)
 		escape_close(keycode, param);
 	return 0;
 }
-
-void	print_grid() {
-	ez;
-}
-
-*/
 
 int	main(int ac, char **av) {
 	t_mlx	*mlx;
@@ -79,7 +53,7 @@ int	main(int ac, char **av) {
 		all->mlx = mlx;
 		all->grid = grid;
 		all->points = points;
-		mlx_key_hook(mlx->win, escape_close, (void *)mlx); //fazer vetores
+		mlx_key_hook(mlx->win, key_handler, (void *)mlx); //fazer vetores
 		mlx_loop(mlx->mlx);
 	}
 }
