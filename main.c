@@ -19,13 +19,13 @@ int	escape_close(int keycode, void *param) {
 int	key_handler(int keycode, void *param)
 {
 	if (keycode == 119)
-		move_cam((t_all *)param, 'w');
-	else if (keycode == 97)
-		move_cam((t_all *)param, 'a');
-	else if (keycode == 115)
 		move_cam((t_all *)param, 's');
-	else if (keycode == 100)
+	else if (keycode == 97)
 		move_cam((t_all *)param, 'd');
+	else if (keycode == 115)
+		move_cam((t_all *)param, 'w');
+	else if (keycode == 100)
+		move_cam((t_all *)param, 'a');
 	else if (keycode == 65362)
 		zoom((t_all *)param, 'i');
 	else if (keycode == 65364)

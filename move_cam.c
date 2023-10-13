@@ -53,17 +53,67 @@ void	cam_zoom(t_point *pts, int order)
 		ord *= -1;
 	while (pts != NULL)
 	{
-		if (pts->pixy < (HEIGHT / 2))
+		printf("before, x:%d y:%d\n", pts->pixx, pts->pixy);
+		if (pts->pixy < (HEIGHT / 2)) {
+			printf("y - 1, ");
 			pts->pixy -= (1 * ord * ZOOM);
-		else if (pts->pixy > (HEIGHT / 2))
+		}
+		else if (pts->pixy > (HEIGHT / 2)) {
+			printf("y + 1, ");
 			pts->pixy += (1 * ord * ZOOM);
-		if (pts->pixx < (WIDTH / 2))
+		}
+		if (pts->pixx < (WIDTH / 2)) {
+			printf("x - 2, \n");
 			pts->pixx -= (2 * ord * ZOOM);
-		else if (pts->pixx > (WIDTH / 2))
+		}
+		else if (pts->pixx > (WIDTH / 2)) {
+			printf("x + 2, \n");
 			pts->pixx += (2 * ord * ZOOM);
+		}
+		printf("after, x:%d y:%d\n", pts->pixx, pts->pixy);
 		pts = pts->next;
 	}
 }
+
+/*
+while (line < grid->lines)
+{
+	row = 0;
+	while (row < grid->rows)
+	{
+		pts->pixx = (WIDTH / 2) + (line * mxx) + (row * mx);
+		pts->pixy = 50 + (line * my) + (row * my) + (-2 * SCALE * pts->z);
+		//printf("x:%d y:%d z:%d px:%d py:%d\n", pts->x, pts->y, pts->z, pts->pixx, pts->pixy);
+		pts = pts->next;
+		row++;
+	}
+	line++;
+}
+
+pts->pixy -= (-2 * SCALE * pts->z); //tirar a altura do calculo da matrix
+
+rmx = 1;
+lmx = 1;
+rmy = 1;
+lmy = 1;
+row = 0;
+line = 0;
+row_matrix(pts, &rmx, &rmy);
+line_matrix(pts, grid, &lmx, &lmy);
+while (line < grid->lines)
+{
+	row = 0;
+	while (row < grid->rows)
+	{
+		pts->pixx = start_x + (2 * lmx) + (2 * rmx);
+		pts->pixy = start_y + (2 * rmy) + (2 * rmy) + (-2 * SCALE * pts->z);
+		//printf("x:%d y:%d z:%d px:%d py:%d\n", pts->x, pts->y, pts->z, pts->pixx, pts->pixy);
+		pts = pts->next;
+		row++;
+	}
+	line++;
+}
+*/
 
 void	zoom(t_all *all, char order)
 {
@@ -85,6 +135,7 @@ void	zoom(t_all *all, char order)
 /*
 eu acho que faço zoom na mesma matriz de 2:1 da visao isometrica
 
-parte superior, y < HEIGHT, -1
+1, get matrix
+2, move 0,0
 
 */

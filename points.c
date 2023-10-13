@@ -10,6 +10,7 @@ t_point	*new_point(t_grid *grid, int row, int line, int total)
 	new->z = grid->heights[total];
 	new->pixx = 0;
 	new->pixy = 0;
+	new->pixz = 0;
 	new->next = NULL;
 	return (new);
 }

@@ -54,6 +54,7 @@ typedef	struct s_point {
 	int	z;
 	int	pixx;
 	int	pixy;
+	int	pixz;
 	struct s_point	*next;
 }	t_point;
 
