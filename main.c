@@ -18,14 +18,18 @@ int	escape_close(int keycode, void *param) {
 
 int	key_handler(int keycode, void *param)
 {
-	if (keycode == 49)
+	if (keycode == 119)
 		move_cam((t_all *)param, 'w');
-	else if (keycode == 50)
+	else if (keycode == 97)
 		move_cam((t_all *)param, 'a');
-	else if (keycode == 51)
+	else if (keycode == 115)
 		move_cam((t_all *)param, 's');
-	else if (keycode == 52)
+	else if (keycode == 100)
 		move_cam((t_all *)param, 'd');
+	else if (keycode == 65362)
+		zoom((t_all *)param, 'i');
+	else if (keycode == 65364)
+		zoom((t_all *)param, 'o');
 	else if (keycode == 65307)
 		escape_close(keycode, param);
 	return 0;
@@ -53,7 +57,7 @@ int	main(int ac, char **av) {
 		all->mlx = mlx;
 		all->grid = grid;
 		all->points = points;
-		mlx_key_hook(mlx->win, key_handler, (void *)mlx); //fazer vetores
+		mlx_key_hook(mlx->win, key_handler, (void *)all); //fazer vetores
 		mlx_loop(mlx->mlx);
 	}
 }

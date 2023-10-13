@@ -10,7 +10,7 @@ void	draw_str(t_point *a, t_matrix *m, t_image *img)
 	//write_image(img, now_x, now_y, WHITE);
 	while (m->x != 0 || m->y != 0)
 	{
-		printf("off mx:%d my:%d\noff\n", m->x, m->y);
+		//printf("off mx:%d my:%d\noff\n", m->x, m->y);
 		offset_matrix(m, &now_x, &now_y);
 		write_image(img, now_x, now_y, WHITE);
 	}

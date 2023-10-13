@@ -15,8 +15,9 @@
 # define	BLUE	0x000000FF //altitude abaixo de 0
 # define	WHITE	0x00FFFFFF //grelha
 # define	BLACK	0x00000000 //apagar pixel
-# define	SLOPE	0.02
+# define	MVCAM	20
 # define	SCALE	3
+# define	ZOOM	3
 # define	WIDTH	1200
 # define	HEIGHT	800
 
@@ -89,7 +90,6 @@ t_point	*create_points(t_grid *grid);
 void	old_draw(t_point *a, t_point *b, t_image *img);
 void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first);
 // frame change
-void	move_cam(t_all *all, char order);
 void	display_lines(t_point *pts, t_image *first, t_grid *grid);
 void	display_rows(t_point *pts, t_image *first, t_grid *grid);
 // matrix
@@ -106,6 +106,9 @@ t_count *new_count(int value);
 void	chk_pos_cntrs(t_count *count);
 int 	chk_zero_cntrs(t_count *count);
 void	f_swap(int *a, int *b);
+//bonus
+void	move_cam(t_all *all, char order);
+void	zoom(t_all *all, char order);
 
 #endif
 
