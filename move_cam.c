@@ -44,7 +44,7 @@ void	move_cam(t_all *all, char order)
 	all->mlx->img = new->ptr;
 }
 
-void	cam_zoom(t_point *pts, int order)
+/*void	cam_zoom(t_point *pts, int order)
 {
 	int	ord;
 
@@ -73,7 +73,7 @@ void	cam_zoom(t_point *pts, int order)
 		printf("after, x:%d y:%d\n", pts->pixx, pts->pixy);
 		pts = pts->next;
 	}
-}
+}*/
 
 /*
 while (line < grid->lines)
@@ -116,29 +116,4 @@ while (line < grid->lines)
 	}
 	line++;
 }
-*/
-
-void	zoom(t_all *all, char order)
-{
-	t_image	*new;
-
-	new = malloc(sizeof(t_image));
-	new->ptr = mlx_new_image(all->mlx->mlx, WIDTH, HEIGHT);
-	if (order == 'i')
-		cam_zoom(all->points, 1);
-	else if (order == 'o')
-		cam_zoom(all->points, 2);
-	display_lines(all->points, new, all->grid);
-	display_rows(all->points, new, all->grid);
-	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);
-	mlx_destroy_image(all->mlx->mlx, all->mlx->img);
-	all->mlx->img = new->ptr;
-}
-
-/*
-eu acho que faço zoom na mesma matriz de 2:1 da visao isometrica
-
-1, get matrix
-2, move 0,0
-
 */

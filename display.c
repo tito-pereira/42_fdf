@@ -67,7 +67,7 @@ void	prep_pts(t_point *p, t_grid *g, t_matrix *r, t_matrix *l, t_matrix *s)
 		row = 0;
 		while (row < g->rows)
 		{
-			p->pixz = (-2 * SCALE * p->z);//p->pixz * 2;
+			p->pixz = p->pixz;//p->pixz * 2; (-2 * SCALE * p->z)
 			p->pixx = s->x + (line * l->x) + (row * r->x); //2 * matrixes
 			p->pixy = s->y + (line * l->y) + (row * r->y) + p->pixz;
 			p = p->next;
