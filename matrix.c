@@ -41,12 +41,12 @@ void	straight_matrix(t_matrix *m, int *now_x, int *now_y)
 {
 	//printf("before nowx:%d mx:%d\n", *now_x, m->x);
 	//printf("before nowy:%d my:%d\n", *now_y, m->y);
-	if (module(m->x) > module(m->y)) //m->x > m->y
+	if (nmb_module(m->x) > nmb_module(m->y)) //m->x > m->y
 	{
 		(*now_x) += signal(m->x); //++, (*now_x) += m->x
 		m->x -= signal(m->x); //--, m->x = m->x - m->x
 	}
-	else if (module(m->y) > module(m->x)) //m->y > m->x
+	else if (nmb_module(m->y) > nmb_module(m->x)) //m->y > m->x
 	{
 		(*now_y) += signal(m->y); //++
 		m->y -= signal(m->y); //--
@@ -60,10 +60,10 @@ int	check_total(int mx, int my)
 {
 	int	total;
 	total = 0;
-	if (module(mx) > module(my))
-		total = module(mx);
-	else if (module(my) > module(mx))
-		total = module(my);
+	if (nmb_module(mx) > nmb_module(my))
+		total = nmb_module(mx);
+	else if (nmb_module(my) > nmb_module(mx))
+		total = nmb_module(my);
 	return (total);
 }
 //soma os modulos de |mx| e |my|
@@ -73,10 +73,10 @@ int	check_offset(int mx, int my)
 {
 	int	offset;
 	offset = 0;
-	if (module(mx) >= module(my))
-		offset = module(my);
-	else if (module(my) > module(mx))
-		offset = module(mx);
+	if (nmb_module(mx) >= nmb_module(my))
+		offset = nmb_module(my);
+	else if (nmb_module(my) > nmb_module(mx))
+		offset = nmb_module(mx);
 	return (offset);
 }
 //faz a diferenca dos modulos de |mx| e |my|

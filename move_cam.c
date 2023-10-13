@@ -90,7 +90,9 @@ while (line < grid->lines)
 	line++;
 }
 
-pts->pixy -= (-2 * SCALE * pts->z); //tirar a altura do calculo da matrix
+pts->pixy -= pts->pixz; //tirar a altura do calculo da matrix
+pts->pixz mantem se igual na nova atribuição? ou aumenta igual?
+acho que aumenta, *2, /2
 
 rmx = 1;
 lmx = 1;
@@ -105,8 +107,9 @@ while (line < grid->lines)
 	row = 0;
 	while (row < grid->rows)
 	{
+		pts->pixz = pts->pixz * 2;
 		pts->pixx = start_x + (2 * lmx) + (2 * rmx);
-		pts->pixy = start_y + (2 * rmy) + (2 * rmy) + (-2 * SCALE * pts->z);
+		pts->pixy = start_y + (2 * rmy) + (2 * rmy) + pts->pixz;
 		//printf("x:%d y:%d z:%d px:%d py:%d\n", pts->x, pts->y, pts->z, pts->pixx, pts->pixy);
 		pts = pts->next;
 		row++;

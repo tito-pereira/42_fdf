@@ -5,6 +5,7 @@ int	escape_close(int keycode, void *param) {
 	all = (t_all *)param;
 	//printf("escaping with keycode:%d\n", keycode);
 	if (keycode == 65307) {
+		//free everything
 		//printf("ESC pressed. Beginning exit sequence.\n");
 		mlx_destroy_image(all->mlx->mlx, all->mlx->img);
 		//printf("image destroyed\n");
@@ -19,13 +20,13 @@ int	escape_close(int keycode, void *param) {
 int	key_handler(int keycode, void *param)
 {
 	if (keycode == 119)
-		move_cam((t_all *)param, 's');
-	else if (keycode == 97)
-		move_cam((t_all *)param, 'd');
-	else if (keycode == 115)
 		move_cam((t_all *)param, 'w');
-	else if (keycode == 100)
+	else if (keycode == 97)
 		move_cam((t_all *)param, 'a');
+	else if (keycode == 115)
+		move_cam((t_all *)param, 's');
+	else if (keycode == 100)
+		move_cam((t_all *)param, 'd');
 	else if (keycode == 65362)
 		zoom((t_all *)param, 'i');
 	else if (keycode == 65364)
@@ -45,9 +46,7 @@ int	main(int ac, char **av) {
 	if (ac == 2) {
 		all = malloc(sizeof(t_all));
 		grid = create_grid(av[1]);
-		//printf("grid created\n");
 		points = create_points(grid);
-		//printf("points created\n");
 		first = malloc(sizeof(t_image));
 		mlx = malloc(sizeof(t_mlx));
 		mlx->mlx = mlx_init();
@@ -57,10 +56,12 @@ int	main(int ac, char **av) {
 		all->mlx = mlx;
 		all->grid = grid;
 		all->points = points;
-		mlx_key_hook(mlx->win, key_handler, (void *)all); //fazer vetores
+		mlx_key_hook(mlx->win, key_handler, (void *)all);
 		mlx_loop(mlx->mlx);
 	}
 }
+//sera que posso tirar aquela condiçao if?
+//sera que tenho de verificar o titulo por uma extansao ".fdf"?
 
 /*
 **  origin for x & y is top left corner of the window

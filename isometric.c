@@ -28,6 +28,7 @@ void	get_matrix(t_grid *grid, int *x, int *y)
 	}
 }
 
+/*
 void	display_lines(t_point *pts, t_image *first, t_grid *grid)
 {
 	int	line;
@@ -89,56 +90,34 @@ void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 		line = 0;
 		pts = pts->next;
 	}
-}
+}*/
 
 void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first)
 {
-	int	mx;
-	int	my;
-	int	mxx;
-	int	row;
-	int	line;
-	t_point	*origin;
+	t_matrix	*mx;
+	t_matrix	*my;
+	t_matrix	*start;
 
-	mx = 1;
-	my = 1;
-	row = 0;
-	line = 0;
-	get_matrix(grid, &mx, &my);
-	mxx = -1 * mx;
-	//printf("matrixes, x:%d, -x:%d, y:%d\n", mx, mxx, my);
-	//draw points
-	origin = pts;
-	line = 0;
-	while (line < grid->lines)
-	{
-		row = 0;
-		while (row < grid->rows)
-		{
-			pts->pixz = (-2 * SCALE * pts->z);
-			pts->pixx = (WIDTH / 2) + (line * mxx) + (row * mx);
-			pts->pixy = (HEIGHT / 4) + (line * my) + (row * my) + pts->pixz;
-			//printf("x:%d y:%d z:%d px:%d py:%d\n", pts->x, pts->y, pts->z, pts->pixx, pts->pixy);
-			pts = pts->next;
-			row++;
-		}
-		line++;
-	}
-	//draw line
-	//print_points(origin);
-	pts = origin;
+	mx = malloc(sizeof(t_matrix));
+	my = malloc(sizeof(t_matrix));
+	start = malloc(sizeof(t_matrix));
+	mx->x = 1;
+	mx->y = 1;
+	get_matrix(grid, &(mx->x), &(mx->y));
+	my->x = -1 * mx->x;
+	my->y = mx->y;
+	start->x = (WIDTH / 2);
+	start->y = (HEIGHT / 4);
+	prep_pts(pts, grid, mx, my, start);
 	display_lines(pts, first, grid);
 	display_rows(pts, first, grid);
 	mlx->img = first->ptr;
 	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
+	free(mx);
+	free(my);
+	free(start);
 }
 
-void	print_points(t_point *pts) {
-	while (pts != NULL) {
-		//printf("x:%d y:%d z:%d px:%d py:%d\n", pts->x, pts->y, pts->z, pts->pixx, pts->pixy);
-		pts = pts->next;
-	}
-}
 /*
 
 void	display_rows(t_point *pts, t_image *first, t_grid *grid)

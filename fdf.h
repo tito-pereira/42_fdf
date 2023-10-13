@@ -90,9 +90,10 @@ t_grid	*create_grid(char *arg);
 t_point	*create_points(t_grid *grid);
 void	old_draw(t_point *a, t_point *b, t_image *img);
 void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first);
-// frame change
+// framing
 void	display_lines(t_point *pts, t_image *first, t_grid *grid);
 void	display_rows(t_point *pts, t_image *first, t_grid *grid);
+void	prep_pts(t_point *p, t_grid *g, t_matrix *r, t_matrix *l, t_matrix *s);
 // matrix
 void	draw_line(t_point *a, t_point *b, t_image *img);
 void	offset_matrix(t_matrix *m, int *now_x, int *now_y);
@@ -100,7 +101,7 @@ void	straight_matrix(t_matrix *m, int *now_x, int *now_y);
 int		check_total(int mx, int my);
 int		check_offset(int mx, int my);
 t_count	*check_count(int offset, int straight);
-int		module(int x);
+int		nmb_module(int x);
 int		signal(int x);
 //count
 t_count *new_count(int value);
