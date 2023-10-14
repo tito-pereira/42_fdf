@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-t_matrix	*row_matrix(t_point *pts)
+t_matrix	*row_matrix(t_point *pts, int order)
 {
 	t_matrix	*new;
 	int			ax;
@@ -8,18 +8,22 @@ t_matrix	*row_matrix(t_point *pts)
 	int			bx;
 	int			by;
 
-	new = malloc(sizeof(t_matrix));
 	ax = pts->pixx;
 	ay = pts->pixy - pts->pixz;
 	pts = pts->next;
 	bx = pts->pixx;
 	by = pts->pixy - pts->pixz;
+	if ((bx - ax) * 2 > INT_MAX || (by - ay) * 2 > INT_MAX
+		|| ((bx - ax) > 0 && (bx - ax) / 4 == 0 && order == 2)
+		|| ((by - ay) > 0 && (by - ay) / 4 == 0 && order == 2))
+		return (NULL);
+	new = malloc(sizeof(t_matrix));
 	new->x = (bx - ax) * 2;
 	new->y = (by - ay) * 2;
 	return (new);
 }
 
-t_matrix	*line_matrix(t_point *pts, t_grid *grid)
+t_matrix	*line_matrix(t_point *pts, t_grid *grid, int order) //order
 {
 	t_matrix	*new;
 	int			ax;
@@ -28,22 +32,23 @@ t_matrix	*line_matrix(t_point *pts, t_grid *grid)
 	int			by;
 	int			r;
 
-	new = malloc(sizeof(t_matrix));
-	r = 0;
 	ax = pts->pixx;
 	ay = pts->pixy - pts->pixz;
-	while (r < grid->rows)
-	{
+	r = 0;
+	while (r++ < grid->rows)
 		pts = pts->next;
-		r++;
-	}
 	bx = pts->pixx;
 	by = pts->pixy - pts->pixz;
+	if ((bx - ax) * 2 > INT_MAX || (by - ay) * 2 > INT_MAX
+		|| ((bx - ax) > 0 && (bx - ax) / 4 == 0 && order == 2)
+		|| ((by - ay) > 0 && (by - ay) / 4 == 0 && order == 2))
+		return (NULL);
+	new = malloc(sizeof(t_matrix));
 	new->x = (bx - ax) * 2;
 	new->y = (by - ay) * 2;
 	return (new);
 }
-//verificar iteraçao
+//colocar intmax
 
 void	cam_zoom(t_all *all, int order)
 {
@@ -51,16 +56,21 @@ void	cam_zoom(t_all *all, int order)
 	t_matrix	*line;
 	t_matrix	*start;
 
+	row = row_matrix(all->pts, order); //nao esquecer de fazer *2
+	if (row == NULL)
+		return;
+	line = line_matrix(all->pts, all->grid, order); //e malloc
+	if (line == NULL)
+		return;
+	//if (line ou row == NULL), return 
 	start = malloc(sizeof(t_matrix));
-	row = row_matrix(all->pts); //nao esquecer de fazer *2
-	line = line_matrix(all->pts, all->grid); //e malloc
 	start->x = all->pts->pixx;
-	start->y = all->pts->pixy - all->pts->pixz - row->y;
+	start->y = all->pts->pixy - all->pts->pixz;// - row->y;
 	if (order == 1)
 		prep_pts(all, row, line, start, 1);
 	else if (order == 2)
 	{
-		start->y = all->pts->pixy + (2 * row->y);
+		//start->y = all->pts->pixy + (2 * row->y);
 		row->x = row->x / 4;
 		row->y = row->y / 4;
 		line->x = line->x / 4;
@@ -102,4 +112,7 @@ t_matrix *my
 com jeitinho todo o modulo de
 new_img, draw, put window, destroy, mlx=new
 tambem repetia eu
+
+zoom mais suave só com multiplicações decimais e floats e mais
+pixeis
 */

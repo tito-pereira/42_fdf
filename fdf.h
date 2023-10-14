@@ -7,25 +7,22 @@
 # include <stdio.h> //printf caseira (acho q n preciso, talvez so p msgs erro?)
 # include <stdlib.h>
 # include <math.h>
+# include <limits.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
 # define	RED		0x00FF0000
 # define	GREEN	0x0000FF00 //altitude acima de 0
+# define	YELLOW	0x00FFFF00
+# define	BROWN	0x00964B00
 # define	BLUE	0x000000FF //altitude abaixo de 0
 # define	WHITE	0x00FFFFFF //grelha
 # define	BLACK	0x00000000 //apagar pixel
-# define	MVCAM	20
+# define	MVCAM	50
 # define	SCALE	3
 # define	ZOOM	3
 # define	WIDTH	1200
 # define	HEIGHT	800
-
-//eventos do rato e vetores (esc, rato, zoom, lateral, rotate)
-//fechar sem dar segfault
-//cores
-//bonus (zoom, direcoes, reset iso, )
-//ver se bonus tem q compilar diferente
 
 typedef	struct	s_image {
 	void	*ptr;
@@ -114,9 +111,18 @@ void	zoom(t_all *all, char order);
 
 #endif
 
+//eventos do rato e vetores (esc, rato, zoom, lateral, rotate)
+//fechar sem dar segfault
+//cores
+//bonus (zoom, direcoes, reset iso, )
+//ver se bonus tem q compilar diferente
 /*
 . um zoom menos agressivo?
 . limites maximos e minimos de zoom
 . cores
 . rotação
+--
+.makefile bonus, libft etc
+.norm
+.valgrind
 */

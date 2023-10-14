@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-void	draw_str(t_point *a, t_matrix *m, t_image *img)
+void	draw_str(t_point *a, t_matrix *m, t_image *img, int color)
 {
 	int	now_x;
 	int	now_y;
@@ -12,11 +12,11 @@ void	draw_str(t_point *a, t_matrix *m, t_image *img)
 	{
 		//printf("off mx:%d my:%d\noff\n", m->x, m->y);
 		offset_matrix(m, &now_x, &now_y);
-		write_image(img, now_x, now_y, WHITE);
+		write_image(img, now_x, now_y, color);
 	}
 }
 
-void	draw_unvn_off(t_point *a, t_matrix *m, t_image *img, t_count *count)
+void	draw_unvn_off(t_point *a, t_matrix *m, t_image *img, t_count *count, int color)
 {
 	int	now_x;
 	int	now_y;
@@ -31,7 +31,7 @@ void	draw_unvn_off(t_point *a, t_matrix *m, t_image *img, t_count *count)
 		{
 			//printf("str mx:%d my:%d\n", m->x, m->y);
 			straight_matrix(m, &now_x, &now_y);
-			write_image(img, now_x, now_y, WHITE);
+			write_image(img, now_x, now_y, color);
 			if (count->cnt == 0)
 				count->cnt = count->reset;
 			chk_pos_cntrs(count);//check_other, if > 0, --
@@ -40,13 +40,13 @@ void	draw_unvn_off(t_point *a, t_matrix *m, t_image *img, t_count *count)
 		{
 			//printf("off mx:%d my:%d\n", m->x, m->y);
 			offset_matrix(m, &now_x, &now_y);
-			write_image(img, now_x, now_y, WHITE);
+			write_image(img, now_x, now_y, color);
 		}
 		else // count->cnt != 0 && others != 0)
 		{
 			//printf("off mx:%d my:%d\n", m->x, m->y);
 			offset_matrix(m, &now_x, &now_y);
-			write_image(img, now_x, now_y, WHITE);
+			write_image(img, now_x, now_y, color);
 			if (count->cnt > 0)
 				(count->cnt)--;
 			chk_pos_cntrs(count); //a mesma que a funcao de cima, if > 0, --
@@ -55,7 +55,7 @@ void	draw_unvn_off(t_point *a, t_matrix *m, t_image *img, t_count *count)
 	//printf("OUT\n");
 }
 
-void	draw_unvn_str(t_point *a, t_matrix *m, t_image *img, t_count *count)
+void	draw_unvn_str(t_point *a, t_matrix *m, t_image *img, t_count *count, int color)
 {
 	int	now_x;
 	int	now_y;
@@ -70,7 +70,7 @@ void	draw_unvn_str(t_point *a, t_matrix *m, t_image *img, t_count *count)
 		{
 			//printf("off mx:%d my:%d\n", m->x, m->y);
 			offset_matrix(m, &now_x, &now_y);
-			write_image(img, now_x, now_y, WHITE);
+			write_image(img, now_x, now_y, color);
 			if (count->cnt == 0)
 				count->cnt = count->reset;
 			chk_pos_cntrs(count);//check_other, if > 0, --
@@ -79,18 +79,36 @@ void	draw_unvn_str(t_point *a, t_matrix *m, t_image *img, t_count *count)
 		{
 			//printf("str mx:%d my:%d\n", m->x, m->y);
 			straight_matrix(m, &now_x, &now_y);
-			write_image(img, now_x, now_y, WHITE);
+			write_image(img, now_x, now_y, color);
 		}
 		else // count->cnt != 0 && others != 0)
 		{
 			//printf("str mx:%d my:%d\n", m->x, m->y);
 			straight_matrix(m, &now_x, &now_y);
-			write_image(img, now_x, now_y, WHITE);
+			write_image(img, now_x, now_y, color);
 			if (count->cnt > 0)
 				(count->cnt)--;
 			chk_pos_cntrs(count); //a mesma que a funcao de cima, if > 0, --
 		}
 	}
+}
+
+int	define_color(t_point *a, t_point *b)
+{
+	int	medium;
+
+	//if (a->z == 0 && b->z == 0)
+		//return (WHITE);
+	medium = (a->z + b->z) / 2;
+	if (medium <= 0)
+		return (BLUE);
+	else if (medium > 0 && medium < 5)
+		return (YELLOW);
+	else if (medium >= 5 && medium < 30)
+		return (GREEN);
+	else if (medium >= 30 && medium < 80)
+		return (BROWN);
+	return (WHITE);
 }
 
 void	draw_line(t_point *a, t_point *b, t_image *img)// t_grid *g)
@@ -100,9 +118,11 @@ void	draw_line(t_point *a, t_point *b, t_image *img)// t_grid *g)
 	int			offset;
 	int			straight;
 	t_count		*count;
+	int			color;
 
     matrix = malloc(sizeof(t_matrix));
 	//printf("will draw\n");
+	color = define_color(a, b);
 	matrix->y = b->pixy - a->pixy;
     matrix->x = b->pixx - a->pixx;
 	total = check_total(matrix->x, matrix->y); // module(matrix->x) + module(matrix->y)
@@ -110,27 +130,29 @@ void	draw_line(t_point *a, t_point *b, t_image *img)// t_grid *g)
 	straight = total - offset;
 	count = check_count(offset, straight); // (module(matrix->x), module(matrix->y)), +1, *2
 	//printf("t:%d = o:%d + s:%d\n", total, offset, straight);
-	write_image(img, a->pixx, a->pixy, WHITE); //pontos inicial + coincidentes
+	write_image(img, a->pixx, a->pixy, color); //pontos inicial + coincidentes
 	if (count->cnt == 0)
 	{
 		//printf("quadrante\n");
-		draw_str(a, matrix, img);
+		draw_str(a, matrix, img, color);
 	}
 	else
 	{
 		//printf("unvn ");
 		if (straight >= offset)
-			draw_unvn_str(a, matrix, img, count); //str dominant
+			draw_unvn_str(a, matrix, img, count, color); //str dominant
 		else if (offset >= straight)
-			draw_unvn_off(a, matrix, img, count); //off dominant
+			draw_unvn_off(a, matrix, img, count, color); //off dominant
 	}
 	//printf("LINE DRAWED\n");
 }
 
 /*
-comecar os erros
+ainda cabe um parametro para cores...
+defino cor linha a linha e nao pixel a pixel. preguiça.
+cor com alturas, rows e lines, divisao no ecra, etc
+altura media, valores fixos definidos
 */
-
 
 
 /*if count == 0, draw tudo str

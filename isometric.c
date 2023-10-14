@@ -48,7 +48,6 @@ void    display_iso(t_all *all, t_image *first)
 	prep_pts(all, mx, my, start, 3);
 	display_lines(all->pts, first, all->grid);
 	display_rows(all->pts, first, all->grid);
-	printf("rows displayed\n");
 	all->mlx->img = first->ptr;
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, all->mlx->img, 0, 0);
 	free(mx);
