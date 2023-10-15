@@ -59,16 +59,29 @@ void    rot_left(t_all *all, char order)
 
     rm = row_matrix(all->pts);
     lm = line_matrix(all->pts, all->grid);
-    start->x = pts->pixx + (all->grid->rows * rm->x);
-	start->y = pts->pixy + (all->grid->rows * rm->y);
-	if (rm / lm == 2) // 2:1
-    else if (rm / lm == 1) //2:2
-    else if (rm / lm == 0) //0:qq coisa, 2:0 nao resulta, 0:0 nao resulta
-    else if (rm / lm == -2) //-2:1, 2:-1
+    start->x = pts->pixx + (all->grid->rows * rm->x); //left start
+	start->y = pts->pixy + (all->grid->rows * rm->y); //left start
+	rot_aux(rm, lm);
     prep_pts(all, rm, lm, start, 3);
 	free(rm);
     free(lm);
 	free(start);
+}
+
+void	r_right(t_matrix *rm, t_matrix *lm) //order ?
+{
+	t_matrix	*tmp;
+
+	tmp = rm;
+	if (opcao A)
+		ez;
+	else if (opcao B)
+		ez;
+	else if (opcao C)
+		ez;
+	else if (opcao D)
+		ez;
+	lm = tmp;
 }
 
 void    rot_right(t_all *all, char order)
@@ -79,12 +92,9 @@ void    rot_right(t_all *all, char order)
 
     rm = row_matrix(all->pts);
     lm = line_matrix(all->pts, all->grid);
-    start->x = pts->pixx + (all->grid->rows * lm->x);
-	start->y = pts->pixy + (all->grid->rows * lm->y);
-	if (rm / lm == 2) // 2:1
-    else if (rm / lm == 1) //2:2
-    else if (rm / lm == 0) //0:qq coisa, 2:0 nao resulta, 0:0 nao resulta
-    else if (rm / lm == -2) //-2:1, 2:-1
+    start->x = pts->pixx + (all->grid->rows * lm->x); //right start
+	start->y = pts->pixy + (all->grid->rows * lm->y); //right start
+	rot_aux(rm, lm);
     prep_pts(all, rm, lm, start, 3);
 	free(rm);
     free(lm);
@@ -109,6 +119,9 @@ void	rotate(t_all *all, char order)
 }
 
 /*
+tentar modular a rotaçao e a aux numa so função
+(right e left)
+
 a componente x da rotação é sempre 2 (denom positivo)
 ou -2 (denom negativo)
 o que pode variar é a componente y
