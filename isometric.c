@@ -57,6 +57,40 @@ void    display_iso(t_all *all, t_image *first)
 
 /*
 
+void	planar(t_all *all, t_image *first)
+{
+	if (first image)
+	{
+		display_planar(all, first)
+	}
+}, poder usar estas na change display talvez?
+
+void    display_planar(t_all *all, t_image *first)
+{
+	t_matrix	*mx;
+	t_matrix	*my;
+	t_matrix	*start;
+
+	mx = malloc(sizeof(t_matrix));
+	my = malloc(sizeof(t_matrix));
+	start = malloc(sizeof(t_matrix));
+	mx->x = 1;
+	mx->y = 1;
+	get_matrix(all->grid, &(mx->x), &(mx->y));
+	my->x = -1 * mx->x;
+	my->y = mx->y;
+	start->x = (WIDTH / 5);
+	start->y = (HEIGHT / 5);
+	prep_pts(all, mx, my, start, 3);
+	display_lines(all->pts, first, all->grid);
+	display_rows(all->pts, first, all->grid);
+	all->mlx->img = first->ptr;
+	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, all->mlx->img, 0, 0);
+	free(mx);
+	free(my);
+	free(start);
+}
+---------------------------
 void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 {
 	int	c;

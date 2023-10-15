@@ -20,7 +20,10 @@ int	escape_close(int keycode, void *param) {
 int	key_handler(int keycode, void *param)
 {
 	if (keycode == 119)
+	{
 		move_cam((t_all *)param, 's');
+		//change_display((t_all *)param, 's', &move_cam);
+	}
 	else if (keycode == 97)
 		move_cam((t_all *)param, 'd');
 	else if (keycode == 115)
@@ -35,6 +38,11 @@ int	key_handler(int keycode, void *param)
 		escape_close(keycode, param);
 	return 0;
 }
+
+/*
+zoom no mouse hook
+keys para rotate e incline
+*/
 
 int	main(int ac, char **av) {
 	t_mlx	*mlx;
@@ -60,8 +68,6 @@ int	main(int ac, char **av) {
 		mlx_loop(mlx->mlx);
 	}
 }
-//sera que posso tirar aquela condiçao if?
-//sera que tenho de verificar o titulo por uma extansao ".fdf"?
 
 /*
 **  origin for x & y is top left corner of the window

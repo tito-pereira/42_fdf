@@ -84,8 +84,18 @@ void	prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int order)
 
 //p->pixz * 2; (-2 * SCALE * p->z)
 //if 1, *2, if 2, /2, if 3, ==
+/*if (order == 1 || order == 0)
+	iter->pixz = iter->pixz * 2 * order;*/
+//no entanto preciso de uma order reset para voltar do zero ao isometrico
+//ou apenas faço pixy = ... - (pixz) e o z mantem o seu valor e so muda
+//ou acresentar um if para o pixy q nao acrescenta o pixz
 
-/*while (line < grid->lines)
+/*
+para altura nula
+order 1 || order 0
+iter * 2 * order; (resulta tanto para 1 como para zero)
+
+while (line < grid->lines)
 {
 	row = 0;
 	while (row < grid->rows)

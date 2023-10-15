@@ -23,7 +23,7 @@ t_matrix	*row_matrix(t_point *pts, int order)
 	return (new);
 }
 
-t_matrix	*line_matrix(t_point *pts, t_grid *grid, int order) //order
+t_matrix	*line_matrix(t_point *pts, t_grid *grid, int order)
 {
 	t_matrix	*new;
 	int			ax;
@@ -70,7 +70,7 @@ void	cam_zoom(t_all *all, int order)
 		prep_pts(all, row, line, start, 1);
 	else if (order == 2)
 	{
-		//start->y = all->pts->pixy + (2 * row->y);
+		//start->y = all->pts->pixy + row->y;
 		row->x = row->x / 4;
 		row->y = row->y / 4;
 		line->x = line->x / 4;
@@ -100,19 +100,8 @@ void	zoom(t_all *all, char order)
 }
 
 /*
-prep_points(pts, grid, mx, my, start)
-- usar no iso
-- usar no zoom
-- usar no rotate
-as matrizes mx,my e os starts podem ser t_matrix
-t_matrix *start
-t_matrix *mx
-t_matrix *my
-
-com jeitinho todo o modulo de
-new_img, draw, put window, destroy, mlx=new
-tambem repetia eu
-
-zoom mais suave só com multiplicações decimais e floats e mais
-pixeis
+ate consigo utilizar as line matrixes generica, das rotaçoes
+e incline, aqui. so preciso de criar uma função auxiliar para:
+. fazer as condições de erro
+. multiplicar por dois ou dividir por quatro
 */

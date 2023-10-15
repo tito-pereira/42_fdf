@@ -12,12 +12,13 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # define	RED		0x00FF0000
-# define	GREEN	0x0000FF00 //altitude acima de 0
+# define	GREEN	0x0000FF00
 # define	YELLOW	0x00FFFF00
 # define	BROWN	0x00964B00
-# define	BLUE	0x000000FF //altitude abaixo de 0
-# define	WHITE	0x00FFFFFF //grelha
-# define	BLACK	0x00000000 //apagar pixel
+# define	BLUE	0x000000FF
+# define	LBLUE	0x006060FF
+# define	WHITE	0x00FFFFFF
+# define	BLACK	0x00000000
 # define	MVCAM	50
 # define	SCALE	3
 # define	ZOOM	3
@@ -107,22 +108,39 @@ int 	chk_zero_cntrs(t_count *count);
 void	f_swap(int *a, int *b);
 //bonus
 void	move_cam(t_all *all, char order);
+void	change_display(t_all *all, char order, void(*f));
 void	zoom(t_all *all, char order);
+t_matrix	*r_matrix(t_point *pts);
+t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 
 #endif
 
 //eventos do rato e vetores (esc, rato, zoom, lateral, rotate)
 //fechar sem dar segfault
-//cores
-//bonus (zoom, direcoes, reset iso, )
+//bonus (reset iso, rotate)
 //ver se bonus tem q compilar diferente
 /*
-. um zoom menos agressivo?
-. limites maximos e minimos de zoom
-. cores
-. rotação
+. limites maximos de zoom
+. zoom mouse wheel
+. rotações e inclinações
+. display planar
 --
+.formatar (25 linhas, 5 funcoes, tirar comments)
 .makefile bonus, libft etc
 .norm
 .valgrind
+.define == variaveis globais?
+*/
+//sera que posso tirar aquela condiçao if (ac == 2)?
+//sera que tenho de verificar o titulo por uma extensao ".fdf"?
+
+//-------------------
+/*
+. first of all, descodificar as matrizes rotação e incline
+. display planar
+. modular display iso e display planar para key hooks (space) e bonus
+. row e line matrix genericas para todos os bonus
+. change display generica p todos (function pointer)
+. acrescentar uma condição ao display line?
+	como o my vai ser zero, acho que n é preciso, mas dp vejo
 */

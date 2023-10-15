@@ -101,7 +101,7 @@ int	define_color(t_point *a, t_point *b)
 		//return (WHITE);
 	medium = (a->z + b->z) / 2;
 	if (medium <= 0)
-		return (BLUE);
+		return (LBLUE);
 	else if (medium > 0 && medium < 5)
 		return (YELLOW);
 	else if (medium >= 5 && medium < 30)
