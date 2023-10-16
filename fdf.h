@@ -132,16 +132,22 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 .valgrind
 .define == variaveis globais?
 */
-//sera que posso tirar aquela condiçao if (ac == 2)?
-//sera que tenho de verificar o titulo por uma extensao ".fdf"?
+/*
+sera que posso tirar aquela condiçao if (ac == 2)?
+sera que tenho de verificar o titulo por uma extensao ".fdf"?
+tamanho da window e grid mudam consoante o tamanho do mapa p exemplo
+ou apenas aumenta a escala do mapa
+ou ambos em simultaneo??
+rotation fluida (nao sei como)
+*/
 
 //-------------------
 /*
 . rot_left start
-. change display generica p todos (function pointer)
-	(rot, zoom, plan, iso)
 . incline
+. change display generica p todos (function pointer)
+	(rot, zoom, plan, iso) + incline
 . verificar como a altura se comporta naquelas inclinacoes de
 z = 0 e se recupera dessas
-. melhorar starting point no zoom (planar)
+. melhorar starting point no zoom (planar) e no inicial maybe
 */

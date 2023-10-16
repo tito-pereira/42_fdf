@@ -11,14 +11,12 @@ void	rot_aux(t_matrix *rm, t_matrix *lm)
 		rm->x *= -1;
 	else if (lm->x == (rm->x * (-1)))
 		rm->y *= -1;
-	//else if (lm->x == rm->x && order == 2) // Al, condicoes A, vetor B
-	//else if (lm->x == (rm->x * (-1)) && order == 2) // Bl, condicoes B, vetor A
-	else if (rm->y == 0 && lm->x == 0) //Cr = Cl
+	else if (rm->y == 0 && lm->x == 0)
 	{
 		rm->x = 0;
 		rm->y = lm->y * (-1);
 	}
-	else if (rm->x == 0 && lm->y == 0) //Dr = Dl
+	else if (rm->x == 0 && lm->y == 0)
 	{
 		rm->x = lm->x * (-1);
 		rm->y = 0;
@@ -38,13 +36,13 @@ void    rotate(t_all *all, int order)
     lm = l_matrix(all->pts, all->grid);
 	if (order == 1)
 	{
-		start->x = all->pts->pixx + (all->grid->rows * lm->x); //right start
-		start->y = all->pts->pixy + (all->grid->rows * lm->y); //right start
+		start->x = all->pts->pixx + (all->grid->lines * lm->x); //right start
+		start->y = all->pts->pixy + (all->grid->lines * lm->y); //right start
 	}
 	else if (order == 2)
 	{
-		start->x = all->pts->pixx + (all->grid->rows * rm->x); //left start
-		start->y = all->pts->pixy + (all->grid->rows * rm->y); //left start
+		start->x = all->pts->pixx + (all->grid->lines * rm->x); //left start
+		start->y = all->pts->pixy + (all->grid->lines * rm->y); //left start
 	}
 	rot_aux(rm, lm);
     prep_pts(all, rm, lm, start, 4);
@@ -71,11 +69,17 @@ void	do_rot(t_all *all, char order)
 }
 
 /*
-. fazer rotate left (nao existe, é igual)
-. tentar modular a rotaçao e a aux numa so função
-(right e left)
 
-
+if (order == 1)
+{
+	start->x = all->pts->pixx + (all->grid->lines * lm->x); //right start
+	start->y = all->pts->pixy + (all->grid->lines * lm->y); //right start
+}
+else if (order == 2)
+{
+	start->x = all->pts->pixx + (all->grid->lines * lm->x); //left start
+	start->y = all->pts->pixy + (all->grid->lines * lm->y); //left start
+}
 //quadrantes verticais
 if (pts->x < (grid->rows / 2))
 if (pts->y < (grid->lines / 2))
