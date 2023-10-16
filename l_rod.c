@@ -90,7 +90,7 @@ void    rotate(t_all *all, int order)
 		start->y = all->pts->pixy + (all->grid->rows * rm->y); //left start
 	}
 	rot_aux(rm, lm, order);
-    prep_pts(all, rm, lm, start, 3);
+    prep_pts(all, rm, lm, start, 4);
 	free(rm);
     free(lm);
 	free(start);

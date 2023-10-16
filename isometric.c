@@ -28,8 +28,7 @@ void	get_matrix(t_grid *grid, int *x, int *y)
 	}
 }
 
-//t_mlx *mlx, t_point *pts, t_grid *grid
-void    display_iso(t_all *all, t_image *first)
+void    isometric(t_all *all)
 {
 	t_matrix	*mx;
 	t_matrix	*my;
@@ -46,24 +45,49 @@ void    display_iso(t_all *all, t_image *first)
 	start->x = (WIDTH / 2);
 	start->y = (HEIGHT / 4);
 	prep_pts(all, mx, my, start, 3);
-	display_lines(all->pts, first, all->grid);
-	display_rows(all->pts, first, all->grid);
-	all->mlx->img = first->ptr;
-	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, all->mlx->img, 0, 0);
 	free(mx);
 	free(my);
 	free(start);
 }
 
+void	new_iso(t_all *all, t_image *first)
+{
+	isometric(all);
+	display_lines(all->pts, first, all->grid);
+	display_rows(all->pts, first, all->grid);
+	all->mlx->img = first->ptr;
+	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, all->mlx->img, 0, 0);
+}
+
+void	do_iso(t_all *all) //change display (isometric)
+{
+	t_image	*new;
+
+	new = malloc(sizeof(t_image));
+	new->ptr = mlx_new_image(all->mlx->mlx, WIDTH, HEIGHT);
+	isometric(all);
+	display_lines(all->pts, new, all->grid);
+	display_rows(all->pts, new, all->grid);
+	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);
+	mlx_destroy_image(all->mlx->mlx, all->mlx->img);
+	all->mlx->img = new->ptr;
+}
+
 /*
 
-void	planar(t_all *all, t_image *first)
+void	do_plan(t_all *all)
 {
-	if (first image)
-	{
-		display_planar(all, first)
-	}
-}, poder usar estas na change display talvez?
+	t_image	*new;
+
+	new = malloc(sizeof(t_image));
+	new->ptr = mlx_new_image(all->mlx->mlx, WIDTH, HEIGHT);
+	planar(all);
+	display_lines(all->pts, new, all->grid);
+	display_rows(all->pts, new, all->grid);
+	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);
+	mlx_destroy_image(all->mlx->mlx, all->mlx->img);
+	all->mlx->img = new->ptr;
+}
 
 void    display_planar(t_all *all, t_image *first)
 {

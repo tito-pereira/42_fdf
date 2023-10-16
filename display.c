@@ -55,6 +55,25 @@ void	display_lines(t_point *pts, t_image *first, t_grid *grid)
 	}
 }
 
+void	height_options(t_point *iter, int order)
+{
+	if (order == 1)
+		iter->pixz = iter->pixz * 2;
+	else if (order == 2)
+		iter->pixz = iter->pixz / 2;
+	else if (order == 3)
+		iter->pixz = (-2 * SCALE * iter->z);
+	else if (order == 4)
+	{
+		if (iter->pixz == 0)
+			iter->pixz = (-2 * SCALE * iter->z);
+		else
+			iter->pixz = iter->pixz;
+	}
+	else if (order == 5)
+		iter->pixz = 0;
+}
+
 void	prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int order)
 {
 	int	line;
@@ -69,10 +88,7 @@ void	prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int order)
 		row = 0;
 		while (row < a->grid->rows)
 		{
-			if (order == 1)
-				iter->pixz = iter->pixz * 2;
-			else if (order == 2)
-				iter->pixz = iter->pixz / 2;
+			height_options(iter, order);
 			iter->pixx = s->x + (line * l->x) + (row * r->x);
 			iter->pixy = s->y + (line * l->y) + (row * r->y) + iter->pixz;
 			iter = iter->next;

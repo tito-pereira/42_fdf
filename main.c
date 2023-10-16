@@ -40,6 +40,8 @@ int	key_handler(int keycode, void *param)
 		do_rot((t_all *)param, 'l');
 	else if (keycode == 32)
 		do_plan((t_all *)param);
+	else if (keycode == 49)
+		do_iso((t_all *)param);
 	else if (keycode == 65307)
 		escape_close(keycode, param);
 	return 0;
@@ -69,7 +71,7 @@ int	main(int ac, char **av) {
 		all->mlx = mlx;
 		all->grid = grid;
 		all->pts = points;
-		display_iso(all, first);
+		new_iso(all, first);
 		mlx_key_hook(mlx->win, key_handler, (void *)all);
 		mlx_loop(mlx->mlx);
 	}

@@ -87,7 +87,7 @@ void	write_image(t_image *img, int x, int y, int color);
 t_grid	*create_grid(char *arg);
 t_point	*create_points(t_grid *grid);
 void	old_draw(t_point *a, t_point *b, t_image *img);
-void    display_iso(t_all *all, t_image *first);
+void	new_iso(t_all *all, t_image *first);
 // framing
 void	display_lines(t_point *pts, t_image *first, t_grid *grid);
 void	display_rows(t_point *pts, t_image *first, t_grid *grid);
@@ -112,6 +112,7 @@ void	move_cam(t_all *all, char order);
 void	zoom(t_all *all, char order);
 void	do_rot(t_all *all, char order);
 void	do_plan(t_all *all);
+void	do_iso(t_all *all);
 t_matrix	*r_matrix(t_point *pts);
 t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 
@@ -139,10 +140,9 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 //-------------------
 /*
 . rot_left
-. display planar
-. modular display iso e display planar para key hooks (space) e bonus
-. row e line matrix genericas para todos os bonus
+. row e line matrix genericas para todos os bonus (zoom)?
 . change display generica p todos (function pointer)
-. acrescentar uma condição ao display line?
-	como o my vai ser zero, acho que n é preciso, mas dp vejo
+. verificar como a altura se comporta naquelas inclinacoes de
+z = 0 e se recupera dessas
+. melhorar starting point no zoom (planar)
 */
