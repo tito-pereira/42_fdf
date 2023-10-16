@@ -8,27 +8,27 @@ void	get_matrix(t_grid *grid, int *x, int *y)
 	//printf("diagonal points: %f\n", d);
 	if (d > 120)
 	{
-		*x = (*x) * 2 * SCALE; //*x = 2;
-		*y = (*y) * 1 * SCALE; //*y = 1;
+		*x = 2 * SCALE; //*x = 2;
+		*y = 1 * SCALE; //*y = 1;
 	}
 	else if (d > 60 && d <= 120)
 	{
-		*x = (*x) * 4 * SCALE;
-		*y = (*y) * 2 * SCALE;
+		*x = 4 * SCALE;
+		*y = 2 * SCALE;
 	}
 	else if (d > 30 && d <= 60)
 	{
-		*x = (*x) * 8 * SCALE;
-		*y = (*y) * 4 * SCALE;
+		*x = 8 * SCALE;
+		*y = 4 * SCALE;
 	}
 	else if (d <= 30)
 	{
-		*x = (*x) * 16 * SCALE;
-		*y = (*y) * 8 * SCALE;
+		*x = 16 * SCALE;
+		*y = 8 * SCALE;
 	}
 }
 
-void    isometric(t_all *all)
+void    isometric(t_all *all, int order)
 {
 	t_matrix	*mx;
 	t_matrix	*my;
@@ -37,14 +37,13 @@ void    isometric(t_all *all)
 	mx = malloc(sizeof(t_matrix));
 	my = malloc(sizeof(t_matrix));
 	start = malloc(sizeof(t_matrix));
-	mx->x = 1;
-	mx->y = 1;
 	get_matrix(all->grid, &(mx->x), &(mx->y));
 	my->x = -1 * mx->x;
 	my->y = mx->y;
 	start->x = (WIDTH / 2);
 	start->y = (HEIGHT / 4);
-	prep_pts(all, mx, my, start, 3);
+	if (order == 1)
+		prep_pts(all, mx, my, start, 3);
 	free(mx);
 	free(my);
 	free(start);
@@ -52,20 +51,20 @@ void    isometric(t_all *all)
 
 void	new_iso(t_all *all, t_image *first)
 {
-	isometric(all);
+	isometric(all, 1);
 	display_lines(all->pts, first, all->grid);
 	display_rows(all->pts, first, all->grid);
 	all->mlx->img = first->ptr;
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, all->mlx->img, 0, 0);
 }
 
-void	do_iso(t_all *all) //change display (isometric)
+void	do_iso(t_all *all) //change display (isometric, 1)
 {
 	t_image	*new;
 
 	new = malloc(sizeof(t_image));
 	new->ptr = mlx_new_image(all->mlx->mlx, WIDTH, HEIGHT);
-	isometric(all);
+	isometric(all, 1);
 	display_lines(all->pts, new, all->grid);
 	display_rows(all->pts, new, all->grid);
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);

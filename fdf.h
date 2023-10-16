@@ -20,7 +20,7 @@
 # define	WHITE	0x00FFFFFF
 # define	BLACK	0x00000000
 # define	MVCAM	50
-# define	SCALE	3
+# define	SCALE	2
 # define	ZOOM	3
 # define	WIDTH	1200
 # define	HEIGHT	800
@@ -125,8 +125,6 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 /*
 . limites maximos de zoom
 . zoom mouse wheel
-. rotações e inclinações
-. display planar
 --
 .formatar (25 linhas, 5 funcoes, tirar comments)
 .makefile bonus, libft etc
@@ -141,6 +139,8 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 /*
 . rot_left
 . change display generica p todos (function pointer)
+	(rot, zoom, plan, iso)
+. incline
 . verificar como a altura se comporta naquelas inclinacoes de
 z = 0 e se recupera dessas
 . melhorar starting point no zoom (planar)

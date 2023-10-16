@@ -19,7 +19,7 @@ t_matrix	*plan_matrix(t_grid *grid)
 	return (pm);
 }
 
-void	planar(t_all *all)
+void	planar(t_all *all, int order)
 {
 	t_matrix	*row;
 	t_matrix	*line;
@@ -32,7 +32,8 @@ void	planar(t_all *all)
 	start = malloc(sizeof(t_matrix));
 	start->x = (WIDTH / 6);
 	start->y = (HEIGHT / 2);
-	prep_pts(all, row, line, start, 3);
+	if (order == 1)
+		prep_pts(all, row, line, start, 3);
 	free(row);
 	free(line);
 	free(start);
@@ -44,7 +45,7 @@ void	do_plan(t_all *all)
 
 	new = malloc(sizeof(t_image));
 	new->ptr = mlx_new_image(all->mlx->mlx, WIDTH, HEIGHT);
-	planar(all);
+	planar(all, 1);
 	display_lines(all->pts, new, all->grid);
 	display_rows(all->pts, new, all->grid);
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);

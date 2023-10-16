@@ -5,8 +5,8 @@ CFLAGS= -Wall -Wextra -Werror
 RM= rm -rf
 SRC= main.c grid.c points.c isometric.c \
 	display.c draw_line.c matrix.c count.c write.c \
-	move_cam.c zoom.c l_rod.c planar.c\
-#	l_rod.c h_rod.c
+	bonus_utils.c move_cam.c zoom.c l_rod.c planar.c\
+#	h_rod.c
 LIB= -L../minilibx-linux/ -lmlx -lXext -lX11 -lm
 LIB2= -L./getnext/ -lget
 LIB3= -L./libft/ -lft
