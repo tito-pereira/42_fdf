@@ -12,14 +12,6 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # define	RED		0x00FF0000
-<<<<<<< HEAD
-# define	GREEN	0x0000FF00 //altitude acima de 0
-# define	BLUE	0x000000FF //altitude abaixo de 0
-# define	WHITE	0x00FFFFFF //grelha
-# define	BLACK	0x00000000 //apagar pixel
-# define	SLOPE	0.02
-# define	SCALE	2
-=======
 # define	GREEN	0x0000FF00
 # define	YELLOW	0x00FFFF00
 # define	BROWN	0x00964B00
@@ -30,7 +22,6 @@
 # define	MVCAM	50
 # define	SCALE	3
 # define	ZOOM	3
->>>>>>> 07ea84bad9753c2c0a14008f5cc0444444e7f63a
 # define	WIDTH	1200
 # define	HEIGHT	800
 
@@ -117,8 +108,10 @@ int 	chk_zero_cntrs(t_count *count);
 void	f_swap(int *a, int *b);
 //bonus
 void	move_cam(t_all *all, char order);
-void	change_display(t_all *all, char order, void(*f));
+//void	change_display(t_all *all, char order, void(*f));
 void	zoom(t_all *all, char order);
+void	do_rot(t_all *all, char order);
+void	do_plan(t_all *all);
 t_matrix	*r_matrix(t_point *pts);
 t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 
@@ -145,7 +138,7 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 
 //-------------------
 /*
-. first of all, descodificar as matrizes rotação e incline
+. rot_left
 . display planar
 . modular display iso e display planar para key hooks (space) e bonus
 . row e line matrix genericas para todos os bonus

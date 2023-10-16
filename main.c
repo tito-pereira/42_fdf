@@ -34,6 +34,12 @@ int	key_handler(int keycode, void *param)
 		zoom((t_all *)param, 'i');
 	else if (keycode == 65364)
 		zoom((t_all *)param, 'o');
+	else if (keycode == 65363)
+		do_rot((t_all *)param, 'r');
+	else if (keycode == 65361)
+		do_rot((t_all *)param, 'l');
+	else if (keycode == 32)
+		do_plan((t_all *)param);
 	else if (keycode == 65307)
 		escape_close(keycode, param);
 	return 0;

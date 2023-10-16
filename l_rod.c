@@ -41,7 +41,7 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid)
 	return (new);
 }
 
-void	rot_aux(t_matrix *rm, t_matrix *l, int order)
+void	rot_aux(t_matrix *rm, t_matrix *lm, int order)
 {
 	int	tmpx;
 	int	tmpy;
@@ -77,17 +77,17 @@ void    rotate(t_all *all, int order)
 	t_matrix	*start;
 
     start = malloc(sizeof(t_matrix));
-	rm = row_matrix(all->pts);
-    lm = line_matrix(all->pts, all->grid);
+	rm = r_matrix(all->pts);
+    lm = l_matrix(all->pts, all->grid);
 	if (order == 1)
 	{
-		start->x = pts->pixx + (all->grid->rows * lm->x); //right start
-		start->y = pts->pixy + (all->grid->rows * lm->y); //right start
+		start->x = all->pts->pixx + (all->grid->rows * lm->x); //right start
+		start->y = all->pts->pixy + (all->grid->rows * lm->y); //right start
 	}
 	else if (order == 2)
 	{
-		start->x = pts->pixx + (all->grid->rows * rm->x); //left start
-		start->y = pts->pixy + (all->grid->rows * rm->y); //left start
+		start->x = all->pts->pixx + (all->grid->rows * rm->x); //left start
+		start->y = all->pts->pixy + (all->grid->rows * rm->y); //left start
 	}
 	rot_aux(rm, lm, order);
     prep_pts(all, rm, lm, start, 3);
@@ -102,10 +102,10 @@ void	do_rot(t_all *all, char order)
 
 	new = malloc(sizeof(t_image));
 	new->ptr = mlx_new_image(all->mlx->mlx, WIDTH, HEIGHT);
-    if (order == 'l')
+    if (order == 'r')
         rotate(all, 1);
-    else if (order == '2')
-        rotate(all, 2);
+    else if (order == 'l')
+		rotate(all, 2);
 	display_lines(all->pts, new, all->grid);
 	display_rows(all->pts, new, all->grid);
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);
