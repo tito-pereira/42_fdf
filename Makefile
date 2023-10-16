@@ -3,8 +3,10 @@ NAME= fdf
 CC= cc
 CFLAGS= -Wall -Wextra -Werror
 RM= rm -rf
-SRC= main.c write.c draw_line.c grid.c points.c isometric.c draw_1.c matrix.c \
-	count.c
+SRC= main.c grid.c points.c isometric.c \
+	display.c draw_line.c matrix.c count.c write.c \
+	move_cam.c zoom.c \
+#	l_rod.c h_rod.c
 LIB= -L../minilibx-linux/ -lmlx -lXext -lX11 -lm
 LIB2= -L./getnext/ -lget
 LIB3= -L./libft/ -lft
@@ -26,4 +28,5 @@ fclean: clean
 
 re: fclean all
 
-#cc window_test.c write.c -L../minilibx-linux/ -lmlx -lXext -lX11 -lm -lft
+#make bonus
+#src bonus (c main diferente, zoom, move_cam, etc)

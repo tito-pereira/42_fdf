@@ -28,120 +28,69 @@ void	get_matrix(t_grid *grid, int *x, int *y)
 	}
 }
 
-void	display_lines(t_point *pts, t_image *first, t_grid *grid)
+//t_mlx *mlx, t_point *pts, t_grid *grid
+void    display_iso(t_all *all, t_image *first)
 {
-	int	line;
-	int	row;
+	t_matrix	*mx;
+	t_matrix	*my;
+	t_matrix	*start;
 
-	line = 0;
-	row = 1;
-	while (pts != NULL)// (line < grid->lines)
-	{
-		//printf("line %d\n", line);
-		row = 1;
-		while (row < grid->rows)
-		{
-			//printf("row %d\n", row);
-			//printf("from %d %d to %d %d\n", pts->pixx, pts->pixy, pts->next->pixx, pts->next->pixy);
-			draw_l(pts, pts->next, first);
-			pts = pts->next;
-			row++;
-		}
-		pts = pts->next;
-		line++;
-	}
-}
-//acho que ta a dar
-
-void	display_rows(t_point *pts, t_image *first, t_grid *grid)
-{
-	int	c;
-	int	line;
-	int	row;
-	t_point	*fst;
-	t_point	*scd;
-
-	c = 0;
-	row = 0;
-	line = 0;
-	while (row < (grid->rows))
-	{
-		fst = pts;
-		scd = pts;
-		//printf("------row %d of %d------\n", row, grid->rows);
-		while (line < (grid->lines - 1))
-		{
-			c = 0;
-			//printf("fx:%d fy:%d sx:%d sy:%d\n", fst->pixx, fst->pixy, scd->pixx, scd->pixy);
-			while (c < grid->rows)
-			{
-				//printf(".");
-				scd = scd->next;
-				c++;
-			}
-			//printf("\nc:%d\n", c);
-			//printf("ax:%d ay:%d bx:%d by:%d\n", fst->pixx, fst->pixy, scd->pixx, scd->pixy);
-			draw_l(fst, scd, first);
-			fst = scd;
-			line++;
-		}
-		row++;
-		line = 0;
-		pts = pts->next;
-	}
+	mx = malloc(sizeof(t_matrix));
+	my = malloc(sizeof(t_matrix));
+	start = malloc(sizeof(t_matrix));
+	mx->x = 1;
+	mx->y = 1;
+	get_matrix(all->grid, &(mx->x), &(mx->y));
+	my->x = -1 * mx->x;
+	my->y = mx->y;
+	start->x = (WIDTH / 2);
+	start->y = (HEIGHT / 4);
+	prep_pts(all, mx, my, start, 3);
+	display_lines(all->pts, first, all->grid);
+	display_rows(all->pts, first, all->grid);
+	all->mlx->img = first->ptr;
+	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, all->mlx->img, 0, 0);
+	free(mx);
+	free(my);
+	free(start);
 }
 
-void    display_iso(t_mlx *mlx, t_point *pts, t_grid *grid, t_image *first)
-{
-	int	mx;
-	int	my;
-	int	mxx;
-	int	row;
-	int	line;
-	t_point	*origin;
-
-	mx = 1;
-	my = 1;
-	row = 0;
-	line = 0;
-	get_matrix(grid, &mx, &my);
-	mxx = -1 * mx;
-	//printf("matrixes, x:%d, -x:%d, y:%d\n", mx, mxx, my);
-	//draw points
-	origin = pts;
-	line = 0;
-	while (line < grid->lines)
-	{
-		row = 0;
-		while (row < grid->rows)
-		{
-			pts->pixx = (WIDTH / 2) + (line * mxx) + (row * mx);
-			pts->pixy = 50 + (line * my) + (row * my) + (-2 * SCALE * pts->z);
-			//printf("x:%d y:%d z:%d px:%d py:%d\n", pts->x, pts->y, pts->z, pts->pixx, pts->pixy);
-			pts = pts->next;
-			row++;
-		}
-		line++;
-	}
-	//draw line
-	//print_points(origin);
-	pts = origin;
-	display_lines(pts, first, grid);
-	printf("ALL LINES DRAWED");
-	display_rows(pts, first, grid);
-	printf("ALL ROWS DRAWED");
-	mlx->img = first->ptr;
-	mlx_put_image_to_window(mlx->mlx, mlx->win, mlx->img, 0, 0);
-}
-
-void	print_points(t_point *pts) {
-	while (pts != NULL) {
-		//printf("x:%d y:%d z:%d px:%d py:%d\n", pts->x, pts->y, pts->z, pts->pixx, pts->pixy);
-		pts = pts->next;
-	}
-}
 /*
 
+void	planar(t_all *all, t_image *first)
+{
+	if (first image)
+	{
+		display_planar(all, first)
+	}
+}, poder usar estas na change display talvez?
+
+void    display_planar(t_all *all, t_image *first)
+{
+	t_matrix	*mx;
+	t_matrix	*my;
+	t_matrix	*start;
+
+	mx = malloc(sizeof(t_matrix));
+	my = malloc(sizeof(t_matrix));
+	start = malloc(sizeof(t_matrix));
+	mx->x = 1;
+	mx->y = 1;
+	get_matrix(all->grid, &(mx->x), &(mx->y));
+	my->x = -1 * mx->x;
+	my->y = mx->y;
+	start->x = (WIDTH / 5);
+	start->y = (HEIGHT / 5);
+	prep_pts(all, mx, my, start, 3);
+	display_lines(all->pts, first, all->grid);
+	display_rows(all->pts, first, all->grid);
+	all->mlx->img = first->ptr;
+	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, all->mlx->img, 0, 0);
+	free(mx);
+	free(my);
+	free(start);
+}
+---------------------------
 void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 {
 	int	c;

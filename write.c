@@ -23,7 +23,7 @@ void	write_image(t_image *img, int x, int y, int color)
 	}
 }
 
-int	module(int x)
+int	nmb_module(int x)
 {
 	if (x < 0)
 		x *= -1;
