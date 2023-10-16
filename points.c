@@ -14,7 +14,6 @@ t_point	*new_point(t_grid *grid, int row, int line, int total)
 	new->next = NULL;
 	return (new);
 }
-//falta as coordenadas 2D, ainda vou ver como faço
 
 void	aux(t_point **pts, t_point **org, t_grid *grid, int line, int *total)
 {
@@ -33,7 +32,6 @@ void	aux(t_point **pts, t_point **org, t_grid *grid, int line, int *total)
 			(*pts)->next = new_point(grid, row, line, *total);
 			*pts = (*pts)->next;
 		}
-		//printf("x:%d y:%d z:%d px:%d py:%d\n", (*pts)->x, (*pts)->y, (*pts)->z, (*pts)->pixx, (*pts)->pixy);
 		row++;
 		(*total)++;
 	}
@@ -49,18 +47,14 @@ t_point	*create_points(t_grid *grid)
 	total = 0;
 	line = 0;
 	pts = NULL;
-	//printf("total:%d\n", grid->total);
 	while (total < grid->total)
 	{
 		while (line < grid->lines)
 		{
-			//printf("current:%d\nline:%d\n---------\n", total, line);
 			aux(&pts, &origin, grid, line, &total);
 			line++;
 		}
 	}
-	//printf("points:\n");
-	//print_points(origin);
 	return (origin);
 }
 

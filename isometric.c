@@ -5,11 +5,10 @@ void	get_matrix(t_grid *grid, int *x, int *y)
 	float d;
 
 	d = sqrt(pow(grid->rows, 2) + pow(grid->lines, 2));
-	//printf("diagonal points: %f\n", d);
 	if (d > 120)
 	{
-		*x = 2 * SCALE; //*x = 2;
-		*y = 1 * SCALE; //*y = 1;
+		*x = 2 * SCALE;
+		*y = 1 * SCALE;
 	}
 	else if (d > 60 && d <= 120)
 	{

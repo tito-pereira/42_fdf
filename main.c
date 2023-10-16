@@ -47,11 +47,6 @@ int	key_handler(int keycode, void *param)
 	return 0;
 }
 
-/*
-zoom no mouse hook
-keys para rotate e incline
-*/
-
 int	main(int ac, char **av) {
 	t_mlx	*mlx;
 	t_grid	*grid;

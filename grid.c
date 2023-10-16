@@ -30,8 +30,6 @@ t_lines	*proc_lines(int fd, t_grid *grid)
 	}
 	return (new);
 }
-//funcao malloc retorna pointer, so podes algo=malloc
-//se algo for um pointer. nao pode ser int ou char
 
 t_heights	*new_heights_node(char **str)
 {
@@ -106,17 +104,6 @@ int	*proc_heights(t_heights *points, t_grid *grid)
 	return (heights);
 }
 
-void	print_heights(t_grid *grid) {
-	int	i = 0;
-	for (int l = 0; l < grid->lines; l++) {
-		for (int r = 0; r < grid->rows; r++) {
-			printf("%d, ", grid->heights[i]);
-			i++;
-		}
-		printf("\n");
-	}
-}
-
 t_grid	*create_grid(char *arg)
 {
 	t_grid		*grid;
@@ -130,16 +117,12 @@ t_grid	*create_grid(char *arg)
 	grid->lines = 0;
 	grid->total = 0;
 	fd = open(arg, O_RDONLY);
-	//printf("file opened, fd:%d\n", fd);
 	lines = proc_lines(fd, grid);
 	grid->lines = count_lines(lines);
-	//printf("lines procced:%d\n", grid->lines);
 	points = proc_points(lines);
 	grid->rows = count_rows(points->line);
 	grid->total = grid->lines * grid->rows;
-	//printf("points procced:%d\n", grid->rows);
 	grid->heights = proc_heights(points, grid);
-	//print_heights(grid);
 	return (grid);
 }
 

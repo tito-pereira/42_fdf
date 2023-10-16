@@ -6,15 +6,6 @@ void	write_image(t_image *img, int x, int y, int color)
 	int	*paint;
 
 	i = 0;
-	/*printf("in, x:%d, y:%d, color:%d\n", x, y, color);
-	if (img) {
-		printf("image exists\n");
-		if (img == NULL)
-			printf("image is NULL\n");
-		if (img != NULL)
-			printf("image is not NULL\n");
-	}
-	printf("%s\n", img->data);*/
 	if ((x > 0 && x < WIDTH) && (y > 0 && y < HEIGHT)) {
 		img->data = mlx_get_data_addr(img->ptr, &img->bpp, &img->sline, &img->endian);
 		i = (y * (img->sline / 4)) + x;

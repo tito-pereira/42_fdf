@@ -137,7 +137,7 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 
 //-------------------
 /*
-. rot_left
+. rot_left start
 . change display generica p todos (function pointer)
 	(rot, zoom, plan, iso)
 . incline

@@ -2,59 +2,41 @@
 
 void	offset_matrix(t_matrix *m, int *now_x, int *now_y)
 {
-	//printf("before nowx:%d mx:%d\n", *now_x, m->x);
-	//printf("before nowy:%d my:%d\n", *now_y, m->y);
 	if (m->x > 0)
 	{
-		//printf("before nowx:%d mx:%d\n", *now_x, m->x);
 		(*now_x)++;
 		m->x--;
-		//printf("after nowx:%d mx:%d\n", *now_x, m->x);
 	}
 	if (m->x < 0)
 	{
-		//printf("before nowx:%d mx:%d\n", *now_x, m->x);
 		(*now_x)--;
 		m->x++;
-		//printf("after nowx:%d mx:%d\n", *now_x, m->x);
 	}
 	if (m->y > 0)
 	{
-		//printf("before nowy:%d my:%d\n", *now_y, m->y);
 		(*now_y)++;
 		m->y--;
-		//printf("after nowy:%d my:%d\n", *now_y, m->y);
 	}
 	if (m->y < 0)
 	{
-		//printf("before nowy:%d my:%d\n", *now_y, m->y);
 		(*now_y)--;
 		m->y++;
-		//printf("after nowy:%d my:%d\n", *now_y, m->y);
 	}
-	//printf("after nowx:%d mx:%d\n", *now_x, m->x);
-	//printf("after nowy:%d my:%d\n", *now_y, m->y);
 }
-//full offset (1, 1) -> full straight (1, 0)
 
 void	straight_matrix(t_matrix *m, int *now_x, int *now_y)
 {
-	//printf("before nowx:%d mx:%d\n", *now_x, m->x);
-	//printf("before nowy:%d my:%d\n", *now_y, m->y);
-	if (nmb_module(m->x) > nmb_module(m->y)) //m->x > m->y
+	if (nmb_module(m->x) > nmb_module(m->y))
 	{
-		(*now_x) += signal(m->x); //++, (*now_x) += m->x
-		m->x -= signal(m->x); //--, m->x = m->x - m->x
+		(*now_x) += signal(m->x);
+		m->x -= signal(m->x);
 	}
-	else if (nmb_module(m->y) > nmb_module(m->x)) //m->y > m->x
+	else if (nmb_module(m->y) > nmb_module(m->x))
 	{
-		(*now_y) += signal(m->y); //++
-		m->y -= signal(m->y); //--
+		(*now_y) += signal(m->y);
+		m->y -= signal(m->y);
 	}
-	//printf("after nowx:%d mx:%d\n", *now_x, m->x);
-	//printf("after nowy:%d my:%d\n", *now_y, m->y);
 }
-//so faz matrizes (1,0) na direcao da coordenada maior
 
 int	check_total(int mx, int my)
 {
@@ -66,8 +48,6 @@ int	check_total(int mx, int my)
 		total = nmb_module(my);
 	return (total);
 }
-//soma os modulos de |mx| e |my|
-//numero total de vetores q se anda
 
 int	check_offset(int mx, int my)
 {
@@ -79,8 +59,6 @@ int	check_offset(int mx, int my)
 		offset = nmb_module(mx);
 	return (offset);
 }
-//faz a diferenca dos modulos de |mx| e |my|
-//diferenca entre os vetores (1, 0) e (1, 1) q se anda
 
 t_count	*check_count(int offset, int straight)
 {
@@ -88,38 +66,27 @@ t_count	*check_count(int offset, int straight)
 	t_count	*first;
 	int	rest;
 
-	//printf("hey\n");
 	count = new_count(0);
-	//printf("cnt created:%d\n", count->cnt);
 	first = count;
 	rest = 0;
 	if (straight > offset)
 		f_swap(&offset, &straight);
-	//printf("str:%d off:%d\n", straight, offset);
 	if (offset == 0 || straight == 0)
 		return (count);
 	if (offset >= straight)
 	{
-		//printf("here, c:%d r:%d (%d / %d) = %d\n", count->cnt, count->reset, offset, straight, (offset / straight));
 		count->cnt = offset / straight;
-		//printf("c:%d\n", count->cnt);
 		count->reset = count->cnt;
 		rest = offset % straight;
-		//printf("r:%d\n", rest);
 		while (rest != 0)
 		{
-			//printf("loop (o:%d / r:%d) = %d\n", offset, rest, (offset / rest));
 			count->nxt = new_count((offset / rest));
 			count = count->nxt;
 			rest = offset % rest;
 		}
 	}
-	//printf("ho\n");
 	return (first);
 }
-//ve qual dos tipos de vetor, (1, 0) ou (1, 1) tem maior quantidade
-//divide um pelo outro para introduzir o vetor minoritario
-//de modo proporcional e equidistante
 
 /*
 void	offset_matrix(t_matrix *m, int *now_x, int *now_y)
