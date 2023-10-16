@@ -143,11 +143,11 @@ rotation fluida (nao sei como)
 
 //-------------------
 /*
-. rot_left start
 . incline
-. change display generica p todos (function pointer)
-	(rot, zoom, plan, iso) + incline
 . verificar como a altura se comporta naquelas inclinacoes de
 z = 0 e se recupera dessas
+
+. change display generica p todos (function pointer)
+	(rot, zoom, plan, iso) + incline
 . melhorar starting point no zoom (planar) e no inicial maybe
 */
