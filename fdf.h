@@ -140,7 +140,6 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 //-------------------
 /*
 . rot_left
-. row e line matrix genericas para todos os bonus (zoom)?
 . change display generica p todos (function pointer)
 . verificar como a altura se comporta naquelas inclinacoes de
 z = 0 e se recupera dessas
