@@ -5,8 +5,7 @@ CFLAGS= -Wall -Wextra -Werror
 RM= rm -rf
 SRC= m_main.c \
 	m_grid.c m_points.c m_isometric.c \
-	m_display.c m_draw_line.c m_matrix.c m_count.c m_write.c \
-	bonus_utils.c move_cam.c zoom.c l_rod.c planar.c
+	m_display.c m_draw_line.c m_matrix.c m_count.c m_write.c
 BONUS= b_main.c \
 	m_grid.c m_points.c m_isometric.c \
 	m_display.c m_draw_line.c m_matrix.c m_count.c m_write.c \

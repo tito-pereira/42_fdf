@@ -17,36 +17,6 @@ int	escape_close(int keycode, void *param) {
 	return 0;
 }
 
-int	key_handler(int keycode, void *param)
-{
-	if (keycode == 119)
-	{
-		move_cam((t_all *)param, 's');
-		//change_display((t_all *)param, 's', &move_cam);
-	}
-	else if (keycode == 97)
-		move_cam((t_all *)param, 'd');
-	else if (keycode == 115)
-		move_cam((t_all *)param, 'w');
-	else if (keycode == 100)
-		move_cam((t_all *)param, 'a');
-	else if (keycode == 65362)
-		zoom((t_all *)param, 'i');
-	else if (keycode == 65364)
-		zoom((t_all *)param, 'o');
-	else if (keycode == 65363)
-		do_rot((t_all *)param, 'r');
-	else if (keycode == 65361)
-		do_rot((t_all *)param, 'l');
-	else if (keycode == 32)
-		do_plan((t_all *)param);
-	else if (keycode == 49)
-		do_iso((t_all *)param);
-	else if (keycode == 65307)
-		escape_close(keycode, param);
-	return 0;
-}
-
 int	main(int ac, char **av) {
 	t_mlx	*mlx;
 	t_grid	*grid;
@@ -67,7 +37,7 @@ int	main(int ac, char **av) {
 		all->grid = grid;
 		all->pts = points;
 		new_iso(all, first);
-		mlx_key_hook(mlx->win, key_handler, (void *)all);
+		mlx_key_hook(mlx->win, escape_close, (void *)all);
 		mlx_loop(mlx->mlx);
 	}
 }
