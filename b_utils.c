@@ -40,3 +40,50 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid)
 	new->y = (by - ay);
 	return (new);
 }
+
+/*
+void	change_frame(t_all *all, int function, char order);
+void	move_cam(t_all *all, char order);
+void	zoom(t_all *all, char order);
+void	do_plan(t_all *all);
+void	do_iso(t_all *all);
+void	do_rot(t_all *all, char order);
+void	do_inc(t_all *all, char order);
+
+1 - move_cam
+2 - zoom
+3 - planar
+4 - isometric reset
+5 - rotate
+6 - incline
+*/
+
+void	choose_function(t_all *all, int function, int order)
+{
+	if (function == 1)
+		move_cam(all, order);
+	else if (function == 2)
+		zoom(all, order);
+	else if (function == 3)
+		planar(all, order);
+	else if (function == 4)
+		isometric(all, order);
+	else if (function == 5)
+		rotate(all, order);
+	else if (function == 6)
+		incline(all, order);
+}
+
+void	change_frame(t_all *all, int function, int order)
+{
+	t_image	*new;
+
+	new = malloc(sizeof(t_image));
+	new->ptr = mlx_new_image(all->mlx->mlx, WIDTH, HEIGHT);
+    choose_function(all, function, order);
+	display_lines(all->pts, new, all->grid);
+	display_rows(all->pts, new, all->grid);
+	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);
+	mlx_destroy_image(all->mlx->mlx, all->mlx->img);
+	all->mlx->img = new->ptr;
+}

@@ -20,30 +20,27 @@ int	escape_close(int keycode, void *param) {
 int	key_handler(int keycode, void *param)
 {
 	if (keycode == 119)
-	{
-		move_cam((t_all *)param, 's');
-		//change_display((t_all *)param, 's', &move_cam);
-	}
+		change_frame((t_all *)param, 1, 1);
 	else if (keycode == 97)
-		move_cam((t_all *)param, 'd');
+		change_frame((t_all *)param, 1, 2);
 	else if (keycode == 115)
-		move_cam((t_all *)param, 'w');
+		change_frame((t_all *)param, 1, 3);
 	else if (keycode == 100)
-		move_cam((t_all *)param, 'a');
+		change_frame((t_all *)param, 1, 4);
 	else if (keycode == 65362)
-		zoom((t_all *)param, 'i');
+		change_frame((t_all *)param, 2, 1);
 	else if (keycode == 65364)
-		zoom((t_all *)param, 'o');
-	else if (keycode == 65363)
-		do_rot((t_all *)param, 'r');
-	else if (keycode == 65361)
-		do_rot((t_all *)param, 'l');
+		change_frame((t_all *)param, 2, 2);
 	else if (keycode == 32)
-		do_plan((t_all *)param);
+		change_frame((t_all *)param, 3, 1);
 	else if (keycode == 49)
-		do_iso((t_all *)param);
+		change_frame((t_all *)param, 4, 1);
+	else if (keycode == 65363)
+		change_frame((t_all *)param, 5, 1);
+	else if (keycode == 65361)
+		change_frame((t_all *)param, 5, 2);
 	else if (keycode == 50)
-		do_inc((t_all *)param, 'u');
+		change_frame((t_all *)param, 6, 1);
 	else if (keycode == 65307)
 		escape_close(keycode, param);
 	return 0;

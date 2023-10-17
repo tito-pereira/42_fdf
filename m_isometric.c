@@ -57,19 +57,20 @@ void	new_iso(t_all *all, t_image *first)
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, all->mlx->img, 0, 0);
 }
 
-void	do_iso(t_all *all) //change display (isometric, 1)
+/*void	do_iso(t_all *all, char order)
 {
 	t_image	*new;
 
 	new = malloc(sizeof(t_image));
 	new->ptr = mlx_new_image(all->mlx->mlx, WIDTH, HEIGHT);
-	isometric(all, 1);
+	if (order == 'i')
+		isometric(all, 1);
 	display_lines(all->pts, new, all->grid);
 	display_rows(all->pts, new, all->grid);
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);
 	mlx_destroy_image(all->mlx->mlx, all->mlx->img);
 	all->mlx->img = new->ptr;
-}
+}*/
 
 /*
 

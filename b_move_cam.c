@@ -1,12 +1,13 @@
 #include "fdf.h"
 
-void	cam_change(t_point *pts, int order)
+void	move_cam(t_all *all, int order)
 {
 	int mx;
 	int my;
 
 	mx = 0;
 	my = 0;
+	printf("moving cam\n");
 	if (order == 1)
 		my = -1 * MVCAM;
 	else if (order == 2)
@@ -15,14 +16,15 @@ void	cam_change(t_point *pts, int order)
 		my = 1 * MVCAM;
 	else if (order == 4)
 		mx = 1 * MVCAM;
-	while (pts != NULL)
+	while (all->pts != NULL)
 	{
-		pts->pixx += mx;
-		pts->pixy += my;
-		pts = pts->next;
+		all->pts->pixx += mx;
+		all->pts->pixy += my;
+		all->pts = all->pts->next;
 	}
 }
 
+/*
 void	move_cam(t_all *all, char order)
 {
 	t_image	*new;
@@ -42,7 +44,7 @@ void	move_cam(t_all *all, char order)
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);
 	mlx_destroy_image(all->mlx->mlx, all->mlx->img);
 	all->mlx->img = new->ptr;
-}
+}*/
 
 /*
 void	move_cam(t_all *all, char order)

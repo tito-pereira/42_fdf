@@ -91,7 +91,7 @@ void    rotate(t_all *all, int order)
 	free(start);
 }
 
-void	do_rot(t_all *all, char order)
+/*void	do_rot(t_all *all, char order)
 {
 	t_image	*new;
 
@@ -106,7 +106,7 @@ void	do_rot(t_all *all, char order)
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);
 	mlx_destroy_image(all->mlx->mlx, all->mlx->img);
 	all->mlx->img = new->ptr;
-}
+}*/
 
 /*
 preciso de altura zero (ordem 0) no ultimo grau de
@@ -172,7 +172,7 @@ else if (pts->x >= (grid->rows / 2) && pts->y < (grid->lines / 2))
 else if (pts->x >= (grid->rows / 2) && pts->y >= (grid->lines / 2))
 void	prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int order)
 
-void	change display(t_all *all, char order, void(*f))
+void	change display(t_all *all, char order, void (*f)(t_all *, int))
 {
 	t_image	*new;
 

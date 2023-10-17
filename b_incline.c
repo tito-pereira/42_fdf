@@ -56,16 +56,17 @@ int	inc_up_plan(t_matrix *rm, t_matrix *lm)
 }
 
 /*
-. limite maximo na inclinação p cima
+. rotate down
+. limite maximo inclinar p cima
+(reconhecer os 2:1 e 2:2 positivos, acho que é com lm->y para cima)
 . rotação planar 2:1 fica estranha, trocar x por y, direçoes row e line
 tao boas
+. corrigir o start point dos zooms que ja irrita
 
 if lm->y < 0 (linhas para cima, escrita ao contrario)
 
 ter cuidado com a divisao por zero
 experimentar !(modulo rm->x == modulo rm->y) 
-
-ate atingir o valor maximo de inclinação e z = 0
 */
 
 
@@ -96,7 +97,7 @@ void    incline(t_all *all, int order)
 	free(start);
 }
 
-void	do_inc(t_all *all, char order)
+/*void	do_inc(t_all *all, char order)
 {
 	t_image	*new;
 
@@ -111,7 +112,7 @@ void	do_inc(t_all *all, char order)
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);
 	mlx_destroy_image(all->mlx->mlx, all->mlx->img);
 	all->mlx->img = new->ptr;
-}
+}*/
 
 /*
 int	inc_up_iso(t_matrix *rm, t_matrix *lm)

@@ -50,7 +50,7 @@ t_matrix	*line_matrix(t_point *pts, t_grid *grid, int order)
 	return (new);
 }
 
-void	cam_zoom(t_all *all, int order)
+void	zoom(t_all *all, int order)
 {
 	t_matrix	*row;
 	t_matrix	*line;
@@ -72,7 +72,7 @@ void	cam_zoom(t_all *all, int order)
 	free(start);
 }
 
-void	zoom(t_all *all, char order)
+/*void	zoom(t_all *all, char order)
 {
 	t_image	*new;
 
@@ -87,4 +87,4 @@ void	zoom(t_all *all, char order)
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);
 	mlx_destroy_image(all->mlx->mlx, all->mlx->img);
 	all->mlx->img = new->ptr;
-}
+}*/
