@@ -68,12 +68,34 @@ void	def_start_out(t_all *all, t_matrix *rm, t_matrix *lm, t_matrix *start)
 		start->y = all->pts->pixy;
 		printf("after x:%d y:%d\n", start->x, start->y);
 	}
-	else if ((rm->y == 0 && lm->x == 0) || (rm->x == 0 && lm->y == 0)) //plan
+	/*else if ((rm->y == 0 && lm->x == 0) || (rm->x == 0 && lm->y == 0))
 	{
 		start->x = all->pts->pixx + (all->grid->rows * (rm->x / 2));
 		start->y = all->pts->pixy + (all->grid->lines * (lm->y / 2));
+	}*/
+	else if (rm->y == 0 && lm->x == 0)
+	{
+		printf("plan move y=0\n");
+		printf("lmy %d rmx %d\n", lm->y, rm->x);
+		printf("before x:%d y:%d\n", all->pts->pixx, all->pts->pixy);
+		start->x = all->pts->pixx + (all->grid->rows * (rm->x / 2));
+		start->y = all->pts->pixy + (all->grid->lines * (lm->y / 2));
+		printf("after x:%d y:%d\n", start->x, start->y);
+	}
+	else if (rm->x == 0 && lm->y == 0)
+	{
+		printf("plan move x=0\n");
+		printf("lmx %d rmy %d\n", lm->x, rm->y);
+		printf("before x:%d y:%d\n", all->pts->pixx, all->pts->pixy);
+		start->x = all->pts->pixx + (all->grid->rows * (lm->x / 2));
+		start->y = all->pts->pixy + (all->grid->lines * (rm->y / 2));
+		printf("after x:%d y:%d\n", start->x, start->y);
 	}
 }
+
+/*
+parece tar bem, depois confirmar
+*/
 
 void	def_start_in(t_all *all, t_matrix *rm, t_matrix *lm, t_matrix *start)
 {
@@ -95,13 +117,21 @@ void	def_start_in(t_all *all, t_matrix *rm, t_matrix *lm, t_matrix *start)
 	}
 	else if (rm->y == 0 && lm->x == 0)
 	{
+		printf("plan move y=0\n");
+		printf("lmy %d rmx %d\n", lm->y, rm->x);
+		printf("before x:%d y:%d\n", all->pts->pixx, all->pts->pixy);
 		start->x = all->pts->pixx - (all->grid->rows * (rm->x / 4));
 		start->y = all->pts->pixy - (all->grid->lines * (lm->y / 4));
+		printf("after x:%d y:%d\n", start->x, start->y);
 	}
 	else if (rm->x == 0 && lm->y == 0)
 	{
-		start->x = all->pts->pixx - (all->grid->rows * (rm->x / 4));
-		start->y = all->pts->pixy - (all->grid->lines * (lm->y / 4));
+		printf("plan move x=0\n");
+		printf("lmx %d rmy %d\n", lm->x, rm->y);
+		printf("before x:%d y:%d\n", all->pts->pixx, all->pts->pixy);
+		start->x = all->pts->pixx - (all->grid->rows * (lm->x / 4));
+		start->y = all->pts->pixy - (all->grid->lines * (rm->y / 4));
+		printf("after x:%d y:%d\n", start->x, start->y);
 	}
 }
 

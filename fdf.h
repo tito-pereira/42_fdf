@@ -182,6 +182,16 @@ e morada para onde aponta), e tambem o tipo de conteudo necessario
 para correr aquela função.
 se eu consigo por isto no meu display? nao sei
 
+todo este hardcoding entre zooms, incline, varias rotações
+é tudo estratégias que eu arranjei de "pixelixar" e fazer eu sozinho
+(erro perhaps) matrizes de movimento pixelizadas que simulam estes
+movimentos
+é tudo o chamado "fake 3D" por razoes obvias, sem perspetiva e tudo
+aproximado ao inteiro e feito por mim em que vou acrescentando 
+condicoes novas todos os dias
+é os primórdios da renderização, usar planar
+e isometrica 2:1 (mais as minhas invenções)
+
 (para dar um hiperfoco)
 materia teorica total = 20 (em quantidade)
 um só projeto/engenharia = 40 (em quantidade)
