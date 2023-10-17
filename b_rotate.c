@@ -50,6 +50,21 @@ void	rot_right(t_matrix *rm, t_matrix *lm)
 	lm->y = tmpy;
 }
 
+void	rot_aux(t_all *all, t_matrix *rm, t_matrix *lm, t_matrix *start)
+{
+	int	z;
+
+	z = 0;
+	if (nmb_module(rm->y) == nmb_module(lm->x)
+		|| nmb_module(rm->x) == nmb_module(lm->y))
+		z = 0;
+	//else if ()
+		//z = 40; //virado p baixo
+	else
+		z = 4;
+	prep_pts(all, rm, lm, start, z);
+}
+
 void    rotate(t_all *all, int order)
 {
     t_matrix    *rm;
@@ -71,7 +86,7 @@ void    rotate(t_all *all, int order)
 		rot_right(rm, lm);
 	else if (order == 2)
 		rot_left(rm, lm);
-    prep_pts(all, rm, lm, start, 4);
+	rot_aux(all, rm, lm, start);
 	free(rm);
     free(lm);
 	free(start);
@@ -95,6 +110,12 @@ void	do_rot(t_all *all, char order)
 }
 
 /*
+preciso de altura zero (ordem 0) no ultimo grau de
+inclinação
+
+rodar sobre a sua propria axis vs rodar na camara
+eu faço rodar na sua propria axis, nao faço o outro
+mas nao deve ser mt dificil mas agr n faço
 
 if (order == 1)
 	{

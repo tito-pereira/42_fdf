@@ -149,5 +149,7 @@ z = 0 e se recupera dessas
 
 . change display generica p todos (function pointer)
 	(rot, zoom, plan, iso) + incline
-. melhorar starting point no zoom (planar) e no inicial maybe
+. start point zoom (planar)
+. start point inicial maybe
+. start point incline
 */
