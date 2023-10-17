@@ -99,8 +99,6 @@ void	prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int order)
 	}
 }
 
-//change display aqui?
-
 //p->pixz * 2; (-2 * SCALE * p->z)
 //if 1, *2, if 2, /2, if 3, ==
 /*if (order == 1 || order == 0)

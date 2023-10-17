@@ -118,12 +118,10 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 
 #endif
 
-//eventos do rato e vetores (esc, rato, zoom, lateral, rotate)
-//fechar sem dar segfault
-
 /*
-. limites maximos de zoom
-. zoom mouse wheel
+. mouse events
+//mouse wheel zoom in and out
+//fechar na cruz sem dar segfault
 --
 .formatar (25 linhas, 5 funcoes, tirar comments)
 .makefile bonus, libft etc
@@ -156,12 +154,24 @@ se eu consigo por isto no meu display? nao sei
 
 //-------------------
 /*
-. limites maximos 
-rotate, incline, se algum ficar fora dos limites de int
-crasha
-. change display generica p todos (function pointer)
-	(rot, zoom, plan, iso) + incline
+. limites maximos
+limites maximos de zoom, rotate, incline,
+se algum ficar fora dos limites de int, crasha
 
 . start point inicial maybe
 . start point incline (talvez nao)
+*/
+
+/*
+. rotate down
+. limite maximo inclinar p cima
+(reconhecer os 2:1 e 2:2 positivos, acho que é com lm->y para cima)
+. rotação planar 2:1 fica estranha, trocar x por y, direçoes row e line
+tao boas
+. corrigir o start point dos zooms que ja irrita
+
+if lm->y < 0 (linhas para cima, escrita ao contrario)
+
+ter cuidado com a divisao por zero
+experimentar !(modulo rm->x == modulo rm->y) 
 */
