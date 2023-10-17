@@ -106,6 +106,8 @@ void	def_start_in(t_all *all, t_matrix *rm, t_matrix *lm, t_matrix *start)
 }
 
 /*
+. zoom out planar
+
 o segredo para aquele zoom simetrico e perfeito e mudar apenas o y
 sendo que, ou o row ou a line vao SER um dos pontos que mexe na
 vertical, experimentar mudar na horizontal simetrico a vertical

@@ -124,36 +124,28 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 #endif
 
 /*
-. mouse events
-//mouse wheel zoom in and out
-//fechar na cruz sem dar segfault
---
-.formatar (25 linhas, 5 funcoes, tirar comments)
-.makefile bonus, libft etc
 .norm
 .valgrind
-.define == variaveis globais?
-*/
-/*
-um ficheiro .h só para o bonus?
+.tudo no repositorio
+--
 
-sera que posso tirar aquela condiçao if (ac == 2)?
-sera que tenho de verificar o titulo por uma extensao ".fdf"?
-tamanho da window e grid mudam consoante o tamanho do mapa p exemplo
-ou apenas aumenta a escala do mapa
-ou ambos em simultaneo??
-rotation fluida (nao sei como)
+.makefile bonus, .h bonus, main bonus, make libft e getnext
+- um ficheiro .h só para o bonus?
+- onde fica a pasta do minilibx? dentro do meu repositorio?
+.define == variaveis globais?
+.sera que posso tirar aquela condiçao if (ac == 2)?
+- sera que tenho de verificar o titulo por uma extensao ".fdf"?
 */
 
 //-------------------
 
 /* ACABAR MANDATORIO
-. mouse events
+. mouse events (escape, resize, minimizar, zoom)
 . problema da linha fantasma que se nota nos mapas simples
 se calhar tou a processar uma linha ou node a mais idk
 
-. start point inicial
-. start point planar
+. start point inicial (rows, lines, max height etc)
+. start point planar (rows, max height)
 */
 
 /*
@@ -161,15 +153,16 @@ se calhar tou a processar uma linha ou node a mais idk
 limites maximos de zoom, rotate, incline,
 se algum ficar fora dos limites de int, crasha
 
-. start point incline (talvez nao)
-inclina p cima, roda p baixo
+. zoom out planar
 
-. rotate down
+. start point incline
+inclina p cima, roda p baixo
 . limite maximo inclinar p cima
 (reconhecer os 2:1 e 2:2 positivos, acho que é com lm->y para cima)
 . rotação planar 2:1 fica estranha, trocar x por y, direçoes row e line
 tao boas
-rotate + incline estranho
+. incline em posiçoes nao iso e nao planar
+. incline down (fazer tudo direitinho up e copiar o inverso)
 
 --start point dos zooms--
 (ta mais ou menos mas nao fica perfeitamente alinhado)

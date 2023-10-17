@@ -103,7 +103,7 @@ void    incline(t_all *all, int order)
 em vez de proibir
 mfazer z * -1 e por na mesma
 
-. zoom out planar
+. incline em posiçoes nao iso e nao plan
 . rotações funcionam na perfeição, mas o incline ainda dá certos stresses
 se for feito num angulo estranho, tipo incline + rotate
 o proprio incline em si, lateral, sem ser nas posicoes iniciais,
