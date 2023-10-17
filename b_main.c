@@ -42,6 +42,8 @@ int	key_handler(int keycode, void *param)
 		do_plan((t_all *)param);
 	else if (keycode == 49)
 		do_iso((t_all *)param);
+	else if (keycode == 50)
+		do_inc((t_all *)param, 'u');
 	else if (keycode == 65307)
 		escape_close(keycode, param);
 	return 0;

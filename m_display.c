@@ -70,7 +70,7 @@ void	height_options(t_point *iter, int order)
 		else
 			iter->pixz = iter->pixz;
 	}
-	else if (order == 5)
+	else if (order == 0)
 		iter->pixz = 0;
 }
 

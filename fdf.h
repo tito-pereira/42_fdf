@@ -113,6 +113,7 @@ void	zoom(t_all *all, char order);
 void	do_rot(t_all *all, char order);
 void	do_plan(t_all *all);
 void	do_iso(t_all *all);
+void	do_inc(t_all *all, char order);
 t_matrix	*r_matrix(t_point *pts);
 t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 
@@ -120,8 +121,7 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 
 //eventos do rato e vetores (esc, rato, zoom, lateral, rotate)
 //fechar sem dar segfault
-//bonus (reset iso, rotate)
-//ver se bonus tem q compilar diferente
+
 /*
 . limites maximos de zoom
 . zoom mouse wheel
@@ -143,7 +143,7 @@ rotation fluida (nao sei como)
 
 //-------------------
 /*
-. incline
+. incline down
 . verificar como a altura se comporta naquelas inclinacoes de
 z = 0 e se recupera dessas
 
