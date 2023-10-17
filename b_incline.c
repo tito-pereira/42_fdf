@@ -26,6 +26,20 @@ int	inc_up_iso(t_matrix *rm, t_matrix *lm)
 	return (-1);
 }
 
+/*
+eu faço -= nos dois versores y, mas deve ser menos num e mais noutro
+aproximar ambos de zero
+quando é qual e qual?
+
+senao causa uma inclinação infinita
+
+eu tecnicamente poderia inclinar infinitamente...
+desde que comecasse a colocar o z negativo
+porque tenho o problema atual de nao
+acho que poderia era alterar o valor de z em si para negativo..
+seria uma melhor renderização.. até a cor automaticamente se ajustava com a altura
+*/
+
 int	inc_up_plan(t_matrix *rm, t_matrix *lm)
 {
 	if ((rm->y == 0 && lm->x == 0)
@@ -82,22 +96,19 @@ void    incline(t_all *all, int order)
 	free(start);
 }
 
-/*void	do_inc(t_all *all, char order)
-{
-	t_image	*new;
+/*
+. distinguir entre o 2:2 e 2:1 positivo e o negativo
+. sera que vale a pena sequer?
+. nas situaçoes limites
+em vez de proibir
+mfazer z * -1 e por na mesma
 
-	new = malloc(sizeof(t_image));
-	new->ptr = mlx_new_image(all->mlx->mlx, WIDTH, HEIGHT);
-    if (order == 'u')
-		incline(all, 1);
-	else if (order == 'd')
-		incline(all, 2);
-	display_lines(all->pts, new, all->grid);
-	display_rows(all->pts, new, all->grid);
-	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);
-	mlx_destroy_image(all->mlx->mlx, all->mlx->img);
-	all->mlx->img = new->ptr;
-}*/
+. zoom out planar
+. rotações funcionam na perfeição, mas o incline ainda dá certos stresses
+se for feito num angulo estranho, tipo incline + rotate
+o proprio incline em si, lateral, sem ser nas posicoes iniciais,
+funciona estranho
+*/
 
 /*
 int	inc_up_iso(t_matrix *rm, t_matrix *lm)

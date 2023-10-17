@@ -57,30 +57,3 @@ t_point	*create_points(t_grid *grid)
 	}
 	return (origin);
 }
-
-/*
-colocar heights do int *heights mais o seu respetivo (x, y)
-numa linked list t_points
-
-interessam me as linhas e colunas porque tambem quero colocar (x, y)
-dentro das linked lists
-
-total = numero de elementos do pointss
-while i <= total, create point
-
-coordenadas iniciais
-tenho que ajustar consoante o numero de rows e lines
-
-(para dar um hiperfoco)
-materia teorica total = 20 (em quantidade)
-um só projeto/engenharia = 40 (em quantidade)
-
-é normal desenvolver um hiperfoco gigante num só projeto de engenharia,
-com o mesmo esforco q temos para a teoria inteira
-devido à cache mental a partir do qual o nosso hiperfoco cresce
-por isso que é fundamental uniformizar práticas, técnicas e
-nomenclatura no código e na engenharia de software
-para ser mais facil transitar de projeto em projeto e rapidamente
-perceber o esquema geral de cada código e mais rapidamente entrar
-nesse hiperfoco
-*/

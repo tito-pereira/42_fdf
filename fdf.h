@@ -88,6 +88,11 @@ t_grid		*create_grid(char *arg);
 t_point		*create_points(t_grid *grid);
 void		new_iso(t_all *all, t_image *first);
 void		isometric(t_all *all, int order);
+//utils
+int			count_rows(char **points);
+int			count_lines(t_lines *lines);
+t_heights	*new_heights_node(char **str);
+t_lines		*new_lines_node(char *str);
 // framing
 void		display_lines(t_point *pts, t_image *first, t_grid *grid);
 void		display_rows(t_point *pts, t_image *first, t_grid *grid);
@@ -138,7 +143,40 @@ tamanho da window e grid mudam consoante o tamanho do mapa p exemplo
 ou apenas aumenta a escala do mapa
 ou ambos em simultaneo??
 rotation fluida (nao sei como)
+*/
 
+//-------------------
+
+/* ACABAR MANDATORIO
+. mouse events
+. problema da linha fantasma que se nota nos mapas simples
+se calhar tou a processar uma linha ou node a mais idk
+
+. start point inicial
+. start point planar
+*/
+
+/*
+. limites maximos
+limites maximos de zoom, rotate, incline,
+se algum ficar fora dos limites de int, crasha
+
+. start point incline (talvez nao)
+inclina p cima, roda p baixo
+
+. rotate down
+. limite maximo inclinar p cima
+(reconhecer os 2:1 e 2:2 positivos, acho que é com lm->y para cima)
+. rotação planar 2:1 fica estranha, trocar x por y, direçoes row e line
+tao boas
+rotate + incline estranho
+
+--start point dos zooms--
+(ta mais ou menos mas nao fica perfeitamente alinhado)
+*/
+
+//--------------------------
+/* NOTION
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	del(lst->content);
@@ -150,28 +188,17 @@ tipo de retorno, nome da funcao? (para a morada, nome do pointer
 e morada para onde aponta), e tambem o tipo de conteudo necessario
 para correr aquela função.
 se eu consigo por isto no meu display? nao sei
-*/
 
-//-------------------
-/*
-. limites maximos
-limites maximos de zoom, rotate, incline,
-se algum ficar fora dos limites de int, crasha
+(para dar um hiperfoco)
+materia teorica total = 20 (em quantidade)
+um só projeto/engenharia = 40 (em quantidade)
 
-. start point inicial maybe
-. start point incline (talvez nao)
-*/
-
-/*
-. rotate down
-. limite maximo inclinar p cima
-(reconhecer os 2:1 e 2:2 positivos, acho que é com lm->y para cima)
-. rotação planar 2:1 fica estranha, trocar x por y, direçoes row e line
-tao boas
-. corrigir o start point dos zooms que ja irrita
-
-if lm->y < 0 (linhas para cima, escrita ao contrario)
-
-ter cuidado com a divisao por zero
-experimentar !(modulo rm->x == modulo rm->y) 
+é normal desenvolver um hiperfoco gigante num só projeto de engenharia,
+com o mesmo esforco q temos para a teoria inteira
+devido à cache mental a partir do qual o nosso hiperfoco cresce
+por isso que é fundamental uniformizar práticas, técnicas e
+nomenclatura no código e na engenharia de software
+para ser mais facil transitar de projeto em projeto e rapidamente
+perceber o esquema geral de cada código e mais rapidamente entrar
+nesse hiperfoco
 */

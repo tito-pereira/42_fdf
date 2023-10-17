@@ -1,15 +1,5 @@
 #include "fdf.h"
 
-t_lines	*new_lines_node(char *str)
-{
-	t_lines	*new;
-
-	new = malloc(sizeof(t_lines));
-	new->line = str;
-	new->next = NULL;
-	return (new);
-}
-
 t_lines	*proc_lines(int fd, t_grid *grid)
 {
 	int		i;
@@ -31,16 +21,6 @@ t_lines	*proc_lines(int fd, t_grid *grid)
 	return (new);
 }
 
-t_heights	*new_heights_node(char **str)
-{
-	t_heights	*new;
-
-	new = malloc(sizeof(t_heights));
-	new->line = str;
-	new->next = NULL;
-	return (new);
-}
-
 t_heights	*proc_points(t_lines *lines)
 {
 	t_heights	*points;
@@ -56,29 +36,6 @@ t_heights	*proc_points(t_lines *lines)
 		lines = lines->next;
 	}
 	return (points);
-}
-
-int	count_rows(char **points)
-{
-	int	i;
-
-	i = 0;
-	while (points[i] != NULL)
-		i++;
-	return (i);
-}
-
-int	count_lines(t_lines *lines)
-{
-	int	i;
-
-	i = 0;
-	while (lines != NULL)
-	{
-		lines = lines->next;
-		i++;
-	}
-	return (i);
 }
 
 int	*proc_heights(t_heights *points, t_grid *grid)
