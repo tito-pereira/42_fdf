@@ -33,7 +33,7 @@ void	planar(t_all *all, int order)
 	start->x = (WIDTH / 6);
 	start->y = (HEIGHT / 2);
 	if (order == 1)
-		prep_pts(all, row, line, start, 3);
+		prep_pts(all, row, line, start, 5);
 	free(row);
 	free(line);
 	free(start);

@@ -55,6 +55,65 @@ void	display_lines(t_point *pts, t_image *first, t_grid *grid)
 	}
 }
 
+void	height_options(t_point *iter, t_matrix *rm, t_matrix *lm, int order)
+{
+	if (order == 1)
+		iter->pixz = iter->pixz * 2;
+	else if (order == 2)
+		iter->pixz = iter->pixz / 2;
+	else if (order == 3)
+		iter->pixz = (-1 * nmb_module(rm->x / 2) * iter->z);
+	else if (order == 33)
+		iter->pixz = (-1 * nmb_module(rm->x / 2) * iter->z) * 2;
+	else if (order == 4)
+		iter->pixz = iter->pixz;
+	else if (order == 5)
+		iter->pixz = (-1 * nmb_module((rm->x + lm->x) / 2) * iter->z);
+	else if (order == 55)
+		iter->pixz = (-1 * nmb_module((rm->x + lm->x) / 2) * iter->z) * 2;
+	else if (order == 0)
+		iter->pixz = 0;
+}
+
+void	prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int order)
+{
+	int	line;
+	int	row;
+	t_point	*iter;
+
+	line = 0;
+	row = 0;
+	iter = a->pts;
+	while (line < a->grid->lines)
+	{
+		row = 0;
+		while (row < a->grid->rows)
+		{
+			height_options(iter, r, l, order);
+			iter->pixx = s->x + (line * l->x) + (row * r->x);
+			iter->pixy = s->y + (line * l->y) + (row * r->y) + iter->pixz;
+			iter = iter->next;
+			row++;
+		}
+		line++;
+	}
+}
+
+//change display aqui?
+
+//p->pixz * 2; (-2 * SCALE * p->z)
+//if 1, *2, if 2, /2, if 3, ==
+/*if (order == 1 || order == 0)
+	iter->pixz = iter->pixz * 2 * order;*/
+//no entanto preciso de uma order reset para voltar do zero ao isometrico
+//ou apenas faço pixy = ... - (pixz) e o z mantem o seu valor e so muda
+//ou acresentar um if para o pixy q nao acrescenta o pixz
+
+/*
+para altura nula
+order 1 || order 0
+iter * 2 * order; (resulta tanto para 1 como para zero)
+
 void	height_options(t_point *iter, int order)
 {
 	if (order == 1 || order == 10)
@@ -100,21 +159,6 @@ void	prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int order)
 		line++;
 	}
 }
-
-//change display aqui?
-
-//p->pixz * 2; (-2 * SCALE * p->z)
-//if 1, *2, if 2, /2, if 3, ==
-/*if (order == 1 || order == 0)
-	iter->pixz = iter->pixz * 2 * order;*/
-//no entanto preciso de uma order reset para voltar do zero ao isometrico
-//ou apenas faço pixy = ... - (pixz) e o z mantem o seu valor e so muda
-//ou acresentar um if para o pixy q nao acrescenta o pixz
-
-/*
-para altura nula
-order 1 || order 0
-iter * 2 * order; (resulta tanto para 1 como para zero)
 
 while (line < grid->lines)
 {

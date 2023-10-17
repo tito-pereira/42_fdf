@@ -1,7 +1,10 @@
 #include "fdf.h"
 
 /*
-void	inc_down(t_matrix *rm, t_matrix *lm)
+int	inc_down_iso(t_matrix *rm, t_matrix *lm)
+{}
+
+int	inc_down_plan(t_matrix *rm, t_matrix *lm)
 {}
 */
 
@@ -14,27 +17,28 @@ int	inc_up_iso(t_matrix *rm, t_matrix *lm)
 		lm->y -= (nmb_module(rm->x) / 2);
 		if (rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 1)
 			return (0);
-		else if ()
-			ez;
-		return (4);
+		else if (rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 2)
+			return (3);
+		else if (rm->y == 0)
+			return (33);
+		return (3);
 	}
-	return (1);
+	return (-1);
 }
 
 int	inc_up_plan(t_matrix *rm, t_matrix *lm)
 {
-	int	ret;
-
-	ret = inc_up_iso(t_matrix *rm, t_matrix *lm); 
-	if (ret == 0 || ret == 4 || ret == 40)
-		return (ret);
 	if ((rm->y == 0 && lm->x == 0)
 		&& (!(lm->y < 0 && nmb_module(rm->x) / nmb_module(lm->y) == 1)))
 	{
 		lm->y -= (nmb_module(rm->x) / 2);
 		if (lm->y < 0 && nmb_module(rm->x) / nmb_module(lm->y) == 1)
 			return (0);
-		//else if (), return (40)
+		else if (lm->y < 0 && nmb_module(rm->x) / nmb_module(lm->y) == 2)
+			return (5);
+		else if (lm->y == 0)
+			return (55);
+		return (5);
 	}
 	else if ((rm->x == 0 && lm->y == 0)
 		&& (!(rm->y < 0 && nmb_module(lm->x) / nmb_module(rm->y) == 1)))
@@ -42,26 +46,26 @@ int	inc_up_plan(t_matrix *rm, t_matrix *lm)
 		rm->y -= (nmb_module(lm->x) / 2);
 		if (rm->y < 0 && nmb_module(lm->x) / nmb_module(rm->y) == 1)
 			return (0);
+		else if (rm->y < 0 && nmb_module(lm->x) / nmb_module(rm->y) == 2)
+			return (5);
+		else if (rm->y == 0)
+			return (55);
+		return (5);
 	}
-	//return (1);
-	else
-		return (1); //nao entra em nada, dar free e sair
-	return (4);
+	return (inc_up_iso(rm, lm));
 }
 
 /*
+. limite maximo na inclinação p cima
+. rotação planar 2:1 fica estranha, trocar x por y, direçoes row e line
+tao boas
+
+if lm->y < 0 (linhas para cima, escrita ao contrario)
 
 ter cuidado com a divisao por zero
 experimentar !(modulo rm->x == modulo rm->y) 
 
 ate atingir o valor maximo de inclinação e z = 0
-
-como escolher o numero de escrita do z?
-sair do nivel minimo - condicao 3 (reset)
-ou condicao 4 (manter)
-entrar no nivel maximo - condicao 0
-retorno 1, nao entra, ja ta na inclinação maxima,
-dar free e retornar
 */
 
 
@@ -79,12 +83,13 @@ void    incline(t_all *all, int order)
 	start->y = all->pts->pixy;
 	lm = l_matrix(all->pts, all->grid);
 	//printf("before\nrm:%d, %d\nlm:%d, %d\n", rm->x, rm->y, lm->x, lm->y);
+	//condicoes de inclinação maxima
 	if (order == 1)
-		z = inc_up(rm, lm);
+		z = inc_up_plan(rm, lm);
 	//printf("after\nrm:%d, %d\nlm:%d, %d\n", rm->x, rm->y, lm->x, lm->y);
 	//else if (order == 2)
 		//z = inc_down();
-    if (z != 1)
+    if (z != -1)
 		prep_pts(all, rm, lm, start, z);
 	free(rm);
     free(lm);
@@ -109,6 +114,47 @@ void	do_inc(t_all *all, char order)
 }
 
 /*
+int	inc_up_iso(t_matrix *rm, t_matrix *lm)
+{
+	if ((lm->x == rm->x || lm->x == (rm->x * (-1)))
+		&& (!(rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 1)))
+	{
+		rm->y -= (nmb_module(rm->x) / 2);
+		lm->y -= (nmb_module(rm->x) / 2);
+		if (rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 1)
+			return (0);
+		else if (rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 2)
+			return (40);
+		return (4);
+	}
+	return (1);
+}
+
+int	inc_up_plan(t_matrix *rm, t_matrix *lm)
+{
+	if ((rm->y == 0 && lm->x == 0)
+		&& (!(lm->y < 0 && nmb_module(rm->x) / nmb_module(lm->y) == 1)))
+	{
+		lm->y -= (nmb_module(rm->x) / 2);
+		if (lm->y < 0 && nmb_module(rm->x) / nmb_module(lm->y) == 1)
+			return (0);
+		else if (lm->y < 0 && nmb_module(rm->x) / nmb_module(lm->y) == 2)
+			return (40);
+		return (4);
+	}
+	else if ((rm->x == 0 && lm->y == 0)
+		&& (!(rm->y < 0 && nmb_module(lm->x) / nmb_module(rm->y) == 1)))
+	{
+		rm->y -= (nmb_module(lm->x) / 2);
+		if (rm->y < 0 && nmb_module(lm->x) / nmb_module(rm->y) == 1)
+			return (0);
+		else if (rm->y < 0 && nmb_module(lm->x) / nmb_module(rm->y) == 2)
+			return (40);
+		return (4);
+	}
+	return (inc_up_iso(rm, lm));
+}
+
 void	inc_up_plan(t_matrix *rm, t_matrix *lm)
 {
 	else if (rm->y == 0 && lm->x == 0) //C

@@ -50,7 +50,7 @@ void	rot_right(t_matrix *rm, t_matrix *lm)
 	lm->y = tmpy;
 }
 
-void	rot_aux(t_all *all, t_matrix *rm, t_matrix *lm, t_matrix *start)
+/*void	rot_aux(t_all *all, t_matrix *rm, t_matrix *lm, t_matrix *start)
 {
 	int	z;
 
@@ -58,12 +58,10 @@ void	rot_aux(t_all *all, t_matrix *rm, t_matrix *lm, t_matrix *start)
 	if (nmb_module(rm->y) == nmb_module(lm->x)
 		|| nmb_module(rm->x) == nmb_module(lm->y))
 		z = 0;
-	//else if ()
-		//z = 40; //virado p baixo
 	else
 		z = 4;
 	prep_pts(all, rm, lm, start, z);
-}
+}*/
 
 void    rotate(t_all *all, int order)
 {
@@ -86,7 +84,8 @@ void    rotate(t_all *all, int order)
 		rot_right(rm, lm);
 	else if (order == 2)
 		rot_left(rm, lm);
-	rot_aux(all, rm, lm, start);
+	//rot_aux(all, rm, lm, start);
+	prep_pts(all, rm, lm, start, 4);
 	free(rm);
     free(lm);
 	free(start);
