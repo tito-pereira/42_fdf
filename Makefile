@@ -46,11 +46,3 @@ re: fclean all
 
 bonus:	$(OBJ) $(B_OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(B_OBJ) $(A_LIB) -o $(NAME)
-
-#$(NAME): wire\
-	$(CC) $(CFLAGS) $(SRC) $(A_LIB) $(LIBF) -o $(NAME)\
-all: $(NAME)
- #libmylibrary.a file1.o file2.o
-#	./extra/m_grid.c ./extra/m_points.c ./extra/m_isometric.c \
-	./extra/m_utils.c ./extra/m_display.c ./extra/m_draw_line.c \
-	./extra/m_matrix.c ./extra/m_count.c ./extra/m_write.c

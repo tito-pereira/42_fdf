@@ -1,4 +1,4 @@
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 void	move_cam(t_all *all, int order)
 {
