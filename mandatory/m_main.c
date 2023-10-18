@@ -1,44 +1,50 @@
 #include "fdf.h"
 
-int	escape_close(int keycode, void *param) {
+int	escape_close(int keycode, void *param)
+{
 	t_all *all;
+	
 	all = (t_all *)param;
-	//printf("escaping with keycode:%d\n", keycode);
-	if (keycode == 65307) {
-		//free everything
-		//printf("ESC pressed. Beginning exit sequence.\n");
+	if (keycode == 65307)
+	{
 		mlx_destroy_image(all->mlx->mlx, all->mlx->img);
-		//printf("image destroyed\n");
 		mlx_destroy_window(all->mlx->mlx, all->mlx->win);
-		//printf("window destroyed\n");
-		mlx_destroy_display(all->mlx->mlx);
-		//printf("display destroyed\n");
+		mlx_loop_end(all->mlx->mlx);
 	}
-	return 0;
+	return (0);
 }
 
-int	main(int ac, char **av) {
-	t_mlx	*mlx;
-	t_grid	*grid;
-	t_point	*points;
-	t_image	*first;
+t_all	*create_all(t_mlx *mlx, t_grid *grid, t_point *pts)
+{
 	t_all	*all;
 
-	if (ac == 2) {
-		all = malloc(sizeof(t_all));
+	all = malloc(sizeof(t_all));
+	all->mlx = mlx;
+	all->grid = grid;
+	all->pts = pts;
+	return (all);
+}
+
+int	main(int ac, char **av)
+{
+	t_mlx	*mlx;
+	t_grid	*grid;
+	t_point	*pts;
+	t_all	*all;
+
+	if (ac == 2 && check_file(av[1]) == 1)
+	{
 		grid = create_grid(av[1]);
-		points = create_points(grid);
-		first = malloc(sizeof(t_image));
+		pts = create_points(grid);
 		mlx = malloc(sizeof(t_mlx));
 		mlx->mlx = mlx_init();
 		mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "fdf");
-		first->ptr = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
-		all->mlx = mlx;
-		all->grid = grid;
-		all->pts = points;
-		new_iso(all, first);
+		all = create_all(mlx, grid, pts);
+		new_iso(all);
 		mlx_key_hook(mlx->win, escape_close, (void *)all);
 		mlx_loop(mlx->mlx);
+		//free_everything(all);
+		mlx_destroy_display(mlx->mlx);
 	}
 }
 

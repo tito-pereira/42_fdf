@@ -4,37 +4,53 @@ CC= cc
 CFLAGS= -Wall -Wextra -Werror
 GDB= cc -g
 RM= rm -rf
-SRC= m_main.c \
-	m_grid.c m_points.c m_isometric.c m_utils.c\
-	m_display.c m_draw_line.c m_matrix.c m_count.c m_write.c
-BONUS= b_main.c \
-	m_grid.c m_points.c m_isometric.c m_utils.c\
-	m_display.c m_draw_line.c m_matrix.c m_count.c m_write.c \
-	b_utils.c b_move_cam.c b_zoom.c b_rotate.c b_planar.c b_incline.c
+MAIN= ./mandatory/m_main.c
+SRC= ./mandatory/m_grid.c ./mandatory/m_points.c ./mandatory/m_isometric.c \
+	./mandatory/m_utils.c ./mandatory/m_display.c ./mandatory/m_draw_line.c \
+	./mandatory/m_matrix.c ./mandatory/m_count.c ./mandatory/m_write.c
+BONUS= ./extra/main_bonus.c \
+	./extra/utils_bonus.c ./extra/mv_cam_bonus.c \
+	./extra/zoom_bonus.c ./extra/rotate_bonus.c \
+	./extra/planar_bonus.c ./extra/incline_bonus.c
 LIB1= -L../minilibx-linux/ -lmlx -lXext -lX11 -lm
 LIB2= -L./getnext/ -lget
 LIB3= -L./libft/ -lft
 A_LIB= $(LIB1) $(LIB2) $(LIB3)
+AR= ar -rcs
+ARCH= libfdf.a
+LIBF= -L. -lfdf
+MOBJ= ${MAIN:.c=.o} 
 OBJ= ${SRC:.c=.o}
 B_OBJ= ${BONUS:.c=.o}
 
-$(NAME):
-	$(CC) $(CFLAGS) $(SRC) $(A_LIB) -o $(NAME)
-
 all: $(NAME)
+
+$(NAME): $(MOBJ) $(OBJ)
+	$(CC) $(CFLAGS) $(MOBJ) $(OBJ) $(A_LIB) -o $(NAME)
+
+wire: $(OBJ)
+	$(AR) $(ARCH) $(OBJ)
+
+gdb:
+	$(GDB) $(CFLAGS) $(MAIN) $(SRC) $(A_LIB) -o $(NAME)
+
+clean:
+	$(RM) $(MOBJ) $(OBJ) ${B_OBJ}
+
+fclean: clean
+	$(RM) $(NAME) $(ARCH)
+
+re: fclean all
 
 .PHONY: bonus
 
-bonus:
-	$(CC) $(CFLAGS) $(BONUS) $(A_LIB) -o $(NAME)
+bonus:	$(OBJ) $(B_OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(B_OBJ) $(A_LIB) -o $(NAME)
 
-gdb:
-	$(GDB) $(CFLAGS) $(SRC) $(A_LIB) -o $(NAME)
-
-clean:
-	$(RM) $(OBJ) ${B_OBJ}
-
-fclean: clean
-	$(RM) $(NAME)
-
-re: fclean all
+#$(NAME): wire\
+	$(CC) $(CFLAGS) $(SRC) $(A_LIB) $(LIBF) -o $(NAME)\
+all: $(NAME)
+ #libmylibrary.a file1.o file2.o
+#	./extra/m_grid.c ./extra/m_points.c ./extra/m_isometric.c \
+	./extra/m_utils.c ./extra/m_display.c ./extra/m_draw_line.c \
+	./extra/m_matrix.c ./extra/m_count.c ./extra/m_write.c
