@@ -130,10 +130,7 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 .tudo no repositorio
 --
 
-.makefile bonus, .h bonus, main bonus, make libft e getnext
-- um ficheiro .h só para o bonus?
 - onde fica a pasta do minilibx? dentro do meu repositorio?
-.PHONY
 */
 
 //-------------------
@@ -149,6 +146,7 @@ Makefile must compile the library by using its Makefile, then compile the projec
 libft
 . inside a libft folder c o seu libft Makefile
 . o make do fdf deve fazer make no libft primeiro
+. bonus com os seus _bonus.c e .h
 */
 
 /* ACABAR MANDATORIO
@@ -157,7 +155,6 @@ libft
 . problema da linha fantasma que se nota nos mapas simples
 se calhar tou a processar uma linha ou node a mais idk
 
-. adicionar o reconhecimento da extensao ".fdf"
 
 . start point inicial (rows, lines, max height etc)
 . start point planar (rows, max height)

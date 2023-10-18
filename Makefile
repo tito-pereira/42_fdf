@@ -18,7 +18,7 @@ LIB3= -L./libft/ -lft
 A_LIB= $(LIB1) $(LIB2) $(LIB3)
 AR= ar -rcs
 ARCH= libfdf.a
-LIBF= -L. -lfdf
+LFDF= -L. -lfdf
 MOBJ= ${MAIN:.c=.o} 
 OBJ= ${SRC:.c=.o}
 B_OBJ= ${BONUS:.c=.o}
@@ -26,6 +26,8 @@ B_OBJ= ${BONUS:.c=.o}
 all: $(NAME)
 
 $(NAME): $(MOBJ) $(OBJ)
+	make -C ./libft
+	make -C ./getnext
 	$(CC) $(CFLAGS) $(MOBJ) $(OBJ) $(A_LIB) -o $(NAME)
 
 wire: $(OBJ)
@@ -35,9 +37,13 @@ gdb:
 	$(GDB) $(CFLAGS) $(MAIN) $(SRC) $(A_LIB) -o $(NAME)
 
 clean:
+	cd ./libft && make clean
+	cd ./getnext && make clean
 	$(RM) $(MOBJ) $(OBJ) ${B_OBJ}
 
 fclean: clean
+	cd ./libft && make fclean
+	cd ./getnext && make fclean
 	$(RM) $(NAME) $(ARCH)
 
 re: fclean all
@@ -46,3 +52,12 @@ re: fclean all
 
 bonus:	$(OBJ) $(B_OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(B_OBJ) $(A_LIB) -o $(NAME)
+
+#target:\
+    make -C /path/to/other/makefile/directory\
+clean:\
+    cd /path && make clean\
+\
+a flag -C so funciona em especifico para o comando make (especial)\
+a regra clean so muda de directory temporariamente
+
