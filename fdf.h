@@ -1,7 +1,7 @@
 #ifndef FDF_H
 # define FDF_H
 
-# include "../minilibx-linux/mlx.h"
+# include "./minilibx-linux/mlx.h"
 # include "./libft/libft.h"
 # include "./getnext/get_next_line.h"
 # include <stdio.h> //printf caseira (acho q n preciso, talvez so p msgs erro?)
@@ -138,6 +138,15 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 */
 
 //-------------------
+
+/*
+If your project allows you to use your libft, you must copy its sources and its
+associated Makefile in a libft folder with its associated Makefile. Your project’s
+Makefile must compile the library by using its Makefile, then compile the project.
+libft
+. inside a libft folder c o seu libft Makefile
+. o make do fdf deve fazer make no libft primeiro
+*/
 
 /* ACABAR MANDATORIO
 . como fechar a window no X (ver githubs porque nao e c minilibx)
