@@ -30,10 +30,8 @@ void	planar(t_all *all, int order)
 	line->x = 0;
 	line->y = 0;
 	start = malloc(sizeof(t_matrix));
-	start->x = (WIDTH / 12);
-	if (all->grid->rows > 200)
-		start->x = 50;
-	start->y = (HEIGHT / 8) * 7;
+	start->x = (WIDTH / 2) - (all->grid->rows / 2) * row->x;
+	start->y = (HEIGHT / 2);
 	if (order == 1)
 		prep_pts(all, row, line, start, 5);
 	free(row);
@@ -42,7 +40,20 @@ void	planar(t_all *all, int order)
 }
 
 /*
+start->x = (WIDTH / 12);
+	if (all->grid->rows > 200)
+		start->x = 50;
+	start->y = (HEIGHT / 8) * 7;
+
 devia arranjar uma max height para usar aqui na posição inicial
+
+start->x = (WIDTH / 2) -= (all->grid->rows / 2) * row->x
+start->y = (HEIGHT / 2)
+
+(all->grid->maxz * calculo do z) / 2
+start->y += nmb_module((rm->x + lm->x) / 2) * (all->grid->maxz / 2)
+if (start->y > 790)
+	start->y = 790;
 
 (-1 * nmb_module((rm->x + lm->x) / 2) * iter->z)
 

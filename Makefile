@@ -51,6 +51,8 @@ re: fclean all
 .PHONY: bonus
 
 bonus:	$(OBJ) $(B_OBJ)
+	make -C ./libft
+	make -C ./getnext
 	$(CC) $(CFLAGS) $(OBJ) $(B_OBJ) $(A_LIB) -o $(NAME)
 
 #target:\
