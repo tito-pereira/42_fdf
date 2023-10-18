@@ -50,8 +50,12 @@ void    isometric(t_all *all, int order)
 	free(start);
 }
 
-void	new_iso(t_all *all, t_image *first)
+void	new_iso(t_all *all)
 {
+	t_image	*first;
+
+	first = malloc(sizeof(t_image));
+	first->ptr = mlx_new_image(all->mlx->mlx, WIDTH, HEIGHT);
 	isometric(all, 1);
 	display_lines(all->pts, first, all->grid);
 	display_rows(all->pts, first, all->grid);

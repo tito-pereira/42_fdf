@@ -86,7 +86,7 @@ typedef	struct s_all {
 void		write_image(t_image *img, int x, int y, int color);
 t_grid		*create_grid(char *arg);
 t_point		*create_points(t_grid *grid);
-void		new_iso(t_all *all, t_image *first);
+void		new_iso(t_all *all);
 void		isometric(t_all *all, int order);
 //utils
 int			count_rows(char **points);
@@ -132,14 +132,20 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 .makefile bonus, .h bonus, main bonus, make libft e getnext
 - um ficheiro .h só para o bonus?
 - onde fica a pasta do minilibx? dentro do meu repositorio?
-.define == variaveis globais?
+.define == variaveis globais? NAO
 .sera que posso tirar aquela condiçao if (ac == 2)?
+acho que nao, para o programa nao crashar se correr sem mapa
 - sera que tenho de verificar o titulo por uma extensao ".fdf"?
+talvez.. diz de facto que tem que ser um ".fdf" file
 */
 
 //-------------------
 
 /*
+Makefile e executavel tem de ser no root do repositorio
+however, posso ter as pastas que quiser para o resto
+uma mandatory, outra bonus, etc
+
 If your project allows you to use your libft, you must copy its sources and its
 associated Makefile in a libft folder with its associated Makefile. Your project’s
 Makefile must compile the library by using its Makefile, then compile the project.
@@ -150,8 +156,11 @@ libft
 
 /* ACABAR MANDATORIO
 . como fechar a window no X (ver githubs porque nao e c minilibx)
+
 . problema da linha fantasma que se nota nos mapas simples
 se calhar tou a processar uma linha ou node a mais idk
+
+. adicionar o reconhecimento da extensao ".fdf"
 
 . start point inicial (rows, lines, max height etc)
 . start point planar (rows, max height)

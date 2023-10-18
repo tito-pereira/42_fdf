@@ -1,21 +1,23 @@
 #include "fdf.h"
 
-int	escape_close(int keycode, void *param) {
+int	escape_close(int keycode, void *param)
+{
 	t_all *all;
+	
 	all = (t_all *)param;
-	if (keycode == 65307) {
+	if (keycode == 65307)
+	{
 		mlx_destroy_image(all->mlx->mlx, all->mlx->img);
 		mlx_destroy_window(all->mlx->mlx, all->mlx->win);
 		mlx_loop_end(all->mlx->mlx);
 	}
-	return 0;
+	return (0);
 }
 int mouse_handler(int button, int x, int y, void *param)
 {
 	t_all	*all;
 
 	all = (t_all *)param;
-	//printf("button:%d, x:%d, y:%d\n", button, x, y);
 	if (x > 0 && y > 0)
 	{
 		if (button == 4)
@@ -56,44 +58,37 @@ int	key_handler(int keycode, void *param)
 else if (keycode == 65364)
 	change_frame((t_all *)param, 2, 2);*/
 
-int	main(int ac, char **av) {
-	t_mlx	*mlx;
-	t_grid	*grid;
-	t_point	*points;
-	t_image	*first;
+t_all	*create_all(t_mlx *mlx, t_grid *grid, t_point *pts)
+{
 	t_all	*all;
 
-	if (ac == 2) {
-		all = malloc(sizeof(t_all));
+	all = malloc(sizeof(t_all));
+	all->mlx = mlx;
+	all->grid = grid;
+	all->pts = pts;
+	return (all);
+}
+
+int	main(int ac, char **av)
+{
+	t_mlx	*mlx;
+	t_grid	*grid;
+	t_point	*pts;
+	t_all	*all;
+
+	if (ac == 2)
+	{
 		grid = create_grid(av[1]);
-		points = create_points(grid);
-		first = malloc(sizeof(t_image));
+		pts = create_points(grid);
 		mlx = malloc(sizeof(t_mlx));
 		mlx->mlx = mlx_init();
 		mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "fdf");
-		first->ptr = mlx_new_image(mlx->mlx, WIDTH, HEIGHT);
-		all->mlx = mlx;
-		all->grid = grid;
-		all->pts = points;
-		new_iso(all, first);
+		all = create_all(mlx, grid, pts);
+		new_iso(all);
 		mlx_key_hook(mlx->win, key_handler, (void *)all);
 		mlx_mouse_hook(mlx->win, mouse_handler, (void *)all);
 		mlx_loop(mlx->mlx);
+		//free_everything(all);
 		mlx_destroy_display(mlx->mlx);
 	}
 }
-
-/*
-mouse events
-
-mlx_mouse_hook (win *, (f*), void *param)
-int (*f)(int button, int x, int y, void *param)
-
-botoes mouse
-Left click: 1
-Right click: 3
-Middle click: 2
-Scroll up: 4
-Scroll down : 5
-testar
-*/
