@@ -133,11 +133,7 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 .makefile bonus, .h bonus, main bonus, make libft e getnext
 - um ficheiro .h só para o bonus?
 - onde fica a pasta do minilibx? dentro do meu repositorio?
-.define == variaveis globais? NAO
-.sera que posso tirar aquela condiçao if (ac == 2)?
-acho que nao, para o programa nao crashar se correr sem mapa
-- sera que tenho de verificar o titulo por uma extensao ".fdf"?
-talvez.. diz de facto que tem que ser um ".fdf" file
+.PHONY
 */
 
 //-------------------
