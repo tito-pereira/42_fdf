@@ -83,6 +83,7 @@ typedef	struct s_all {
 	t_point	*pts;
 }	t_all;
 
+int			check_file(char *name);
 void		write_image(t_image *img, int x, int y, int color);
 t_grid		*create_grid(char *arg);
 t_point		*create_points(t_grid *grid);

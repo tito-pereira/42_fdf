@@ -76,7 +76,7 @@ int	main(int ac, char **av)
 	t_point	*pts;
 	t_all	*all;
 
-	if (ac == 2)
+	if (ac == 2 && check_file(av[1]) == 1)
 	{
 		grid = create_grid(av[1]);
 		pts = create_points(grid);
