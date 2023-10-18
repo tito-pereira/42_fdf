@@ -22,7 +22,7 @@ $(NAME):
 all: $(NAME)
 
 bonus:
-	$(CC) $(CFLAGS) $(BONUS) $(LIB) $(LIB2) $(LIB3) -o $(NAME)
+	$(CC) -g $(CFLAGS) $(BONUS) $(LIB) $(LIB2) $(LIB3) -o $(NAME)
 
 gdb:
 	$(CC) -g $(CFLAGS) $(SRC) $(LIB) $(LIB2) $(LIB3) -o $(NAME)

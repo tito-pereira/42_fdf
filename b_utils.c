@@ -42,14 +42,6 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid)
 }
 
 /*
-void	change_frame(t_all *all, int function, char order);
-void	move_cam(t_all *all, char order);
-void	zoom(t_all *all, char order);
-void	do_plan(t_all *all);
-void	do_iso(t_all *all);
-void	do_rot(t_all *all, char order);
-void	do_inc(t_all *all, char order);
-
 1 - move_cam
 2 - zoom
 3 - planar

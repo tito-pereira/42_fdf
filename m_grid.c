@@ -80,6 +80,7 @@ t_grid	*create_grid(char *arg)
 	grid->rows = count_rows(points->line);
 	grid->total = grid->lines * grid->rows;
 	grid->heights = proc_heights(points, grid);
+	close (fd);
 	return (grid);
 }
 

@@ -140,7 +140,7 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 //-------------------
 
 /* ACABAR MANDATORIO
-. mouse events (escape, resize, minimizar, zoom)
+. como fechar a window no X (ver githubs porque nao e c minilibx)
 . problema da linha fantasma que se nota nos mapas simples
 se calhar tou a processar uma linha ou node a mais idk
 
@@ -166,6 +166,8 @@ tao boas
 
 --start point dos zooms--
 (ta mais ou menos mas nao fica perfeitamente alinhado)
+--start point iso--
+(so centro a grid, cago na altura)
 */
 
 //--------------------------

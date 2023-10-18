@@ -39,8 +39,10 @@ void    isometric(t_all *all, int order)
 	get_matrix(all->grid, &(mx->x), &(mx->y));
 	my->x = -1 * mx->x;
 	my->y = mx->y;
-	start->x = (WIDTH / 2);
-	start->y = (HEIGHT / 4);
+	start->x = (WIDTH / 2) - ((all->grid->rows / 2) * mx->x);
+	start->y = (HEIGHT / 2) - ((all->grid->rows / 2) * mx->y);
+	start->x -= (all->grid->lines / 2) * my->x;
+	start->y -= (all->grid->lines / 2) * my->y;
 	if (order == 1)
 		prep_pts(all, mx, my, start, 3);
 	free(mx);
@@ -57,7 +59,9 @@ void	new_iso(t_all *all, t_image *first)
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, all->mlx->img, 0, 0);
 }
 
-/*void	do_iso(t_all *all, char order)
+/*
+(-1 * nmb_module(rm->x / 2) * iter->z)
+void	do_iso(t_all *all, char order)
 {
 	t_image	*new;
 
