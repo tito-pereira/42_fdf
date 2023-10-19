@@ -35,10 +35,10 @@ int	inc_down_iso(t_matrix *rm, t_matrix *lm)
 int	inc_down_plan(t_matrix *rm, t_matrix *lm)
 {
 	if ((rm->y == 0 && lm->x == 0) //C
-		&& (!(lm->y != 0 && rm->x / lm->y == -1)))
+		&& (!(lm->y != 0 && rm->x / lm->y == 1)))
 	{
 		//printf("hori\nbefore, rx:%d ly:%d\n", rm->x, lm->y);
-		lm->y -= (rm->x / 2);
+		lm->y += (rm->x / 2);
 		//printf("after, rx:%d ly:%d\n", rm->x, lm->y);
 		if (lm->y != 0 && nmb_module(rm->x) / nmb_module(lm->y) == 1)
 			return (0);
@@ -47,10 +47,10 @@ int	inc_down_plan(t_matrix *rm, t_matrix *lm)
 		return (5);
 	}
 	else if ((rm->x == 0 && lm->y == 0)
-		&& (!(rm->y != 0 && lm->x / rm->y == -1))) //D
+		&& (!(rm->y != 0 && lm->x / rm->y == 1))) //D
 	{
 		//printf("verti\nbefore, ry:%d lx:%d\n", rm->y, lm->x);
-		rm->y -= (lm->x / 2);
+		rm->y += (lm->x / 2);
 		//printf("after, ry:%d lx:%d\n", rm->y, lm->x);
 		if (rm->y != 0 && nmb_module(lm->x) / nmb_module(rm->y) == 1)
 			return (0);

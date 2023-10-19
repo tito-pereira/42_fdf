@@ -39,7 +39,7 @@ int	key_handler(int keycode, void *param)
 		change_frame((t_all *)param, 1, 3);
 	else if (keycode == 100)
 		change_frame((t_all *)param, 1, 4);
-	else if (keycode == 32)
+	else if (keycode == 50)
 		change_frame((t_all *)param, 3, 1);
 	else if (keycode == 49)
 		change_frame((t_all *)param, 4, 1);
@@ -47,9 +47,9 @@ int	key_handler(int keycode, void *param)
 		change_frame((t_all *)param, 5, 1);
 	else if (keycode == 65361)
 		change_frame((t_all *)param, 5, 2);
-	else if (keycode == 50)
+	else if (keycode == 65362)
 		change_frame((t_all *)param, 6, 1);
-	else if (keycode == 51)
+	else if (keycode == 65364)
 		change_frame((t_all *)param, 6, 2);
 	else if (keycode == 65307)
 		escape_close(keycode, param);
