@@ -41,6 +41,15 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid)
 	return (new);
 }
 
+void	invert_z(t_point *pts)
+{
+	while (pts != NULL)
+	{
+		pts->z *= -1;
+		pts = pts->next;
+	}
+}
+
 /*
 1 - move_cam
 2 - zoom

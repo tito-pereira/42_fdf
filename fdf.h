@@ -158,8 +158,6 @@ libft
 limites maximos de zoom, rotate, incline,
 se algum ficar fora dos limites de int, crasha
 
-. zoom out planar
-
 . start point incline
 inclina p cima, roda p baixo
 . limite maximo inclinar p cima
@@ -171,6 +169,8 @@ tao boas
 
 --start point dos zooms--
 (ta mais ou menos mas nao fica perfeitamente alinhado)
+--zoom out planar--
+(acho que ta mas nao testei tudo)
 */
 
 //--------------------------

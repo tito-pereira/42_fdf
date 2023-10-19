@@ -1,24 +1,42 @@
 #include "fdf_bonus.h"
 
-/*
+
 int	inc_down_iso(t_matrix *rm, t_matrix *lm)
 {}
 
+/*
 int	inc_down_plan(t_matrix *rm, t_matrix *lm)
 {}
 */
 
 int	inc_up_iso(t_matrix *rm, t_matrix *lm)
 {
-	if ((lm->x == rm->x || lm->x == (rm->x * (-1)))
-		&& (!(rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 1)))
+	if ((lm->x == -rm->x) //B
+		&& (!(rm->y != 0 && rm->x / rm->y == -1)))
 	{
-		rm->y -= (nmb_module(rm->x) / 2);
-		lm->y -= (nmb_module(rm->x) / 2);
-		if (rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 1)
+		//printf("before, ry:%d ly:%d\n", rm->y, lm->y);
+		rm->y -= (rm->x / 2); //1 ,-->+ (-)
+		lm->y -= (rm->x / 2); //1 ,+->+ (+)
+		//printf("after, ry:%d ly:%d\n", rm->y, lm->y);
+		if (rm->y != 0 && nmb_module(rm->x) / nmb_module(rm->y) == 1)
 			return (0);
-		else if (rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 2)
-			return (3);
+		/*else if (rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 2)
+			return (3);*/
+		else if (rm->y == 0)
+			return (33);
+		return (3);
+	}
+	else if ((lm->x == rm->x) //A
+		&& (!(rm->y != 0 && rm->x / rm->y == 1)))
+	{
+		//printf("before, ry:%d ly:%d\n", rm->y, lm->y);
+		rm->y += (rm->x / 2); //-1 ,+->- (-)
+		lm->y -= (rm->x / 2); //-1 ,-->+ (+)
+		//printf("after, ry:%d ly:%d\n", rm->y, lm->y);
+		if (rm->y != 0 && nmb_module(rm->x) / nmb_module(rm->y) == 1) //os dois extremos
+			return (0);
+		//else if (rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 2)
+			//return (3);
 		else if (rm->y == 0)
 			return (33);
 		return (3);
@@ -27,22 +45,19 @@ int	inc_up_iso(t_matrix *rm, t_matrix *lm)
 }
 
 /*
-eu faço -= nos dois versores y, mas deve ser menos num e mais noutro
-aproximar ambos de zero
-quando é qual e qual?
+1 - rotacao infinita e inversao do pts->z
 
-senao causa uma inclinação infinita
+2 - rotacao em nao iso e nao plan
+nao existe posicoes fora do scope do que eu ja planeei, por isso
+b funciona bem, a nao me parece
 
-eu tecnicamente poderia inclinar infinitamente...
-desde que comecasse a colocar o z negativo
-porque tenho o problema atual de nao
-acho que poderia era alterar o valor de z em si para negativo..
-seria uma melhor renderização.. até a cor automaticamente se ajustava com a altura
+mal resolva a inclinacao direito, a unica coisa q preciso de fazer nos extremos
+e inverter z, depois encaixa na inclinacao infinita
 */
 
 int	inc_up_plan(t_matrix *rm, t_matrix *lm)
 {
-	if ((rm->y == 0 && lm->x == 0)
+	if ((rm->y == 0 && lm->x == 0) //C
 		&& (!(lm->y < 0 && nmb_module(rm->x) / nmb_module(lm->y) == 1)))
 	{
 		lm->y -= (nmb_module(rm->x) / 2);
@@ -54,7 +69,7 @@ int	inc_up_plan(t_matrix *rm, t_matrix *lm)
 			return (55);
 		return (5);
 	}
-	else if ((rm->x == 0 && lm->y == 0)
+	else if ((rm->x == 0 && lm->y == 0) //D
 		&& (!(rm->y < 0 && nmb_module(lm->x) / nmb_module(rm->y) == 1)))
 	{
 		rm->y -= (nmb_module(lm->x) / 2);
@@ -67,6 +82,16 @@ int	inc_up_plan(t_matrix *rm, t_matrix *lm)
 		return (5);
 	}
 	return (inc_up_iso(rm, lm));
+}
+
+int	inc_up_central(t_matrix *rm, t_matrix *lm)
+{
+	//pra ja nao inverter nada, apenas fazer travao
+	if (rm->y != 0 && rm->x / rm->y == -1) //B
+		return (0);
+	else if (rm->y != 0 && rm->x / rm->y == 1) //A
+		return (0);
+	return (inc_up_plan(rm, lm));
 }
 
 void    incline(t_all *all, int order)
@@ -87,8 +112,8 @@ void    incline(t_all *all, int order)
 	if (order == 1)
 		z = inc_up_plan(rm, lm);
 	//printf("after\nrm:%d, %d\nlm:%d, %d\n", rm->x, rm->y, lm->x, lm->y);
-	//else if (order == 2)
-		//z = inc_down();
+	else if (order == 2)
+		z = inc_down_iso(rm, lm);
     if (z != -1)
 		prep_pts(all, rm, lm, start, z);
 	free(rm);
@@ -113,18 +138,35 @@ funciona estranho
 /*
 int	inc_up_iso(t_matrix *rm, t_matrix *lm)
 {
-	if ((lm->x == rm->x || lm->x == (rm->x * (-1)))
+	if ((lm->x == (rm->x * (-1))) //B
 		&& (!(rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 1)))
 	{
+		//printf("before, ry:%d ly:%d\n", rm->y, lm->y);
 		rm->y -= (nmb_module(rm->x) / 2);
 		lm->y -= (nmb_module(rm->x) / 2);
+		//printf("after, ry:%d ly:%d\n", rm->y, lm->y);
 		if (rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 1)
 			return (0);
 		else if (rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 2)
-			return (40);
-		return (4);
+			return (3);
+		else if (rm->y == 0)
+			return (33);
+		return (3);
 	}
-	return (1);
+	else if ((lm->x == rm->x) //A, mal, change
+		&& (!(rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 1)))
+	{
+		rm->y -= (nmb_module(rm->x) / 2);
+		lm->y += (nmb_module(rm->x) / 2);
+		if (rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 1)
+			return (0);
+		else if (rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 2)
+			return (3);
+		else if (rm->y == 0)
+			return (33);
+		return (3);
+	}
+	return (-1);
 }
 
 int	inc_up_plan(t_matrix *rm, t_matrix *lm)
