@@ -151,13 +151,6 @@ libft
 
 /* ACABAR MANDATORIO
 . como fechar a window no X (ver githubs porque nao e c minilibx)
-
-. problema da linha fantasma que se nota nos mapas simples
-se calhar tou a processar uma linha ou node a mais idk
-
-
-. start point inicial (rows, lines, max height etc)
-. start point planar (rows, max height)
 */
 
 /*
@@ -178,8 +171,6 @@ tao boas
 
 --start point dos zooms--
 (ta mais ou menos mas nao fica perfeitamente alinhado)
---start point iso--
-(so centro a grid, cago na altura)
 */
 
 //--------------------------

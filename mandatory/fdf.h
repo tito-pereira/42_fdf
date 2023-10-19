@@ -43,6 +43,7 @@ typedef	struct s_grid {
 	int	rows;
 	int	lines;
 	int	total;
+	int	maxz;
 	int	*heights;
 }	t_grid;
 
@@ -91,7 +92,6 @@ void		new_iso(t_all *all);
 void		isometric(t_all *all, int order);
 //utils
 int			count_rows(char **points);
-int			count_lines(t_lines *lines);
 t_heights	*new_heights_node(char **str);
 t_lines		*new_lines_node(char *str);
 // framing
@@ -112,113 +112,5 @@ t_count 	*new_count(int value);
 void		chk_pos_cntrs(t_count *count);
 int 		chk_zero_cntrs(t_count *count);
 void		f_swap(int *a, int *b);
-//bonus
-void		change_frame(t_all *all, int function, int order);
-void		move_cam(t_all *all, int order);
-void		zoom(t_all *all, int order);
-void		planar(t_all *all, int order);
-void		rotate(t_all *all, int order);
-void		incline(t_all *all, int order);
-t_matrix	*r_matrix(t_point *pts);
-t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 
 #endif
-
-/*
-.norm
-.valgrind
-.tudo no repositorio
---
-
-.makefile bonus, .h bonus, main bonus, make libft e getnext
-- um ficheiro .h só para o bonus?
-- onde fica a pasta do minilibx? dentro do meu repositorio?
-.PHONY
-*/
-
-//-------------------
-
-/*
-Makefile e executavel tem de ser no root do repositorio
-however, posso ter as pastas que quiser para o resto
-uma mandatory, outra bonus, etc
-
-If your project allows you to use your libft, you must copy its sources and its
-associated Makefile in a libft folder with its associated Makefile. Your project’s
-Makefile must compile the library by using its Makefile, then compile the project.
-libft
-. inside a libft folder c o seu libft Makefile
-. o make do fdf deve fazer make no libft primeiro
-*/
-
-/* ACABAR MANDATORIO
-. como fechar a window no X (ver githubs porque nao e c minilibx)
-
-. problema da linha fantasma que se nota nos mapas simples
-se calhar tou a processar uma linha ou node a mais idk
-
-. adicionar o reconhecimento da extensao ".fdf"
-
-. start point inicial (rows, lines, max height etc)
-. start point planar (rows, max height)
-*/
-
-/*
-. limites maximos
-limites maximos de zoom, rotate, incline,
-se algum ficar fora dos limites de int, crasha
-
-. zoom out planar
-
-. start point incline
-inclina p cima, roda p baixo
-. limite maximo inclinar p cima
-(reconhecer os 2:1 e 2:2 positivos, acho que é com lm->y para cima)
-. rotação planar 2:1 fica estranha, trocar x por y, direçoes row e line
-tao boas
-. incline em posiçoes nao iso e nao planar
-. incline down (fazer tudo direitinho up e copiar o inverso)
-
---start point dos zooms--
-(ta mais ou menos mas nao fica perfeitamente alinhado)
---start point iso--
-(so centro a grid, cago na altura)
-*/
-
-//--------------------------
-/* NOTION
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
-{
-	del(lst->content);
-	free(lst);
-}
-
-function pointer:
-tipo de retorno, nome da funcao? (para a morada, nome do pointer
-e morada para onde aponta), e tambem o tipo de conteudo necessario
-para correr aquela função.
-se eu consigo por isto no meu display? nao sei
-
-todo este hardcoding entre zooms, incline, varias rotações
-é tudo estratégias que eu arranjei de "pixelixar" e fazer eu sozinho
-(erro perhaps) matrizes de movimento pixelizadas que simulam estes
-movimentos
-é tudo o chamado "fake 3D" por razoes obvias, sem perspetiva e tudo
-aproximado ao inteiro e feito por mim em que vou acrescentando 
-condicoes novas todos os dias
-é os primórdios da renderização, usar planar
-e isometrica 2:1 (mais as minhas invenções)
-
-(para dar um hiperfoco)
-materia teorica total = 20 (em quantidade)
-um só projeto/engenharia = 40 (em quantidade)
-
-é normal desenvolver um hiperfoco gigante num só projeto de engenharia,
-com o mesmo esforco q temos para a teoria inteira
-devido à cache mental a partir do qual o nosso hiperfoco cresce
-por isso que é fundamental uniformizar práticas, técnicas e
-nomenclatura no código e na engenharia de software
-para ser mais facil transitar de projeto em projeto e rapidamente
-perceber o esquema geral de cada código e mais rapidamente entrar
-nesse hiperfoco
-*/

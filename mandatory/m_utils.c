@@ -10,19 +10,6 @@ int	count_rows(char **points)
 	return (i);
 }
 
-int	count_lines(t_lines *lines)
-{
-	int	i;
-
-	i = 0;
-	while (lines != NULL)
-	{
-		lines = lines->next;
-		i++;
-	}
-	return (i);
-}
-
 t_heights	*new_heights_node(char **str)
 {
 	t_heights	*new;
