@@ -2,7 +2,39 @@
 
 
 int	inc_down_iso(t_matrix *rm, t_matrix *lm)
-{}
+{
+	if ((lm->x == -rm->x) //B
+		&& (!(rm->y != 0 && rm->x / rm->y == 1)))
+	{
+		//printf("before, ry:%d ly:%d\n", rm->y, lm->y);
+		rm->y += (rm->x / 2); //1 ,-->+ (-)
+		lm->y += (rm->x / 2); //1 ,+->+ (+)
+		//printf("after, ry:%d ly:%d\n", rm->y, lm->y);
+		if (rm->y != 0 && nmb_module(rm->x) / nmb_module(rm->y) == 1)
+			return (0);
+		/*else if (rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 2)
+			return (3);*/
+		else if (rm->y == 0)
+			return (33);
+		return (3);
+	}
+	else if ((lm->x == rm->x) //A
+		&& (!(rm->y != 0 && rm->x / rm->y == -1)))
+	{
+		//printf("before, ry:%d ly:%d\n", rm->y, lm->y);
+		rm->y -= (rm->x / 2); //-1 ,+->- (-)
+		lm->y += (rm->x / 2); //-1 ,-->+ (+)
+		//printf("after, ry:%d ly:%d\n", rm->y, lm->y);
+		if (rm->y != 0 && nmb_module(rm->x) / nmb_module(rm->y) == 1) //os dois extremos
+			return (0);
+		//else if (rm->y < 0 && nmb_module(rm->x) / nmb_module(rm->y) == 2)
+			//return (3);
+		else if (rm->y == 0)
+			return (33);
+		return (3);
+	}
+	return (-1);
+}
 
 /*
 int	inc_down_plan(t_matrix *rm, t_matrix *lm)
