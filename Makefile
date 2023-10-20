@@ -13,7 +13,7 @@ BONUS= ./extra/main_bonus.c \
 	./extra/utils_bonus.c ./extra/mv_cam_bonus.c \
 	./extra/zoom_bonus.c ./extra/rotate_bonus.c \
 	./extra/planar_bonus.c ./extra/incline_bonus.c
-LIB1= -L../minilibx-linux/ -lmlx -lXext -lX11 -lm
+LIB1= -L./minilibx-linux/ -lmlx -lXext -lX11 -lm
 LIB2= -L./getnext/ -lget
 LIB3= -L./libft/ -lft
 A_LIB= $(LIB1) $(LIB2) $(LIB3)
@@ -29,6 +29,7 @@ all: $(NAME)
 $(NAME): $(MOBJ) $(OBJ)
 	make -C ./libft
 	make -C ./getnext
+	make -C ./minilibx-linux
 	$(CC) $(CFLAGS) $(MOBJ) $(OBJ) $(A_LIB) -o $(NAME)
 
 wire: $(OBJ)

@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:37:13 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 17:36:04 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:40:04 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,44 +81,3 @@ void	free_grid(t_heights *heights, t_lines *lines)
 		heights = tmp;
 	}
 }
-
-/*
-typedef struct s_lines {
-	char			*line;
-	struct s_lines	*next;
-}	t_lines;
-
-typedef struct s_heights {
-	char				**line;
-	struct s_heights	*next;
-}	t_heights;
-
-typedef struct s_count {
-	int				cnt;
-	int				reset;
-	struct s_count	*nxt;
-}	t_count;
-
-typedef	struct s_point {
-	int	x;
-	int	y;
-	int	z;
-	int	pixx;
-	int	pixy;
-	int	pixz;
-	struct s_point	*next;
-}	t_point;
-
-typedef	struct s_mlx {
-	void	*mlx;
-	void	*win;
-	void	*img;
-}	t_mlx;
-
-typedef	struct s_grid {
-	int	rows;
-	int	lines;
-	int	total;
-	int	*heights;
-}	t_grid;
-*/

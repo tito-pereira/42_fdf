@@ -1,0 +1,30 @@
+
+.norm
+.valgrind (para ja ta)
+.onde fica a pasta do minilibx? dentro do meu repositorio?
+tanto faz desde que compile
+
+//-------------------
+
+Makefile e executavel tem de ser no root do repositorio
+however, posso ter as pastas que quiser para o resto
+uma mandatory, outra bonus, etc
+
+If your project allows you to use your libft, you must copy its sources and its
+associated Makefile in a libft folder with its associated Makefile. Your project’s
+Makefile must compile the library by using its Makefile, then compile the project.
+libft
+. inside a libft folder c o seu libft Makefile
+. make libft
+. make getnext
+. make minilibx
+. bonus com os seus _bonus.c e .h
+
+ACABAR MANDATORIO
+. como fechar a window no X (ver githubs porque nao e c minilibx)
+evento 33 em vez do evento 17? ja e uma pista
+
+.rotate e zoom dao merda no mapa de mars, comeca a ir p cima
+
+. algumas funcoes minhas com 5 args, passar a 4 com a minha estrutura
+

@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 17:48:00 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 17:53:15 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:17:48 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid)
 	t_matrix	*new;
 	int			ax;
 	int			ay;
-	int			bx;
-	int			by;
+	t_matrix	*b;
 	int			r;
 
 	ax = pts->pixx;
@@ -45,11 +44,13 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid)
 	r = 0;
 	while (r++ < grid->rows)
 		pts = pts->next;
-	bx = pts->pixx;
-	by = pts->pixy - pts->pixz;
+	b = malloc(sizeof(t_matrix));
+	b->x = pts->pixx;
+	b->y = pts->pixy - pts->pixz;
 	new = malloc(sizeof(t_matrix));
-	new->x = (bx - ax);
-	new->y = (by - ay);
+	new->x = (b->x - ax);
+	new->y = (b->y - ay);
+	free (b);
 	return (new);
 }
 
