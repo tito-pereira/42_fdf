@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate_bonus.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/20 17:47:39 by tibarbos          #+#    #+#             */
+/*   Updated: 2023/10/20 17:55:07 by tibarbos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf_bonus.h"
 
 void	rot_left(t_matrix *rm, t_matrix *lm)
@@ -50,15 +62,15 @@ void	rot_right(t_matrix *rm, t_matrix *lm)
 	lm->y = tmpy;
 }
 
-void    rotate(t_all *all, int order)
+void	rotate(t_all *all, int order)
 {
-    t_matrix    *rm;
-    t_matrix    *lm;
+	t_matrix	*rm;
+	t_matrix	*lm;
 	t_matrix	*start;
 
-    start = malloc(sizeof(t_matrix));
+	start = malloc(sizeof(t_matrix));
 	rm = r_matrix(all->pts);
-    lm = l_matrix(all->pts, all->grid);
+	lm = l_matrix(all->pts, all->grid);
 	if (order == 1)
 		start->x = all->pts->pixx + (all->grid->lines * lm->x);
 	if (order == 1)
@@ -73,6 +85,6 @@ void    rotate(t_all *all, int order)
 		rot_left(rm, lm);
 	prep_pts(all, rm, lm, start, 4);
 	free(rm);
-    free(lm);
+	free(lm);
 	free(start);
 }

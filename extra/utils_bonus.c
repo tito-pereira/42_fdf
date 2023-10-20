@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/20 17:48:00 by tibarbos          #+#    #+#             */
+/*   Updated: 2023/10/20 17:53:15 by tibarbos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf_bonus.h"
 
 t_matrix	*r_matrix(t_point *pts)
@@ -63,7 +75,7 @@ void	change_frame(t_all *all, int function, int order)
 
 	new = malloc(sizeof(t_image));
 	new->ptr = mlx_new_image(all->mlx->mlx, WIDTH, HEIGHT);
-    choose_function(all, function, order);
+	choose_function(all, function, order);
 	display_lines(all->pts, new, all->grid);
 	display_rows(all->pts, new, all->grid);
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);

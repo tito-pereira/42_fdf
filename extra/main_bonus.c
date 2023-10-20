@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/20 17:46:12 by tibarbos          #+#    #+#             */
+/*   Updated: 2023/10/20 18:05:10 by tibarbos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf_bonus.h"
 
 int	escape_close(int keycode, void *param)
 {
-	t_all *all;
-	
+	t_all	*all;
+
 	all = (t_all *)param;
 	if (keycode == 65307)
 	{
@@ -14,7 +26,7 @@ int	escape_close(int keycode, void *param)
 	return (0);
 }
 
-int mouse_handler(int button, int x, int y, void *param)
+int	mouse_handler(int button, int x, int y, void *param)
 {
 	t_all	*all;
 
@@ -26,7 +38,7 @@ int mouse_handler(int button, int x, int y, void *param)
 		else if (button == 5)
 			change_frame(all, 2, 2);
 	}
-	return 0;
+	return (0);
 }
 
 int	key_handler(int keycode, void *param)
@@ -53,7 +65,7 @@ int	key_handler(int keycode, void *param)
 		change_frame((t_all *)param, 6, 2);
 	else if (keycode == 65307)
 		escape_close(keycode, param);
-	return 0;
+	return (0);
 }
 
 t_all	*create_all(t_mlx *mlx, t_grid *grid, t_point *pts)

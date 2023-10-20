@@ -1,9 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_bonus.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tibarbos <tibarbos@student.42porto.co      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/20 17:48:49 by tibarbos          #+#    #+#             */
+/*   Updated: 2023/10/20 17:48:53 by tibarbos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_BONUS_H
 # define FDF_BONUS_H
 
-# include "../minilibx-linux/mlx.h"
-# include "../libft/libft.h"
-# include "../getnext/get_next_line.h"
 # include "../mandatory/fdf.h"
 
 void		change_frame(t_all *all, int function, int order);

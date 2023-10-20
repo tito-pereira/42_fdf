@@ -1,5 +1,16 @@
-#include "fdf_bonus.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   incline_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/20 17:45:55 by tibarbos          #+#    #+#             */
+/*   Updated: 2023/10/20 18:04:47 by tibarbos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "fdf_bonus.h"
 
 int	inc_down_iso(t_matrix *rm, t_matrix *lm)
 {
@@ -103,14 +114,14 @@ int	inc_up_plan(t_matrix *rm, t_matrix *lm)
 	return (inc_up_iso(rm, lm));
 }
 
-void    incline(t_all *all, int order)
+void	incline(t_all *all, int order)
 {
-    t_matrix    *rm;
-    t_matrix    *lm;
+	t_matrix	*rm;
+	t_matrix	*lm;
 	t_matrix	*start;
 	int			z;
 
-    rm = r_matrix(all->pts);
+	rm = r_matrix(all->pts);
 	z = 0;
 	start = malloc(sizeof(t_matrix));
 	lm = l_matrix(all->pts, all->grid);
@@ -118,13 +129,13 @@ void    incline(t_all *all, int order)
 		z = inc_up_plan(rm, lm);
 	else if (order == 2)
 		z = inc_down_plan(rm, lm);
-	start->x = (WIDTH / 2) - ((all->grid->rows / 2) * rm->x); //- ((all->grid->lines / 2) * lm->x);
-	start->y = (HEIGHT / 2) - ((all->grid->rows / 2) * rm->y); //- ((all->grid->lines / 2) * lm->y);
+	start->x = (WIDTH / 2) - ((all->grid->rows / 2) * rm->x);
+	start->y = (HEIGHT / 2) - ((all->grid->rows / 2) * rm->y);
 	start->x -= ((all->grid->lines / 2) * lm->x);
 	start->y -= ((all->grid->lines / 2) * lm->y);
-    if (z != -1)
+	if (z != -1)
 		prep_pts(all, rm, lm, start, z);
 	free(rm);
-    free(lm);
+	free(lm);
 	free(start);
 }
