@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 13:15:23 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/05/07 14:35:51 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:44:45 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,21 +110,3 @@ char	*get_next_line(int fd)
 	return (loot);
 }
 
-/*int main(void)
-{
-    int fd;
-    char    *res;
-
-    printf("BUFFER_SIZE: %d\n", BUFFER_SIZE);
-    fd = open ("test.txt", O_RDWR);
-	printf("fd: %d;\n", fd);
-    int i = 13;
-    while (i-- > 0)
-    {
-        res = get_next_line(fd);
-        printf("RETURN: %s;\n", res);
-        free (res);
-    }
-    close (fd);
-    return(0);
-}*/

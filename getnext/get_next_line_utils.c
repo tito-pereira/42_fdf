@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 10:40:52 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/05/07 14:10:16 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:44:31 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,6 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-/* F1
-um simples strlen
-*/
-
 int	ft_find_n(char *str)
 {
 	int	i;
@@ -39,11 +35,6 @@ int	ft_find_n(char *str)
 	}
 	return (-1);
 }
-
-/* F2
-dupla funcao, verificar se existe uma quebra
-e caso exista, retornar a sua posicao
-*/
 
 char	*ft_substr(char *s, unsigned int start, size_t len)
 {
@@ -65,11 +56,6 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	return (substr);
 }
 
-/* F3
-um simples substr, a ser usado para criar loots a partir
-do chest que ja contenha quebras de linha
-*/
-
 char	*ft_strdup(char *src)
 {
 	char	*dest;
@@ -87,10 +73,6 @@ char	*ft_strdup(char *src)
 	dest[i] = '\0';
 	return (dest);
 }
-
-/* F4
-um simples strdup, para retornar o ultimo loot
-*/
 
 char	*ft_new_chest(char *chest)
 {
@@ -117,9 +99,3 @@ char	*ft_new_chest(char *chest)
 	free (chest);
 	return (new);
 }
-
-/* F5
-complemento, faz um strchr do chest antigo
-mas evita leaks, fazendo malloc do novo
-e free do antigo
-*/

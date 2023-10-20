@@ -9,13 +9,13 @@ t_matrix	*plan_matrix(t_grid *grid)
 	if (grid->rows > 200)
 		pm->x = 2;
 	else if (grid->rows > 100 && grid->rows <= 200)
-		pm->x = 4;// * SCALE;
+		pm->x = 4;
 	else if (grid->rows > 50 && grid->rows <= 100)
-		pm->x = 8;// * SCALE;
+		pm->x = 8;
 	else if (grid->rows > 25 && grid->rows <= 50)
-		pm->x = 16;// * SCALE;
+		pm->x = 16;
 	else if (grid->rows <= 25)
-		pm->x = 32;// * SCALE;
+		pm->x = 32;
 	return (pm);
 }
 

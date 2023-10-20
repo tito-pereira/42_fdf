@@ -127,7 +127,6 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 /*
 .norm
 .valgrind
-.tudo no repositorio
 --
 
 - onde fica a pasta do minilibx? dentro do meu repositorio?
@@ -151,62 +150,5 @@ libft
 
 /* ACABAR MANDATORIO
 . como fechar a window no X (ver githubs porque nao e c minilibx)
-*/
-
-/*
-. limites maximos
-limites maximos de zoom, rotate, incline,
-se algum ficar fora dos limites de int, crasha
-
-. start point incline
-inclina p cima, roda p baixo
-. limite maximo inclinar p cima
-(reconhecer os 2:1 e 2:2 positivos, acho que é com lm->y para cima)
-. rotação planar 2:1 fica estranha, trocar x por y, direçoes row e line
-tao boas
-. incline em posiçoes nao iso e nao planar
-. incline down (fazer tudo direitinho up e copiar o inverso)
-
---start point dos zooms--
-(ta mais ou menos mas nao fica perfeitamente alinhado)
---zoom out planar--
-(acho que ta mas nao testei tudo)
-*/
-
-//--------------------------
-/* NOTION
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
-{
-	del(lst->content);
-	free(lst);
-}
-
-function pointer:
-tipo de retorno, nome da funcao? (para a morada, nome do pointer
-e morada para onde aponta), e tambem o tipo de conteudo necessario
-para correr aquela função.
-se eu consigo por isto no meu display? nao sei
-
-todo este hardcoding entre zooms, incline, varias rotações
-é tudo estratégias que eu arranjei de "pixelixar" e fazer eu sozinho
-(erro perhaps) matrizes de movimento pixelizadas que simulam estes
-movimentos
-é tudo o chamado "fake 3D" por razoes obvias, sem perspetiva e tudo
-aproximado ao inteiro e feito por mim em que vou acrescentando 
-condicoes novas todos os dias
-é os primórdios da renderização, usar planar
-e isometrica 2:1 (mais as minhas invenções)
-
-(para dar um hiperfoco)
-materia teorica total = 20 (em quantidade)
-um só projeto/engenharia = 40 (em quantidade)
-
-é normal desenvolver um hiperfoco gigante num só projeto de engenharia,
-com o mesmo esforco q temos para a teoria inteira
-devido à cache mental a partir do qual o nosso hiperfoco cresce
-por isso que é fundamental uniformizar práticas, técnicas e
-nomenclatura no código e na engenharia de software
-para ser mais facil transitar de projeto em projeto e rapidamente
-perceber o esquema geral de cada código e mais rapidamente entrar
-nesse hiperfoco
+evento 33 em vez do evento 17? ja e uma pista
 */

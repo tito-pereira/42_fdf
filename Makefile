@@ -55,11 +55,3 @@ bonus:	$(OBJ) $(B_OBJ)
 	make -C ./getnext
 	$(CC) $(CFLAGS) $(OBJ) $(B_OBJ) $(A_LIB) -o $(NAME)
 
-#target:\
-    make -C /path/to/other/makefile/directory\
-clean:\
-    cd /path && make clean\
-\
-a flag -C so funciona em especifico para o comando make (especial)\
-a regra clean so muda de directory temporariamente
-

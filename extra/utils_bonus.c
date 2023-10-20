@@ -50,15 +50,6 @@ void	invert_z(t_point *pts)
 	}
 }
 
-/*
-1 - move_cam
-2 - zoom
-3 - planar
-4 - isometric reset
-5 - rotate
-6 - incline
-*/
-
 void	choose_function(t_all *all, int function, int order)
 {
 	if (function == 1)

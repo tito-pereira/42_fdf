@@ -4,7 +4,6 @@
 # include "../minilibx-linux/mlx.h"
 # include "../libft/libft.h"
 # include "../getnext/get_next_line.h"
-# include <stdio.h> //printf caseira (acho q n preciso, talvez so p msgs erro?)
 # include <stdlib.h>
 # include <math.h>
 # include <limits.h>

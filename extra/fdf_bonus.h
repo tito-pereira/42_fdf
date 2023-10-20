@@ -6,7 +6,6 @@
 # include "../getnext/get_next_line.h"
 # include "../mandatory/fdf.h"
 
-//bonus
 void		change_frame(t_all *all, int function, int order);
 void		move_cam(t_all *all, int order);
 void		zoom(t_all *all, int order);

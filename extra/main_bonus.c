@@ -56,11 +56,6 @@ int	key_handler(int keycode, void *param)
 	return 0;
 }
 
-/*else if (keycode == 65362)
-	change_frame((t_all *)param, 2, 1);
-else if (keycode == 65364)
-	change_frame((t_all *)param, 2, 2);*/
-
 t_all	*create_all(t_mlx *mlx, t_grid *grid, t_point *pts)
 {
 	t_all	*all;
