@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:38:01 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 16:47:07 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:54:15 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	get_matrix(t_grid *grid, int *x, int *y)
 {
-	float d;
+	float	d;
 
 	d = sqrt(pow(grid->rows, 2) + pow(grid->lines, 2));
 	if (d > 120)
@@ -49,7 +49,7 @@ void	offset_height(t_all *all, t_matrix *rm, t_matrix *start)
 	start->y += off;
 }
 
-void    isometric(t_all *all, int order)
+void	isometric(t_all *all, int order)
 {
 	t_matrix	*mx;
 	t_matrix	*my;

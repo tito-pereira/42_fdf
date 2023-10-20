@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:36:18 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 15:44:47 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:49:00 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 {
-	int	c;
-	int	line;
-	int	row;
+	int		c;
+	int		line;
+	int		row;
 	t_point	*fst;
 	t_point	*scd;
 
@@ -89,8 +89,8 @@ void	height_options(t_point *iter, t_matrix *rm, t_matrix *lm, int order)
 
 void	prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int ord)
 {
-	int	line;
-	int	row;
+	int		line;
+	int		row;
 	t_point	*iter;
 
 	line = 0;

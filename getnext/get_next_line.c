@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 13:15:23 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 14:44:45 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:45:33 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,3 @@ char	*get_next_line(int fd)
 	chest = ft_free_chest(chest);
 	return (loot);
 }
-

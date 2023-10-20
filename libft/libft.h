@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 10:41:05 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 14:45:23 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:44:52 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ char	**ft_split(char const *s1, char c);
 char	*ft_substrr(char const *s, unsigned int start, size_t len);
 size_t	ft_strlenn(const char *str);
 int		ft_atoi(const char *str);
-char    *ft_strcpy(char *pts);
+char	*ft_strcpy(char *pts);
 
 #endif

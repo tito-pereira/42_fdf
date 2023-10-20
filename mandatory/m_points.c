@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   m_points.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42porto.co      +#+  +:+       +#+        */
+/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:39:00 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 15:39:04 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:55:42 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	aux(t_point **pts, t_point **org, t_grid *grid, int line, int *total)
 
 t_point	*create_points(t_grid *grid)
 {
-    t_point		*pts;
+	t_point		*pts;
 	t_point		*origin;
 	int			total;
 	int			line;

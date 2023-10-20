@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   m_utils.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42porto.co      +#+  +:+       +#+        */
+/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:39:18 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 15:39:23 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:58:45 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	check_file(char *name)
 	i = 0;
 	while (name[i] != '\0')
 		i++;
-	if (name[i-1] == 'f' && name[i - 2] == 'd' && name[i - 3] == 'f'
+	if (name[i - 1] == 'f' && name[i - 2] == 'd' && name[i - 3] == 'f'
 		&& name[i - 4] == '.')
 		return (1);
 	return (0);

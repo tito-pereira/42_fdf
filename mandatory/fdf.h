@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:40:58 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 17:00:52 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 19:00:03 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef struct s_image {
 	void	*ptr;
 	char	*data;
 	int		bpp;
-	int		sline;
-	int		endian;
+	int		sl;
+	int		ed;
 }	t_image;
 
 typedef struct s_mlx {

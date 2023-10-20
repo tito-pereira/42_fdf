@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:38:18 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 16:59:41 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:46:14 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	escape_close(int keycode, void *param)
 {
-	t_all *all;
-	
+	t_all	*all;
+
 	all = (t_all *)param;
 	if (keycode == 65307)
 	{

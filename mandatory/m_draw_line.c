@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:36:52 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 16:10:50 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:51:09 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,10 @@ void	draw_line(t_point *a, t_point *b, t_image *img)
 	t_count		*count;
 	int			color;
 
-    matrix = malloc(sizeof(t_matrix));
+	matrix = malloc(sizeof(t_matrix));
 	color = define_color(a, b);
 	matrix->y = b->pixy - a->pixy;
-    matrix->x = b->pixx - a->pixx;
+	matrix->x = b->pixx - a->pixx;
 	total = check_total(matrix->x, matrix->y);
 	offset = check_offset(matrix->x, matrix->y);
 	straight = total - offset;

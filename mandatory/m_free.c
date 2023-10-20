@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:37:13 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 17:40:04 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:53:12 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 void	free_all(t_all *all)
 {
-    t_point *tmp;
+	t_point	*tmp;
 
-    tmp = NULL;
-    free (all->grid->heights);
-    free (all->grid);
-    while (all->pts != NULL)
-    {
-        tmp = all->pts->next;
+	tmp = NULL;
+	free (all->grid->heights);
+	free (all->grid);
+	while (all->pts != NULL)
+	{
+		tmp = all->pts->next;
 		free (all->pts);
 		all->pts = tmp;
-    }
-	//free (all->mlx->img);
-	//free (all->mlx->win);
+	}
 	free (all->mlx->mlx);
 	free (all->mlx);
 	free (all);
@@ -35,7 +33,7 @@ void	free_all(t_all *all)
 void	free_count(t_count *count)
 {
 	t_count	*tmp;
-	
+
 	tmp = NULL;
 	while (count != NULL)
 	{
