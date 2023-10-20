@@ -7,7 +7,8 @@ RM= rm -rf
 MAIN= ./mandatory/m_main.c
 SRC= ./mandatory/m_grid.c ./mandatory/m_points.c ./mandatory/m_isometric.c \
 	./mandatory/m_utils.c ./mandatory/m_display.c ./mandatory/m_draw_line.c \
-	./mandatory/m_matrix.c ./mandatory/m_count.c ./mandatory/m_write.c
+	./mandatory/m_matrix.c ./mandatory/m_count.c ./mandatory/m_write.c \
+	./mandatory/m_free.c
 BONUS= ./extra/main_bonus.c \
 	./extra/utils_bonus.c ./extra/mv_cam_bonus.c \
 	./extra/zoom_bonus.c ./extra/rotate_bonus.c \

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   m_display.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/20 15:36:18 by tibarbos          #+#    #+#             */
+/*   Updated: 2023/10/20 15:44:47 by tibarbos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 void	display_rows(t_point *pts, t_image *first, t_grid *grid)
@@ -75,7 +87,7 @@ void	height_options(t_point *iter, t_matrix *rm, t_matrix *lm, int order)
 		iter->pixz = 0;
 }
 
-void	prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int order)
+void	prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int ord)
 {
 	int	line;
 	int	row;
@@ -89,7 +101,7 @@ void	prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int order)
 		row = 0;
 		while (row < a->grid->rows)
 		{
-			height_options(iter, r, l, order);
+			height_options(iter, r, l, ord);
 			iter->pixx = s->x + (line * l->x) + (row * r->x);
 			iter->pixy = s->y + (line * l->y) + (row * r->y) + iter->pixz;
 			iter = iter->next;

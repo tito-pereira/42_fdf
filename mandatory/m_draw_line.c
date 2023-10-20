@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   m_draw_line.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/20 15:36:52 by tibarbos          #+#    #+#             */
+/*   Updated: 2023/10/20 16:10:50 by tibarbos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 void	draw_str(t_point *a, t_matrix *m, t_image *img, int color)
@@ -123,4 +135,11 @@ void	draw_line(t_point *a, t_point *b, t_image *img)
 		else if (offset >= straight)
 			draw_unvn_off(a, matrix, img, count, color);
 	}
+	free (matrix);
+	free_count(count);
 }
+
+/*
+t_point *a, t_matrix *m, t_image *img, int color
+t_draw
+*/

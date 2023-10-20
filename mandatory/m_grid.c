@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   m_grid.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/20 15:37:42 by tibarbos          #+#    #+#             */
+/*   Updated: 2023/10/20 16:21:12 by tibarbos         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 t_lines	*proc_lines(int fd, t_grid *grid)
@@ -82,5 +94,7 @@ t_grid	*create_grid(char *arg)
 	grid->total = grid->lines * grid->rows;
 	grid->heights = proc_heights(points, grid);
 	close (fd);
+	free_grid(points, lines);
 	return (grid);
 }
+

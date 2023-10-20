@@ -1,5 +1,5 @@
-#ifndef FDF_H
-# define FDF_H
+#ifndef OLD_H
+# define OLD_H
 
 # include "./minilibx-linux/mlx.h"
 # include "./libft/libft.h"
@@ -62,7 +62,7 @@ typedef	struct s_lines {
 }	t_lines;
 
 typedef	struct s_heights {
-	char	**line;
+	char			**line;
 	struct s_heights	*next;
 }	t_heights;
 
@@ -72,8 +72,8 @@ typedef	struct s_matrix {
 }	t_matrix;
 
 typedef	struct s_count {
-	int	cnt;
-	int	reset;
+	int		cnt;
+	int		reset;
 	struct s_count	*nxt;
 }	t_count;
 
@@ -83,15 +83,14 @@ typedef	struct s_all {
 	t_point	*pts;
 }	t_all;
 
-int			check_file(char *name);
+int		check_file(char *name);
 void		write_image(t_image *img, int x, int y, int color);
 t_grid		*create_grid(char *arg);
 t_point		*create_points(t_grid *grid);
 void		new_iso(t_all *all);
 void		isometric(t_all *all, int order);
 //utils
-int			count_rows(char **points);
-int			count_lines(t_lines *lines);
+int		count_rows(char **points);
 t_heights	*new_heights_node(char **str);
 t_lines		*new_lines_node(char *str);
 // framing
@@ -127,9 +126,8 @@ t_matrix	*l_matrix(t_point *pts, t_grid *grid);
 /*
 .norm
 .valgrind
---
-
 - onde fica a pasta do minilibx? dentro do meu repositorio?
+acho que sim
 */
 
 //-------------------
@@ -151,4 +149,6 @@ libft
 /* ACABAR MANDATORIO
 . como fechar a window no X (ver githubs porque nao e c minilibx)
 evento 33 em vez do evento 17? ja e uma pista
+
+.rotate e zoom dao merda no mapa de mars, comeca a ir p cima
 */
