@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:37:13 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 17:01:44 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:36:04 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	free_grid(t_heights *heights, t_lines *lines)
 	{
 		tmp = heights->next;
 		free_ds(heights->line);
+		free (heights->line);
 		free (heights);
 		heights = tmp;
 	}

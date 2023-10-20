@@ -69,4 +69,5 @@ void	change_frame(t_all *all, int function, int order)
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, new->ptr, 0, 0);
 	mlx_destroy_image(all->mlx->mlx, all->mlx->img);
 	all->mlx->img = new->ptr;
+	free (new);
 }
