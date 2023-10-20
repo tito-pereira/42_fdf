@@ -118,8 +118,10 @@ void    incline(t_all *all, int order)
 		z = inc_up_plan(rm, lm);
 	else if (order == 2)
 		z = inc_down_plan(rm, lm);
-	start->x = (WIDTH / 2) - ((all->grid->rows / 2) * rm->x) - ((all->grid->lines / 2) * lm->x);
-	start->y = (HEIGHT / 2) - ((all->grid->rows / 2) * rm->y) - ((all->grid->lines / 2) * lm->y);
+	start->x = (WIDTH / 2) - ((all->grid->rows / 2) * rm->x); //- ((all->grid->lines / 2) * lm->x);
+	start->y = (HEIGHT / 2) - ((all->grid->rows / 2) * rm->y); //- ((all->grid->lines / 2) * lm->y);
+	start->x -= ((all->grid->lines / 2) * lm->x);
+	start->y -= ((all->grid->lines / 2) * lm->y);
     if (z != -1)
 		prep_pts(all, rm, lm, start, z);
 	free(rm);

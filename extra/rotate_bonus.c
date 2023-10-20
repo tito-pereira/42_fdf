@@ -71,7 +71,6 @@ void    rotate(t_all *all, int order)
 		rot_right(rm, lm);
 	else if (order == 2)
 		rot_left(rm, lm);
-	//rot_aux(all, rm, lm, start);
 	prep_pts(all, rm, lm, start, 4);
 	free(rm);
     free(lm);

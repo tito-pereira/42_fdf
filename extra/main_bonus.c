@@ -86,7 +86,7 @@ int	main(int ac, char **av)
 		mlx_key_hook(mlx->win, key_handler, (void *)all);
 		mlx_mouse_hook(mlx->win, mouse_handler, (void *)all);
 		mlx_loop(mlx->mlx);
-		//free_everything(all);
 		mlx_destroy_display(mlx->mlx);
+		free_all(all);
 	}
 }

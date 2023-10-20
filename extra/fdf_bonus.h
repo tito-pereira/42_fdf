@@ -14,6 +14,5 @@ void		rotate(t_all *all, int order);
 void		incline(t_all *all, int order);
 t_matrix	*r_matrix(t_point *pts);
 t_matrix	*l_matrix(t_point *pts, t_grid *grid);
-void	    invert_z(t_point *pts);
 
 #endif
