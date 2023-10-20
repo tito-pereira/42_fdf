@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:38:18 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 16:24:19 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 16:59:41 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	main(int ac, char **av)
 		new_iso(all);
 		mlx_key_hook(mlx->win, escape_close, (void *)all);
 		mlx_loop(mlx->mlx);
-		free_all(all);
 		mlx_destroy_display(mlx->mlx);
+		free_all(all);
 	}
 }

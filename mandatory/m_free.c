@@ -6,13 +6,13 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:37:13 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 16:25:54 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:01:44 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void    free_all(t_all *all)
+void	free_all(t_all *all)
 {
     t_point *tmp;
 
@@ -25,6 +25,11 @@ void    free_all(t_all *all)
 		free (all->pts);
 		all->pts = tmp;
     }
+	//free (all->mlx->img);
+	//free (all->mlx->win);
+	free (all->mlx->mlx);
+	free (all->mlx);
+	free (all);
 }
 
 void	free_count(t_count *count)
@@ -50,6 +55,7 @@ void	free_ds(char **str)
 		free (str[i]);
 		i++;
 	}
+	free (str[i]);
 }
 
 void	free_grid(t_heights *heights, t_lines *lines)

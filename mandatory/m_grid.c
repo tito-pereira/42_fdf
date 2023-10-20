@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:37:42 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 16:21:12 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 16:37:49 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ t_heights	*proc_points(t_lines *lines)
 		iter = iter->next;
 		lines = lines->next;
 	}
+	//if (lines->line == NULL)
+		//free (lines->line);
 	return (points);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   m_isometric.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42porto.co      +#+  +:+       +#+        */
+/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:38:01 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 15:38:05 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/20 16:47:07 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,5 @@ void	new_iso(t_all *all)
 	display_rows(all->pts, first, all->grid);
 	all->mlx->img = first->ptr;
 	mlx_put_image_to_window(all->mlx->mlx, all->mlx->win, all->mlx->img, 0, 0);
+	free (first);
 }
