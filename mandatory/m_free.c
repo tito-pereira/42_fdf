@@ -79,3 +79,11 @@ void	free_grid(t_heights *heights, t_lines *lines)
 		heights = tmp;
 	}
 }
+
+void	free_mat(t_trimat *m)
+{
+	free(m->r);
+	free(m->l);
+	free(m->s);
+	free(m);
+}

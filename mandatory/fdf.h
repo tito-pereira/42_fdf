@@ -89,6 +89,12 @@ typedef struct s_count {
 	struct s_count	*nxt;
 }	t_count;
 
+typedef struct s_trimat {
+	t_matrix	*r;
+	t_matrix	*l;
+	t_matrix	*s;
+}	t_trimat;
+
 typedef struct s_draw {
 	t_point		*a;
 	t_matrix	*m;
@@ -111,6 +117,7 @@ void		isometric(t_all *all, int order);
 void		free_all(t_all *all);
 void		free_count(t_count *count);
 void		free_grid(t_heights *points, t_lines *lines);
+void		free_mat(t_trimat *m);
 //utils
 int			count_rows(char **points);
 t_heights	*new_heights_node(char **str);
@@ -118,7 +125,7 @@ t_lines		*new_lines_node(char *str);
 // framing
 void		display_lines(t_point *pts, t_image *first, t_grid *grid);
 void		display_rows(t_point *pts, t_image *first, t_grid *grid);
-void		prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int ord);
+void		prep_pts(t_all *a, t_trimat *m, int ord);
 // matrix
 void		draw_line(t_point *a, t_point *b, t_image *img);
 void		offset_matrix(t_matrix *m, int *now_x, int *now_y);

@@ -27,7 +27,7 @@ t_point	*new_point(t_grid *grid, int row, int line, int total)
 	return (new);
 }
 
-void	aux(t_point **pts, t_point **org, t_grid *grid, t_matrix *totline)// int line, int *total)
+void	aux(t_point **pts, t_point **org, t_grid *grid, t_matrix *totline)
 {
 	int	row;
 
@@ -53,19 +53,17 @@ t_point	*create_points(t_grid *grid)
 {
 	t_point		*pts;
 	t_point		*origin;
-	//int			total;
-	//int			line;
 	t_matrix	*totline;
 
 	totline = malloc(sizeof(t_matrix));
-	totline->x = 0; //total
-	totline->y = 0; //line
+	totline->x = 0;
+	totline->y = 0;
 	pts = NULL;
 	while (totline->x < grid->total)
 	{
 		while (totline->y < grid->lines)
 		{
-			aux(&pts, &origin, grid, totline); //totline->y, &(totline->x));
+			aux(&pts, &origin, grid, totline);
 			totline->y++;
 		}
 	}

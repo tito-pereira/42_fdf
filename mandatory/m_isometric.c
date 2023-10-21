@@ -39,38 +39,41 @@ void	get_matrix(t_grid *grid, int *x, int *y)
 	}
 }
 
-void	offset_height(t_all *all, t_matrix *rm, t_matrix *start)
+void	offset_height(t_all *all, t_trimat *m)
 {
 	int	off;
 
-	off = nmb_module(rm->x / 2) * (all->grid->maxz / 2);
+	off = nmb_module(m->r->x / 2) * (all->grid->maxz / 2);
 	if (off > 390)
 		off = 390;
-	start->y += off;
+	m->s->y += off;
 }
 
 void	isometric(t_all *all, int order)
 {
-	t_matrix	*mx;
-	t_matrix	*my;
-	t_matrix	*start;
+	//t_matrix	*mx;
+	//t_matrix	*my;
+	//t_matrix	*start;
+	t_trimat	*m;
 
-	mx = malloc(sizeof(t_matrix));
-	my = malloc(sizeof(t_matrix));
-	start = malloc(sizeof(t_matrix));
-	get_matrix(all->grid, &(mx->x), &(mx->y));
-	my->x = -1 * mx->x;
-	my->y = mx->y;
-	start->x = (WIDTH / 2) - ((all->grid->rows / 2) * mx->x);
-	start->y = (HEIGHT / 2) - ((all->grid->rows / 2) * mx->y);
-	start->x -= (all->grid->lines / 2) * my->x;
-	start->y -= (all->grid->lines / 2) * my->y;
-	offset_height(all, mx, start);
+	m = malloc(sizeof(t_trimat));
+	m->r = malloc(sizeof(t_matrix));
+	m->l = malloc(sizeof(t_matrix));
+	m->s = malloc(sizeof(t_matrix));
+	get_matrix(all->grid, &(m->r->x), &(m->r->y));
+	m->l->x = -1 * m->r->x;
+	m->l->y = m->r->y;
+	m->s->x = (WIDTH / 2) - ((all->grid->rows / 2) * m->r->x);
+	m->s->y = (HEIGHT / 2) - ((all->grid->rows / 2) * m->r->y);
+	m->s->x -= (all->grid->lines / 2) * m->l->x;
+	m->s->y -= (all->grid->lines / 2) * m->l->y;
+	offset_height(all, m);
 	if (order == 1)
-		prep_pts(all, mx, my, start, 3);
-	free(mx);
-	free(my);
-	free(start);
+		prep_pts(all, m, 3);
+	//free(mx);
+	//free(my);
+	//free(start);
+	free_mat(m);
 }
 
 void	new_iso(t_all *all)

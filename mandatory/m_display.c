@@ -12,6 +12,14 @@
 
 #include "fdf.h"
 
+void	disp_rows_aux(int *line, t_point **fst, t_point **scd, t_point **pts)
+{
+	*fst = *pts;
+	*scd = *pts;
+	*line = 0;
+	*pts = (*pts)->next;
+}
+
 void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 {
 	int		c;
@@ -23,29 +31,19 @@ void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 	c = 0;
 	row = 0;
 	line = 0;
-	while (row < (grid->rows))
+	while (row++ < (grid->rows))
 	{
-		fst = pts;
-		scd = pts;
-		while (line < (grid->lines - 1))
+		disp_rows_aux(&line, &fst, &scd, &pts);
+		while (line++ < (grid->lines - 1))
 		{
 			c = 0;
-			while (c < grid->rows)
-			{
+			while (c++ < grid->rows)
 				scd = scd->next;
-				c++;
-			}
 			draw_line(fst, scd, first);
 			fst = scd;
-			line++;
 		}
-		row++;
-		line = 0;
-		pts = pts->next;
 	}
 }
-//experimentar while ++line, while ++c, ou c++ etc
-//c = -1, c++ ou ++c
 
 void	display_lines(t_point *pts, t_image *first, t_grid *grid)
 {
@@ -68,27 +66,27 @@ void	display_lines(t_point *pts, t_image *first, t_grid *grid)
 	}
 }
 
-void	height_options(t_point *iter, t_matrix *rm, t_matrix *lm, int order)
+void	height_options(t_point *iter, t_trimat *m, int order)
 {
 	if (order == 1)
 		iter->pixz = iter->pixz * 2;
 	else if (order == 2)
 		iter->pixz = iter->pixz / 2;
 	else if (order == 3)
-		iter->pixz = (-1 * nmb_module(rm->x / 2) * iter->z);
+		iter->pixz = (-1 * nmb_module(m->r->x / 2) * iter->z);
 	else if (order == 33)
-		iter->pixz = (-1 * nmb_module(rm->x / 2) * iter->z) * 2;
+		iter->pixz = (-1 * nmb_module(m->r->x / 2) * iter->z) * 2;
 	else if (order == 4)
 		iter->pixz = iter->pixz;
 	else if (order == 5)
-		iter->pixz = (-1 * nmb_module((rm->x + lm->x) / 2) * iter->z);
+		iter->pixz = (-1 * nmb_module((m->r->x + m->l->x) / 2) * iter->z);
 	else if (order == 55)
-		iter->pixz = (-1 * nmb_module((rm->x + lm->x) / 2) * iter->z) * 2;
+		iter->pixz = (-1 * nmb_module((m->r->x + m->l->x) / 2) * iter->z) * 2;
 	else if (order == 0)
 		iter->pixz = 0;
 }
 
-void	prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int ord)
+void	prep_pts(t_all *a, t_trimat *m, int ord)
 {
 	int		line;
 	int		row;
@@ -102,12 +100,16 @@ void	prep_pts(t_all *a, t_matrix *r, t_matrix *l, t_matrix *s, int ord)
 		row = 0;
 		while (row < a->grid->rows)
 		{
-			height_options(iter, r, l, ord);
-			iter->pixx = s->x + (line * l->x) + (row * r->x);
-			iter->pixy = s->y + (line * l->y) + (row * r->y) + iter->pixz;
+			height_options(iter, m, ord);
+			iter->pixx = m->s->x + (line * m->l->x) + (row * m->r->x);
+			iter->pixy = m->s->y + (line * m->l->y) + (row * m->r->y) + iter->pixz;
 			iter = iter->next;
 			row++;
 		}
 		line++;
 	}
 }
+
+/*
+t_trimat	*m;
+*/
