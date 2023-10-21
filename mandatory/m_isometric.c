@@ -51,9 +51,6 @@ void	offset_height(t_all *all, t_trimat *m)
 
 void	isometric(t_all *all, int order)
 {
-	//t_matrix	*mx;
-	//t_matrix	*my;
-	//t_matrix	*start;
 	t_trimat	*m;
 
 	m = malloc(sizeof(t_trimat));
@@ -70,9 +67,6 @@ void	isometric(t_all *all, int order)
 	offset_height(all, m);
 	if (order == 1)
 		prep_pts(all, m, 3);
-	//free(mx);
-	//free(my);
-	//free(start);
 	free_mat(m);
 }
 
