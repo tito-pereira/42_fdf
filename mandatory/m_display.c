@@ -45,6 +45,7 @@ void	display_rows(t_point *pts, t_image *first, t_grid *grid)
 	}
 }
 //experimentar while ++line, while ++c, ou c++ etc
+//c = -1, c++ ou ++c
 
 void	display_lines(t_point *pts, t_image *first, t_grid *grid)
 {
