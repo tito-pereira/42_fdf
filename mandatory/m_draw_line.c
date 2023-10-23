@@ -6,52 +6,52 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:36:52 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 18:51:09 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:23:06 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	draw_str(t_point *a, t_matrix *m, t_image *img, int color)
+void	draw_str(t_draw *d)
 {
 	int	now_x;
 	int	now_y;
 
-	now_x = a->pixx;
-	now_y = a->pixy;
-	while (m->x != 0 || m->y != 0)
+	now_x = d->a->pixx;
+	now_y = d->a->pixy;
+	while (d->m->x != 0 || d->m->y != 0)
 	{
-		offset_matrix(m, &now_x, &now_y);
-		write_image(img, now_x, now_y, color);
+		offset_matrix(d->m, &now_x, &now_y);
+		write_image(d->img, now_x, now_y, d->color);
 	}
 }
 
-void	draw_unvn_off(t_point *a, t_matrix *m, t_image *img, t_count *count, int color)
+void	draw_unvn_off(t_draw *d, t_count *count)
 {
 	int	now_x;
 	int	now_y;
 
-	now_x = a->pixx;
-	now_y = a->pixy;
-	while (m->x != 0 || m->y != 0)
+	now_x = d->a->pixx;
+	now_y = d->a->pixy;
+	while (d->m->x != 0 || d->m->y != 0)
 	{
 		if (count->cnt == 0)
 		{
-			straight_matrix(m, &now_x, &now_y);
-			write_image(img, now_x, now_y, color);
+			straight_matrix(d->m, &now_x, &now_y);
+			write_image(d->img, now_x, now_y, d->color);
 			if (count->cnt == 0)
 				count->cnt = count->reset;
 			chk_pos_cntrs(count);
 		}
 		if (chk_zero_cntrs(count) == 1)
 		{
-			offset_matrix(m, &now_x, &now_y);
-			write_image(img, now_x, now_y, color);
+			offset_matrix(d->m, &now_x, &now_y);
+			write_image(d->img, now_x, now_y, d->color);
 		}
 		else
 		{
-			offset_matrix(m, &now_x, &now_y);
-			write_image(img, now_x, now_y, color);
+			offset_matrix(d->m, &now_x, &now_y);
+			write_image(d->img, now_x, now_y, d->color);
 			if (count->cnt > 0)
 				(count->cnt)--;
 			chk_pos_cntrs(count);
@@ -59,32 +59,32 @@ void	draw_unvn_off(t_point *a, t_matrix *m, t_image *img, t_count *count, int co
 	}
 }
 
-void	draw_unvn_str(t_point *a, t_matrix *m, t_image *img, t_count *count, int color)
+void	draw_unvn_str(t_draw *d, t_count *count)
 {
 	int	now_x;
 	int	now_y;
 
-	now_x = a->pixx;
-	now_y = a->pixy;
-	while (m->x != 0 || m->y != 0)
+	now_x = d->a->pixx;
+	now_y = d->a->pixy;
+	while (d->m->x != 0 || d->m->y != 0)
 	{
 		if (count->cnt == 0)
 		{
-			offset_matrix(m, &now_x, &now_y);
-			write_image(img, now_x, now_y, color);
+			offset_matrix(d->m, &now_x, &now_y);
+			write_image(d->img, now_x, now_y, d->color);
 			if (count->cnt == 0)
 				count->cnt = count->reset;
 			chk_pos_cntrs(count);
 		}
 		if (chk_zero_cntrs(count) == 1)
 		{
-			straight_matrix(m, &now_x, &now_y);
-			write_image(img, now_x, now_y, color);
+			straight_matrix(d->m, &now_x, &now_y);
+			write_image(d->img, now_x, now_y, d->color);
 		}
 		else
 		{
-			straight_matrix(m, &now_x, &now_y);
-			write_image(img, now_x, now_y, color);
+			straight_matrix(d->m, &now_x, &now_y);
+			write_image(d->img, now_x, now_y, d->color);
 			if (count->cnt > 0)
 				(count->cnt)--;
 			chk_pos_cntrs(count);
@@ -110,36 +110,34 @@ int	define_color(t_point *a, t_point *b)
 
 void	draw_line(t_point *a, t_point *b, t_image *img)
 {
-	t_matrix	*matrix;
+	t_draw		*d;
 	int			total;
 	int			offset;
 	int			straight;
 	t_count		*count;
-	int			color;
 
-	matrix = malloc(sizeof(t_matrix));
-	color = define_color(a, b);
-	matrix->y = b->pixy - a->pixy;
-	matrix->x = b->pixx - a->pixx;
-	total = check_total(matrix->x, matrix->y);
-	offset = check_offset(matrix->x, matrix->y);
+	d = malloc(sizeof(t_draw));
+	d->m = malloc(sizeof(t_matrix));
+	d->color = define_color(a, b);
+	d->m->y = b->pixy - a->pixy;
+	d->m->x = b->pixx - a->pixx;
+	d->a = a;
+	d->img = img;
+	total = check_total(d->m->x, d->m->y);
+	offset = check_offset(d->m->x, d->m->y);
 	straight = total - offset;
 	count = check_count(offset, straight);
-	write_image(img, a->pixx, a->pixy, color);
+	write_image(d->img, a->pixx, a->pixy, d->color);
 	if (count->cnt == 0)
-		draw_str(a, matrix, img, color);
+		draw_str(d);
 	else
 	{
 		if (straight >= offset)
-			draw_unvn_str(a, matrix, img, count, color);
+			draw_unvn_str(d, count);
 		else if (offset >= straight)
-			draw_unvn_off(a, matrix, img, count, color);
+			draw_unvn_off(d, count);
 	}
-	free (matrix);
+	free(d->m);
+	free(d);
 	free_count(count);
 }
-
-/*
-t_point *a, t_matrix *m, t_image *img, int color
-t_draw
-*/

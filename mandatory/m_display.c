@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:36:18 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 18:49:00 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:21:56 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,20 +90,20 @@ void	prep_pts(t_all *a, t_trimat *m, int ord)
 {
 	int		line;
 	int		row;
-	t_point	*iter;
+	t_point	*i;
 
 	line = 0;
 	row = 0;
-	iter = a->pts;
+	i = a->pts;
 	while (line < a->grid->lines)
 	{
 		row = 0;
 		while (row < a->grid->rows)
 		{
-			height_options(iter, m, ord);
-			iter->pixx = m->s->x + (line * m->l->x) + (row * m->r->x);
-			iter->pixy = m->s->y + (line * m->l->y) + (row * m->r->y) + iter->pixz;
-			iter = iter->next;
+			height_options(i, m, ord);
+			i->pixx = m->s->x + (line * m->l->x) + (row * m->r->x);
+			i->pixy = m->s->y + (line * m->l->y) + (row * m->r->y) + i->pixz;
+			i = i->next;
 			row++;
 		}
 		line++;

@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:40:58 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 19:00:03 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/23 14:45:17 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,10 +114,12 @@ t_grid		*create_grid(char *arg);
 t_point		*create_points(t_grid *grid);
 void		new_iso(t_all *all);
 void		isometric(t_all *all, int order);
+//free
 void		free_all(t_all *all);
 void		free_count(t_count *count);
 void		free_grid(t_heights *points, t_lines *lines);
 void		free_mat(t_trimat *m);
+//void		free_draw(t_draw *d);
 //utils
 int			count_rows(char **points);
 t_heights	*new_heights_node(char **str);
