@@ -23,8 +23,5 @@ libft
 
 ACABAR MANDATORIO
 
-. como fechar a window no X (ver githubs porque nao e c minilibx)
-evento 33 em vez do evento 17? ja e uma pista
-
 . rotate e zoom dao merda no mapa de mars, comeca a ir p cima
 
