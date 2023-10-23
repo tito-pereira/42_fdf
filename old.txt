@@ -25,14 +25,16 @@ ACABAR MANDATORIO
 . como fechar a window no X (ver githubs porque nao e c minilibx)
 evento 33 em vez do evento 17? ja e uma pista
 
-. header no makefile
 . testar valgrind da totline (m points)
 
-.rotate e zoom dao merda no mapa de mars, comeca a ir p cima
+. rotate e zoom dao merda no mapa de mars, comeca a ir p cima
 
+->m_points
 (points ja corrigi)
+->m_display
 (display rows)
 . prep points, acho que o trimat ta a funcionar
+->draw_line
 . draw.line
 
 vou ter que acrescentar mais uns files ao dividir funcoes a meio
