@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 17:48:23 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 18:00:01 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/23 14:20:08 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,23 +112,27 @@ void	start_in(t_all *all, t_matrix *rm, t_matrix *lm, t_matrix *start)
 
 void	zoom(t_all *all, int order)
 {
-	t_matrix	*row;
-	t_matrix	*line;
-	t_matrix	*start;
+	t_trimat	*m;
 
-	row = row_matrix(all->pts, order);
-	if (row == NULL)
+	m = malloc(sizeof(t_trimat));
+	m->r = row_matrix(all->pts, order);
+	if (m->r == NULL)
+	{
+		free (m);
 		return ;
-	line = line_matrix(all->pts, all->grid, order);
-	if (line == NULL)
+	}
+	m->l = line_matrix(all->pts, all->grid, order);
+	if (m->l == NULL)
+	{
+		free (m->r);
+		free (m);
 		return ;
-	start = malloc(sizeof(t_matrix));
+	}
+	m->s = malloc(sizeof(t_matrix));
 	if (order == 1)
-		start_in(all, row, line, start);
+		start_in(all, m->r, m->l, m->s);
 	else if (order == 2)
-		start_out(all, row, line, start);
-	prep_pts(all, row, line, start, order);
-	free(row);
-	free(line);
-	free(start);
+		start_out(all, m->r, m->l, m->s);
+	prep_pts(all, m, order);
+	free_mat(m);
 }

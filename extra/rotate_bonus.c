@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 17:47:39 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 17:55:07 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/23 14:19:56 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,27 +64,24 @@ void	rot_right(t_matrix *rm, t_matrix *lm)
 
 void	rotate(t_all *all, int order)
 {
-	t_matrix	*rm;
-	t_matrix	*lm;
-	t_matrix	*start;
+	t_trimat	*m;
 
-	start = malloc(sizeof(t_matrix));
-	rm = r_matrix(all->pts);
-	lm = l_matrix(all->pts, all->grid);
+	m = malloc(sizeof(t_trimat));
+	m->s = malloc(sizeof(t_matrix));
+	m->r = r_matrix(all->pts);
+	m->l = l_matrix(all->pts, all->grid);
 	if (order == 1)
-		start->x = all->pts->pixx + (all->grid->lines * lm->x);
+		m->s->x = all->pts->pixx + (all->grid->lines * m->l->x);
 	if (order == 1)
-		start->y = all->pts->pixy + (all->grid->lines * lm->y);
+		m->s->y = all->pts->pixy + (all->grid->lines * m->l->y);
 	if (order == 2)
-		start->x = all->pts->pixx + (all->grid->lines * rm->x);
+		m->s->x = all->pts->pixx + (all->grid->lines * m->r->x);
 	if (order == 2)
-		start->y = all->pts->pixy + (all->grid->lines * rm->y);
+		m->s->y = all->pts->pixy + (all->grid->lines * m->r->y);
 	if (order == 1)
-		rot_right(rm, lm);
+		rot_right(m->r, m->l);
 	else if (order == 2)
-		rot_left(rm, lm);
-	prep_pts(all, rm, lm, start, 4);
-	free(rm);
-	free(lm);
-	free(start);
+		rot_left(m->r, m->l);
+	prep_pts(all, m, 4);
+	free_mat(m);
 }

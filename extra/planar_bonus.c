@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   planar_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42porto.co      +#+  +:+       +#+        */
+/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 17:47:21 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 17:47:27 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/23 14:19:50 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,23 +33,20 @@ t_matrix	*plan_matrix(t_grid *grid)
 
 void	planar(t_all *all, int order)
 {
-	t_matrix	*row;
-	t_matrix	*line;
-	t_matrix	*start;
+	t_trimat	*m;
 
-	row = plan_matrix(all->grid);
-	line = malloc(sizeof(t_matrix));
-	line->x = 0;
-	line->y = 0;
-	start = malloc(sizeof(t_matrix));
-	start->x = (WIDTH / 2) - (all->grid->rows / 2) * row->x;
-	start->y = (HEIGHT / 2);
-	start->y += nmb_module((row->x + line->x) / 2) * (all->grid->maxz / 2);
-	if (start->y > 790)
-		start->y = 790;
+	m = malloc(sizeof(t_trimat));
+	m->r = plan_matrix(all->grid);
+	m->l = malloc(sizeof(t_matrix));
+	m->l->x = 0;
+	m->l->y = 0;
+	m->s = malloc(sizeof(t_matrix));
+	m->s->x = (WIDTH / 2) - (all->grid->rows / 2) * m->r->x;
+	m->s->y = (HEIGHT / 2);
+	m->s->y += nmb_module((m->r->x + m->l->x) / 2) * (all->grid->maxz / 2);
+	if (m->s->y > 790)
+		m->s->y = 790;
 	if (order == 1)
-		prep_pts(all, row, line, start, 5);
-	free(row);
-	free(line);
-	free(start);
+		prep_pts(all, m, 5);
+	free_mat(m);
 }
