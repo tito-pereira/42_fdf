@@ -6,11 +6,22 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:38:18 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 18:46:14 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:44:05 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int	close_all(void *param)
+{
+	t_all	*all;
+
+	all = (t_all *)param;
+	mlx_destroy_image(all->mlx->mlx, all->mlx->img);
+	mlx_destroy_window(all->mlx->mlx, all->mlx->win);
+	mlx_loop_end(all->mlx->mlx);
+	return (0);
+}
 
 int	escape_close(int keycode, void *param)
 {
@@ -53,6 +64,7 @@ int	main(int ac, char **av)
 		mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "fdf");
 		all = create_all(mlx, grid, pts);
 		new_iso(all);
+		mlx_hook(mlx->win, 17, 0, close_all, (void *)all);
 		mlx_key_hook(mlx->win, escape_close, (void *)all);
 		mlx_loop(mlx->mlx);
 		mlx_destroy_display(mlx->mlx);

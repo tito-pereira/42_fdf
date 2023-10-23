@@ -6,7 +6,7 @@
 #    By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 13:46:46 by tibarbos          #+#    #+#              #
-#    Updated: 2023/10/23 15:54:52 by tibarbos         ###   ########.fr        #
+#    Updated: 2023/10/23 17:49:59 by tibarbos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC= ./mandatory/m_grid.c ./mandatory/m_points.c ./mandatory/m_isometric.c \
 BONUS= ./extra/main_bonus.c \
 	./extra/utils_bonus.c ./extra/mv_cam_bonus.c \
 	./extra/zoom_bonus.c ./extra/rotate_bonus.c \
-	./extra/planar_bonus.c ./extra/incline_bonus.c
+	./extra/planar_bonus.c ./extra/incline_bonus.c \
+	./extra/handles_bonus.c
 LIB1= -L./minilibx-linux/ -lmlx -lXext -lX11 -lm
 LIB2= -L./getnext/ -lget
 LIB3= -L./libft/ -lft

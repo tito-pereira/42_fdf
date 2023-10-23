@@ -23,10 +23,6 @@ libft
 
 ACABAR MANDATORIO
 
-->draw_line
-(t_draw resultou)
-. dividir funcoes a meio
-
 . como fechar a window no X (ver githubs porque nao e c minilibx)
 evento 33 em vez do evento 17? ja e uma pista
 
