@@ -1,8 +1,8 @@
 
 .norm
-.valgrind (para ja ta)
-.onde fica a pasta do minilibx? dentro do meu repositorio?
-tanto faz desde que compile
+.valgrind
+.pasta do mlx nao existe no git
+mas o make vai compilar como se houvesse
 
 //-------------------
 
@@ -22,16 +22,13 @@ libft
 -----------------------
 
 ACABAR MANDATORIO
+
+->draw_line
+(t_draw resultou)
+. dividir funcoes a meio
+
 . como fechar a window no X (ver githubs porque nao e c minilibx)
 evento 33 em vez do evento 17? ja e uma pista
 
 . rotate e zoom dao merda no mapa de mars, comeca a ir p cima
-
-->draw_line
-. draw.line
-
-vou ter que acrescentar mais uns files ao dividir funcoes a meio
-e vou ter que alterar todos os fucking displays porque a prep points vai ter de receber
-um novo argumento, uma double ou triple matrix
-ou crio uma double matrix c 4 int? idk
 

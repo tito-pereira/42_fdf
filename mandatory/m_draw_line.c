@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:36:52 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/23 15:23:06 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/23 15:46:46 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,21 @@ int	define_color(t_point *a, t_point *b)
 	return (WHITE);
 }
 
+t_draw	*create_draw(t_point *a, t_point *b, t_image *img)
+{
+	t_draw	*d;
+
+	d = malloc(sizeof(t_draw));
+	d->a = a;
+	d->img = img;
+	d->m = malloc(sizeof(t_matrix));
+	d->color = define_color(a, b);
+	d->m->y = b->pixy - a->pixy;
+	d->m->x = b->pixx - a->pixx;
+	write_image(d->img, a->pixx, a->pixy, d->color);
+	return (d);
+}
+
 void	draw_line(t_point *a, t_point *b, t_image *img)
 {
 	t_draw		*d;
@@ -116,13 +131,41 @@ void	draw_line(t_point *a, t_point *b, t_image *img)
 	int			straight;
 	t_count		*count;
 
-	d = malloc(sizeof(t_draw));
+	d = create_draw(a, b, img);
+	total = check_total(d->m->x, d->m->y);
+	offset = check_offset(d->m->x, d->m->y);
+	straight = total - offset;
+	count = check_count(offset, straight);
+	if (count->cnt == 0)
+		draw_str(d);
+	else
+	{
+		if (straight >= offset)
+			draw_unvn_str(d, count);
+		else if (offset >= straight)
+			draw_unvn_off(d, count);
+	}
+	free(d->m);
+	free(d);
+	free_count(count);
+}
+
+/*
+void	draw_line(t_point *a, t_point *b, t_image *img)
+{
+	t_draw		*d;
+	int			total;
+	int			offset;
+	int			straight;
+	t_count		*count;
+
+	d = create_draw(a, img);
+	d->a = a;
+	d->img = img;
 	d->m = malloc(sizeof(t_matrix));
 	d->color = define_color(a, b);
 	d->m->y = b->pixy - a->pixy;
 	d->m->x = b->pixx - a->pixx;
-	d->a = a;
-	d->img = img;
 	total = check_total(d->m->x, d->m->y);
 	offset = check_offset(d->m->x, d->m->y);
 	straight = total - offset;
@@ -141,3 +184,4 @@ void	draw_line(t_point *a, t_point *b, t_image *img)
 	free(d);
 	free_count(count);
 }
+*/
