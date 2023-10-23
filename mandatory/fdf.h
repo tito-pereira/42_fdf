@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:40:58 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/23 14:45:17 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/23 16:01:56 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,13 +114,12 @@ t_grid		*create_grid(char *arg);
 t_point		*create_points(t_grid *grid);
 void		new_iso(t_all *all);
 void		isometric(t_all *all, int order);
-//free
+// free
 void		free_all(t_all *all);
 void		free_count(t_count *count);
 void		free_grid(t_heights *points, t_lines *lines);
 void		free_mat(t_trimat *m);
-//void		free_draw(t_draw *d);
-//utils
+// utils
 int			count_rows(char **points);
 t_heights	*new_heights_node(char **str);
 t_lines		*new_lines_node(char *str);
@@ -128,6 +127,9 @@ t_lines		*new_lines_node(char *str);
 void		display_lines(t_point *pts, t_image *first, t_grid *grid);
 void		display_rows(t_point *pts, t_image *first, t_grid *grid);
 void		prep_pts(t_all *a, t_trimat *m, int ord);
+// draw
+void		draw_unvn_off(t_draw *d, t_count *count);
+void		draw_unvn_str(t_draw *d, t_count *count);
 // matrix
 void		draw_line(t_point *a, t_point *b, t_image *img);
 void		offset_matrix(t_matrix *m, int *now_x, int *now_y);
@@ -137,7 +139,7 @@ int			check_offset(int mx, int my);
 t_count		*check_count(int offset, int straight);
 int			nmb_module(int x);
 int			signal(int x);
-//count
+// count
 t_count		*new_count(int value);
 void		chk_pos_cntrs(t_count *count);
 int			chk_zero_cntrs(t_count *count);

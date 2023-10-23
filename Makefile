@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tibarbos <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 13:46:46 by tibarbos          #+#    #+#              #
-#    Updated: 2023/10/23 13:46:51 by tibarbos         ###   ########.fr        #
+#    Updated: 2023/10/23 15:54:52 by tibarbos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,9 @@ GDB= cc -g
 RM= rm -rf
 MAIN= ./mandatory/m_main.c
 SRC= ./mandatory/m_grid.c ./mandatory/m_points.c ./mandatory/m_isometric.c \
-	./mandatory/m_utils.c ./mandatory/m_display.c ./mandatory/m_draw_line.c \
+	./mandatory/m_utils.c ./mandatory/m_display.c ./mandatory/m_free.c \
 	./mandatory/m_matrix.c ./mandatory/m_count.c ./mandatory/m_write.c \
-	./mandatory/m_free.c
+	./mandatory/m_draw_1.c ./mandatory/m_draw_2.c
 BONUS= ./extra/main_bonus.c \
 	./extra/utils_bonus.c ./extra/mv_cam_bonus.c \
 	./extra/zoom_bonus.c ./extra/rotate_bonus.c \
