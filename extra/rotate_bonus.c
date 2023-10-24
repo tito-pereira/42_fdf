@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 17:47:39 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/24 12:50:58 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:55:31 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,15 @@ void	rotate(t_all *all, int order)
 	m->s = malloc(sizeof(t_matrix));
 	m->r = r_matrix(all->pts);
 	m->l = l_matrix(all->pts, all->grid);
+	m->s->y = (all->pts->pixy - all->pts->pixz);
 	if (order == 1)
 		m->s->x = all->pts->pixx + (all->grid->lines * m->l->x);
 	if (order == 1)
-		m->s->y = (all->pts->pixy - all->pts->pixz) + (all->grid->lines * m->l->y);
+		m->s->y += (all->grid->lines * m->l->y);
 	if (order == 2)
 		m->s->x = all->pts->pixx + (all->grid->lines * m->r->x);
 	if (order == 2)
-		m->s->y = all->pts->pixy + (all->grid->lines * m->r->y);
+		m->s->y += (all->grid->lines * m->r->y);
 	if (order == 1)
 		rot_right(m->r, m->l);
 	else if (order == 2)
