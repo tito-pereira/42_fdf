@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 17:47:39 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/23 14:19:56 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:50:58 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	rotate(t_all *all, int order)
 	if (order == 1)
 		m->s->x = all->pts->pixx + (all->grid->lines * m->l->x);
 	if (order == 1)
-		m->s->y = all->pts->pixy + (all->grid->lines * m->l->y);
+		m->s->y = (all->pts->pixy - all->pts->pixz) + (all->grid->lines * m->l->y);
 	if (order == 2)
 		m->s->x = all->pts->pixx + (all->grid->lines * m->r->x);
 	if (order == 2)

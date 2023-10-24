@@ -6,7 +6,7 @@
 /*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:36:18 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/23 15:21:56 by tibarbos         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:51:15 by tibarbos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,3 @@ void	prep_pts(t_all *a, t_trimat *m, int ord)
 		line++;
 	}
 }
-
-/*
-t_trimat	*m;
-*/

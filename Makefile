@@ -6,7 +6,7 @@
 #    By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 13:46:46 by tibarbos          #+#    #+#              #
-#    Updated: 2023/10/23 17:49:59 by tibarbos         ###   ########.fr        #
+#    Updated: 2023/10/24 11:59:00 by tibarbos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,5 +67,6 @@ re: fclean all
 bonus:	$(OBJ) $(B_OBJ)
 	make -C ./libft
 	make -C ./getnext
+	make -C ./minilibx-linux
 	$(CC) $(CFLAGS) $(OBJ) $(B_OBJ) $(A_LIB) -o $(NAME)
 
