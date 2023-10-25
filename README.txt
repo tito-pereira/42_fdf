@@ -1,0 +1,4 @@
+- retirar o mlx_loop_end
+- introduzir a função end(0)
+- verificar leaks e tudo isso etc
+- a função end() era permitida por alguma razão e eu feito tono não a quis usar
