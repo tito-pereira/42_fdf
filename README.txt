@@ -2,3 +2,6 @@
 - introduzir a função end(0)
 - verificar leaks e tudo isso etc
 - a função end() era permitida por alguma razão e eu feito tono não a quis usar
+- mlx_put_str e que permite escrever texto e criar aquele menus engracados
+- angulos com floats para transicao mais smooth
+- matrizes 3D e transformacao em 2D
