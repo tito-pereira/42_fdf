@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   m_free.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:37:13 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/23 14:45:13 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:16:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../../include/fdf.h"
 
 void	free_all(t_all *all)
 {

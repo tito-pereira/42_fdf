@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   m_matrix.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:38:34 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 18:55:10 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:16:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../../include/fdf.h"
 
 void	offset_matrix(t_matrix *m, int *now_x, int *now_y)
 {

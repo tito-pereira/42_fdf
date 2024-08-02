@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 17:48:00 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 18:17:48 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:14:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_bonus.h"
+#include "../../include/fdf_bonus.h"
 
 t_matrix	*r_matrix(t_point *pts)
 {

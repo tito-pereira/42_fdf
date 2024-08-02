@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   fdf_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 17:48:49 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/23 17:54:18 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:13:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_BONUS_H
 # define FDF_BONUS_H
 
-# include "../mandatory/fdf.h"
+# include "fdf.h"
 
 void		change_frame(t_all *all, int function, int order);
 void		move_cam(t_all *all, int order);

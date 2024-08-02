@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:40:58 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/23 16:01:56 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:12:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define FDF_H
 
 # include "../minilibx-linux/mlx.h"
-# include "../libft/libft.h"
-# include "../getnext/get_next_line.h"
+# include "./libft/libft.h"
+# include "./get_next_line/get_next_line.h"
 # include <stdlib.h>
 # include <math.h>
 # include <limits.h>

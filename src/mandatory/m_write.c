@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   m_write.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:39:40 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 19:01:17 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:17:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../../include/fdf.h"
 
 void	write_image(t_image *img, int x, int y, int color)
 {

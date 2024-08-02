@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   m_display.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:36:18 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/24 12:51:15 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:16:19 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../../include/fdf.h"
 
 void	disp_rows_aux(int *line, t_point **fst, t_point **scd, t_point **pts)
 {

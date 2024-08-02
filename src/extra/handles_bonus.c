@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   handles_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:53:13 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/23 17:55:32 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:14:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_bonus.h"
+#include "../../include/fdf_bonus.h"
 
 int	mouse_handler(int button, int x, int y, void *param)
 {

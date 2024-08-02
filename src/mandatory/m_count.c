@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   m_count.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:35:45 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 18:47:53 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:16:13 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../../include/fdf.h"
 
 void	f_swap(int *a, int *b)
 {

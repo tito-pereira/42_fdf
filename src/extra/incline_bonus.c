@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   incline_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 17:45:55 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/23 14:19:31 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:14:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_bonus.h"
+#include "../../include/fdf_bonus.h"
 
 int	inc_down_iso(t_matrix *rm, t_matrix *lm)
 {

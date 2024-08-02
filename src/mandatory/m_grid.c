@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   m_grid.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:37:42 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 18:53:41 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:16:42 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../../include/fdf.h"
 
 t_lines	*proc_lines(int fd, t_grid *grid)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   m_isometric.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:38:01 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/23 13:51:40 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:16:48 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../../include/fdf.h"
 
 void	get_matrix(t_grid *grid, int *x, int *y)
 {

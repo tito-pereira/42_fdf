@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   zoom_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 17:48:23 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/23 14:20:08 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:15:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_bonus.h"
+#include "../../include/fdf_bonus.h"
 
 t_matrix	*row_matrix(t_point *pts, int order)
 {

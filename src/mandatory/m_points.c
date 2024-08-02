@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   m_points.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:39:00 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 18:55:42 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:17:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../../include/fdf.h"
 
 t_point	*new_point(t_grid *grid, int row, int line, int total)
 {

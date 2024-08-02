@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   m_utils.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:39:18 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/20 18:58:45 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:17:10 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../../include/fdf.h"
 
 int	count_rows(char **points)
 {

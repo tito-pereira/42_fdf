@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   planar_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 17:47:21 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/23 14:19:50 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:14:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_bonus.h"
+#include "../../include/fdf_bonus.h"
 
 t_matrix	*plan_matrix(t_grid *grid)
 {

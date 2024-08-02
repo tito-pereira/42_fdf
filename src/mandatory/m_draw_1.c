@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   m_draw_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 15:36:52 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/23 16:01:14 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:16:25 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "../../include/fdf.h"
 
 void	draw_str(t_draw *d)
 {

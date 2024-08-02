@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 17:47:39 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/24 12:55:31 by tibarbos         ###   ########.fr       */
+/*   Updated: 2024/08/02 12:14:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_bonus.h"
+#include "../../include/fdf_bonus.h"
 
 void	rot_left(t_matrix *rm, t_matrix *lm)
 {

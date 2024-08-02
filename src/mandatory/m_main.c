@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   m_main.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tibarbos <tibarbos@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 17:46:12 by tibarbos          #+#    #+#             */
-/*   Updated: 2023/10/23 17:48:38 by tibarbos         ###   ########.fr       */
+/*   Created: 2023/10/20 15:38:18 by tibarbos          #+#    #+#             */
+/*   Updated: 2024/08/02 12:16:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf_bonus.h"
+#include "../../include/fdf.h"
 
 int	close_all(void *param)
 {
@@ -64,9 +64,8 @@ int	main(int ac, char **av)
 		mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "fdf");
 		all = create_all(mlx, grid, pts);
 		new_iso(all);
-		mlx_key_hook(mlx->win, key_handler, (void *)all);
-		mlx_mouse_hook(mlx->win, mouse_handler, (void *)all);
 		mlx_hook(mlx->win, 17, 0, close_all, (void *)all);
+		mlx_key_hook(mlx->win, escape_close, (void *)all);
 		mlx_loop(mlx->mlx);
 		mlx_destroy_display(mlx->mlx);
 		free_all(all);
