@@ -6,7 +6,7 @@ numbers in a file corresponding to a map with coordinates and heights
 into a 3D wireframe model representation of said map. 
 Like every single other 42 project, it had several goals in mind:
 - continued practice of basic C syntax, logic, data types and structures;
-- dynamic data allocation management;
+- dynamic memory allocation management;
 - use of tools like GDB and Valgrind to debug, avoid memory leaks and errors;
 - incomplete instructions to promote self learning and error solving;
 - familiarity with Makefile and compilers;
